@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
+import { leads } from './leads';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -10,6 +12,7 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/
 // import { RouteUiStateService } from '../../shared/state/ui';
 // import { RouteDomainStateService } from '../../shared/state/domain';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
@@ -17,14 +20,21 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RootComponent implements OnInit, OnDestroy {
-  constructor() // private domainState: DomainService, // Global domain state
+  public displayedColumns: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email'];
+  public dataSource = new MatTableDataSource(leads);
+
+  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  constructor() {}
+  // private domainState: DomainService, // Global domain state
   // public uiState: UiStateService, // Global UI state
   // private routeDomainState: RouteDomainStateService, // Route only domain state
   // private routeUIState: RouteUiStateService, // Route only UI state
   // private settings: SettingsService, // App settings/global properties
-  {}
+  
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   /** Must be present even if not used for autounsub */
   ngOnDestroy() {}
