@@ -20,7 +20,8 @@ import { leads } from './leads';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RootComponent implements OnInit, OnDestroy {
-  public displayedColumns: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email'];
+  public columnsLeads: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email'];
+  public columnsLoans: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email', 'address', 'loanType', 'condition', 'milestone', 'linked'];
   public dataSource = new MatTableDataSource(leads);
 
   @ViewChild(MatSort, {static: true}) sort!: MatSort;
