@@ -1,0 +1,48 @@
+<div class="container-fluid" *ngIf="{ users: users$ | async } as route">
+  <p>This is a copy+pastable lazy loaded routed module. Someday I'll have time to learn Schematics...</p>
+  <div>
+    <!-- Tab example with persistant state-->
+    <mat-tab-group [selectedIndex]="uiState.tabActive$('home') | async" (selectedTabChange)="uiState.tabChange('home', $event)">
+      <mat-tab label="Api Example">
+        <!-- BEGIN API Example -->
+        <nt-domain-state [state]="route.users">
+          <div class="p-2">
+            <div class="row">
+              <div class="col col-12 col-md-8">
+                <mat-card>
+                  <button mat-button (click)="usersRefresh()">Refresh Users</button>
+                  <div class="alert alert-warning icon" *ngIf="!route?.users?.ids?.length">No users found.</div>
+                  <table class="table" *ngIf="route?.users?.ids?.length">
+                    <tbody>
+                      <tr *ngFor="let id of route.users.ids">
+                        <td>{{ route.users.entities[id].name }}</td>
+                        <td>{{ route.users.entities[id].username }}</td>
+                        <td>{{ route.users.entities[id].email }}</td>
+                        <td>{{ route.users.entities[id].website }}</td>
+                        <td><a (click)="user = route.users.entities[id]">Edit</a></td>
+                        <td><a (click)="userDelete(route.users.entities[id])">Delete</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </mat-card>
+              </div>
+              <div class="col col-12 col-md-4">
+                <mat-card> <app-user-form [user]="user"></app-user-form> </mat-card>
+              </div>
+            </div>
+          </div>
+        </nt-domain-state>
+        <!-- END API Example -->
+      </mat-tab>
+      <mat-tab label="Second"> Content 2 </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+
+    <hr />
+    <mat-tab-group [selectedIndex]="uiState.tabActive$('home2') | async" (selectedTabChange)="uiState.tabChange('home2', $event)">
+      <mat-tab label="Test 1"></mat-tab>
+      <mat-tab label="Test 2"> Content 2 </mat-tab>
+      <mat-tab label="Test 3"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
