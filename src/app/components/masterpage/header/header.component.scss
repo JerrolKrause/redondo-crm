@@ -2,9 +2,11 @@
 
 header {
   background: #fff;
+  color:#000;
   border-bottom: 1px solid #e2e5e8;
   margin-bottom: 1rem;
   .navbar-brand {
+    padding: 0;
     margin-right: 3rem;
     color: #000;
     .fa {
@@ -12,8 +14,7 @@ header {
     }
   }
   .logo {
-    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
-    color: $interact-primary;
+    max-width:293px;padding:25px;
   }
   .search-group {
     padding: 0.5em 1em;

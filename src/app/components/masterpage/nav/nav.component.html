@@ -12,7 +12,7 @@
 
   <div class="navbar-collapse" id="navbar-main" [ngClass]="{ 'collapse open': isOpen }">
     <div class="navbar-mobile">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto justify-content-center w-100">
         <li class="nav-item">
           <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <i class="fa fa-tachometer mr-1" aria-hidden="true"></i> Home
@@ -38,8 +38,8 @@
           </a>
         </ng-container>
 
-        <a [matMenuTriggerFor]="appMenu">
-          <i class="fa fa-user mr-1"></i> <span class="mr-1">{{ userName }}</span> <i class="fa fa-caret-down mr-1"></i>
+        <a [matMenuTriggerFor]="appMenu" class="dropnav">
+          Hi <span class="mr-1">Joe User </span> <span> <i class="fa fa-caret-down mr-1"></i></span>
         </a>
         <mat-menu #appMenu="matMenu" xPosition="after"> <ng-container *ngTemplateOutlet="utilityNav"></ng-container> </mat-menu>
       </div>

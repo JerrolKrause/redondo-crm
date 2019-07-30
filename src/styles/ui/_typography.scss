@@ -84,7 +84,7 @@ small,
   line-height: 3rem;
 }
 
-// Colors
+// Colors 
 .red {
   color: red;
 }
@@ -103,4 +103,97 @@ small,
   &:focus {
     outline: none;
   }
+}
+/*
+@font-face {
+  font-family: 'Proxima Nova Alt Black';
+  src: url(assets/fonts/proxima-nova-alt-black-webfont.eot);
+  src: url(assets/fonts/proxima-nova-alt-black-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-alt-black-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-alt-black-webfont.woff) format('woff'),
+    url(assets/fonts/proxima-nova-alt-black-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-alt-black-webfont.svg#proxima_nova_altblack) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Alt Bold';
+  src: url(assets/fonts/proxima-nova-alt-bold-webfont.eot);
+  src: url(assets/fonts/proxima-nova-alt-bold-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-alt-bold-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-alt-bold-webfont.woff) format('woff'),
+    url(assets/fonts/proxima-nova-alt-bold-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-alt-bold-webfont.svg#proxima_nova_altbold) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot);
+  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-alt-regular-webfont.woff) format('woff'), url(assets/fonts/proxima-nova-alt-regular-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-alt-regular-webfont.svg#proxima_nova_altregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Scosf Thin';
+  src: url(assets/fonts/proxima-nova-scosf-thin-webfont.eot);
+  src: url(assets/fonts/proxima-nova-scosf-thin-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-scosf-thin-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-scosf-thin-webfont.woff) format('woff'),
+    url(assets/fonts/proxima-nova-scosf-thin-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-scosf-thin-webfont.svg#proxima_nova_scosfthin) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Light';
+  src: url(assets/fonts/ProximaNova-Light.otf) format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Semibold';
+  src: url(assets/fonts/proxima-nova-semibold-webfont.eot);
+  src: url(assets/fonts/proxima-nova-semibold-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-semibold-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-semibold-webfont.woff) format('woff'),
+    url(assets/fonts/proxima-nova-semibold-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-semibold-webfont.svg#proxima_nova_ltsemibold) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova Thin';
+  src: url(assets/fonts/proxima-nova-thin-webfont.eot);
+  src: url(assets/fonts/proxima-nova-thin-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-thin-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-thin-webfont.woff) format('woff'),
+    url(assets/fonts/proxima-nova-thin-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-thin-webfont.svg#proxima_nova_ltthin) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/montserrat-v10-latin-regular.eot);
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+    url(assets/fonts/montserrat-v10-latin-regular.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/montserrat-v10-latin-regular.woff2) format('woff2'), url(assets/fonts/montserrat-v10-latin-regular.woff) format('woff'),
+    url(assets/fonts/montserrat-v10-latin-regular.ttf) format('truetype'), url(assets/fonts/montserrat-v10-latin-regular.svg#Montserrat) format('svg');
+}
+*/
+@font-face {
+  font-family: 'Questrial';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/questrial-v7-latin-regular.eot);
+  src: local('Questrial'), local('Questrial-Regular'), url(assets/fonts/questrial-v7-latin-regular.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/questrial-v7-latin-regular.woff2) format('woff2'), url(assets/fonts/questrial-v7-latin-regular.woff) format('woff'),
+    url(assets/fonts/questrial-v7-latin-regular.ttf) format('truetype'), url(assets/fonts/questrial-v7-latin-regular.svg#Questrial) format('svg');
 }

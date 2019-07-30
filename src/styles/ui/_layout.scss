@@ -1,8 +1,8 @@
 // Global branded styling. App specific styling should NOT go in this file
-body {
+html, body {
   font-family: 'Open Sans', sans-serif;
-  color: #484f59;
-  background-color: $grey;
+  color: #000;
+  background-color: #eaeaea;
 }
 .container {
   max-width: 1280px;

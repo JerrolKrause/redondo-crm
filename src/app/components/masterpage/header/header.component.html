@@ -1,10 +1,13 @@
 <header>
   <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-inverse navbar-ngbootstrap">
-      <a class="navbar-brand" [routerLink]="['/']">
-        <strong class="logo">{{ appName }}</strong>
-      </a>
-      <ng-content></ng-content>
-    </nav>
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img class="logo" src="//www.origin8now.com/images/auth-logo-lg.png" alt="Originate Home"/>
+    </a>
   </div>
+  <div class="container-fluid">
+
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-inverse navbar-ngbootstrap">
+    <ng-content></ng-content>
+  </nav>
 </header>
