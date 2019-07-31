@@ -1,0 +1,180 @@
+{
+  "configVersion": 1,
+  "timestamp": 1564613012540,
+  "index": "/redondo-crm/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/redondo-crm/10.1aeffded25ace6641d50.js",
+        "/redondo-crm/11.7e3a33544474e073bea2.js",
+        "/redondo-crm/6.3553b238cbf4394b219a.js",
+        "/redondo-crm/7.01d976a5d79dc7affd5f.js",
+        "/redondo-crm/8.d634b4158e70f5aa78bf.js",
+        "/redondo-crm/9.9de8a756c9017488811d.js",
+        "/redondo-crm/apple-touch-icon.png",
+        "/redondo-crm/common.209119e652b6e2ceb238.js",
+        "/redondo-crm/favicon.ico",
+        "/redondo-crm/index.html",
+        "/redondo-crm/main.9dd4963ee8a229baa40e.js",
+        "/redondo-crm/polyfills-es5.181f74e065bc1eb1417a.js",
+        "/redondo-crm/polyfills.4bb3ba04ad113db3fb80.js",
+        "/redondo-crm/runtime.841f82b72e6c87d6b5af.js",
+        "/redondo-crm/safari-pinned-tab.svg",
+        "/redondo-crm/scripts.1bb65570ef961697a258.js",
+        "/redondo-crm/styles.cd1216a5ce3966ae0919.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "fonts",
+      "installMode": "lazy",
+      "updateMode": "lazy",
+      "urls": [
+        "/redondo-crm/fontawesome-webfont.674f50d287a8c48dc19b.eot",
+        "/redondo-crm/fontawesome-webfont.912ec66d7572ff821749.svg",
+        "/redondo-crm/fontawesome-webfont.af7ae505a9eed503f8b8.woff2",
+        "/redondo-crm/fontawesome-webfont.b06871f281fee6b241d6.ttf",
+        "/redondo-crm/fontawesome-webfont.fee66e712a8a08eef580.woff",
+        "/redondo-crm/proxima-nova-semibold-webfont.4a2a396b64d49615e4e6.woff2",
+        "/redondo-crm/proxima-nova-semibold-webfont.6c1b0f2a27368ddc12cd.svg",
+        "/redondo-crm/proxima-nova-semibold-webfont.7bd0a4c62609f996460b.ttf",
+        "/redondo-crm/proxima-nova-semibold-webfont.bbec7fc38987369b4488.eot",
+        "/redondo-crm/questrial-v7-latin-regular.0ae6341ded3167b88fec.woff2",
+        "/redondo-crm/questrial-v7-latin-regular.2135d7496751456521ae.ttf",
+        "/redondo-crm/questrial-v7-latin-regular.64cb3c378466d371cb2e.eot",
+        "/redondo-crm/questrial-v7-latin-regular.95534789e87999d22022.svg",
+        "/redondo-crm/questrial-v7-latin-regular.dfb49c8c7f059bb7d162.woff"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/redondo-crm/assets/fonts/kendoui.woff",
+        "/redondo-crm/assets/fonts/proxima-nova-alt-regular-webfont.woff",
+        "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.eot",
+        "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.svg",
+        "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.ttf",
+        "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.woff2",
+        "/redondo-crm/assets/fonts/questrial-v7-latin-regular.eot",
+        "/redondo-crm/assets/fonts/questrial-v7-latin-regular.svg",
+        "/redondo-crm/assets/fonts/questrial-v7-latin-regular.ttf",
+        "/redondo-crm/assets/fonts/questrial-v7-latin-regular.woff",
+        "/redondo-crm/assets/fonts/questrial-v7-latin-regular.woff2",
+        "/redondo-crm/assets/icons/apple-icon-180x180.png",
+        "/redondo-crm/assets/icons/favicon-16x16.png",
+        "/redondo-crm/assets/icons/favicon-192x192.png",
+        "/redondo-crm/assets/icons/favicon-32x32.png",
+        "/redondo-crm/assets/icons/favicon-96x96.png",
+        "/redondo-crm/assets/mock-data/env-settings.json",
+        "/redondo-crm/assets/mock-data/login.json",
+        "/redondo-crm/assets/mock-data/map-data.json",
+        "/redondo-crm/assets/mock-data/properties.json",
+        "/redondo-crm/assets/mock-data/user.json",
+        "/redondo-crm/assets/mock-data/users.json",
+        "/redondo-crm/assets/mock-data/version.json",
+        "/redondo-crm/assets/scripts/canvasjs.min.js",
+        "/redondo-crm/assets/scripts/chart.min.js",
+        "/redondo-crm/assets/scripts/ie-polyfills.min.js",
+        "/redondo-crm/assets/scripts/polyfills-ie.min.js"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "patterns": [
+        "https:\\/\\/jsonplaceholder\\.typicode\\.com\\/.*",
+        "\\/users"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100000,
+      "maxAge": 259200000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/redondo-crm/10.1aeffded25ace6641d50.js": "51d448f5e6787521348ced5852e219cde654f64d",
+    "/redondo-crm/11.7e3a33544474e073bea2.js": "1135fee43576ac7001ca473fcf979d0c9a5167a4",
+    "/redondo-crm/6.3553b238cbf4394b219a.js": "67365f4b310981951bc552e10234422146058361",
+    "/redondo-crm/7.01d976a5d79dc7affd5f.js": "7e02df7d5df0f84d29db5ddf7bc54ba08e538e7f",
+    "/redondo-crm/8.d634b4158e70f5aa78bf.js": "ce7775aa5ad1cebbd091967f97902abfad012e2e",
+    "/redondo-crm/9.9de8a756c9017488811d.js": "9b58a3a060218bdb5f34b21bc36bca1016ee8d4a",
+    "/redondo-crm/apple-touch-icon.png": "15abe2d99cd932cf81f00244cb9db469458911f8",
+    "/redondo-crm/assets/fonts/kendoui.woff": "d9411199ec4cc5af4461f94b51ea6906edfa332e",
+    "/redondo-crm/assets/fonts/proxima-nova-alt-regular-webfont.woff": "c2868b6fe666faea383e29cc5ae13b4fec7f4486",
+    "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.eot": "1535bc70e7a978a77cb01d7de681b31e2ad0d16c",
+    "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.svg": "2f45dce46dc13d2765d203b004b49975c58f3539",
+    "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.ttf": "37aabee9d2f4fdb6c268475c9be2e4da85bb6931",
+    "/redondo-crm/assets/fonts/proxima-nova-semibold-webfont.woff2": "66f582a7ad7f8fe01cffe6f0af35c6f9cb6bc990",
+    "/redondo-crm/assets/fonts/questrial-v7-latin-regular.eot": "360d17724f93edca87a75f1adeadd93eaa7daf60",
+    "/redondo-crm/assets/fonts/questrial-v7-latin-regular.svg": "bf76fa59763bfd8831a22a9831a55c531fb41beb",
+    "/redondo-crm/assets/fonts/questrial-v7-latin-regular.ttf": "1ccac9ff5cb42fd70576525c1427812bfe00e582",
+    "/redondo-crm/assets/fonts/questrial-v7-latin-regular.woff": "a8100b3c4639f9d71848be415f7d3628d20cba76",
+    "/redondo-crm/assets/fonts/questrial-v7-latin-regular.woff2": "da60794eb3a5dff7c2d2b9117ba780fd372ce9d5",
+    "/redondo-crm/assets/icons/apple-icon-180x180.png": "249c600eec83bdccd5aac0c4d12a992a27899dff",
+    "/redondo-crm/assets/icons/favicon-16x16.png": "b5c681f4c7594690eee9fec4c56ad0224bccd321",
+    "/redondo-crm/assets/icons/favicon-192x192.png": "fd3f118cf196686de1af3729e3b3da52c4546009",
+    "/redondo-crm/assets/icons/favicon-32x32.png": "40ec60bed19a90fa6d8d37d47c2bdb2cd805a6d9",
+    "/redondo-crm/assets/icons/favicon-96x96.png": "a48b83095b71ef13d84c142f7807c85a681cc55e",
+    "/redondo-crm/assets/mock-data/env-settings.json": "4b63ef360d3a8e90a79b9736de5875214c4fcd22",
+    "/redondo-crm/assets/mock-data/login.json": "73317e37ab308c84bf2e446df847793e90776b76",
+    "/redondo-crm/assets/mock-data/map-data.json": "9da38e82c412746a124b06cc5ff690d8cdf15d9d",
+    "/redondo-crm/assets/mock-data/properties.json": "030f5f8a7802956a051546e2292a6a76bf5bbb35",
+    "/redondo-crm/assets/mock-data/user.json": "4da1385ba402a5bfe8260c05f998f6e6ce91c4ca",
+    "/redondo-crm/assets/mock-data/users.json": "78838d3369bc02ace98ac0252f1acb0a69403cde",
+    "/redondo-crm/assets/mock-data/version.json": "1e55d40e0aa800efbdbd3444686d067018ead129",
+    "/redondo-crm/assets/scripts/canvasjs.min.js": "ef4b28d39932cd294174c96fcecb49a7fd3f9729",
+    "/redondo-crm/assets/scripts/chart.min.js": "0398f5773b0c0589b6e9283958dbe939e9bfbd3a",
+    "/redondo-crm/assets/scripts/ie-polyfills.min.js": "ebfa5ce77450da20c3179b8f5aec04b734034a43",
+    "/redondo-crm/assets/scripts/polyfills-ie.min.js": "cd1b6b716b6b2694571161e95c93cc68fff2caea",
+    "/redondo-crm/common.209119e652b6e2ceb238.js": "b79c6adc7ffd38278952144accf114cfacb8a584",
+    "/redondo-crm/favicon.ico": "a102074f13695e32da2f69e9725ee486b86ce39f",
+    "/redondo-crm/fontawesome-webfont.674f50d287a8c48dc19b.eot": "d980c2ce873dc43af460d4d572d441304499f400",
+    "/redondo-crm/fontawesome-webfont.912ec66d7572ff821749.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
+    "/redondo-crm/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
+    "/redondo-crm/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
+    "/redondo-crm/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
+    "/redondo-crm/index.html": "ab69428f6a71098ccdd3d3b2692a32f65adca4a1",
+    "/redondo-crm/main.9dd4963ee8a229baa40e.js": "559e01120536d9dea5efe92e59c560f803325f1d",
+    "/redondo-crm/polyfills-es5.181f74e065bc1eb1417a.js": "c3e174624d064ded15d5eeb181be0eec4f9ece14",
+    "/redondo-crm/polyfills.4bb3ba04ad113db3fb80.js": "44f469e8fc6ed92dd0f1e39c0e5e513d0d4cfc83",
+    "/redondo-crm/proxima-nova-semibold-webfont.4a2a396b64d49615e4e6.woff2": "66f582a7ad7f8fe01cffe6f0af35c6f9cb6bc990",
+    "/redondo-crm/proxima-nova-semibold-webfont.6c1b0f2a27368ddc12cd.svg": "2f45dce46dc13d2765d203b004b49975c58f3539",
+    "/redondo-crm/proxima-nova-semibold-webfont.7bd0a4c62609f996460b.ttf": "37aabee9d2f4fdb6c268475c9be2e4da85bb6931",
+    "/redondo-crm/proxima-nova-semibold-webfont.bbec7fc38987369b4488.eot": "1535bc70e7a978a77cb01d7de681b31e2ad0d16c",
+    "/redondo-crm/questrial-v7-latin-regular.0ae6341ded3167b88fec.woff2": "da60794eb3a5dff7c2d2b9117ba780fd372ce9d5",
+    "/redondo-crm/questrial-v7-latin-regular.2135d7496751456521ae.ttf": "1ccac9ff5cb42fd70576525c1427812bfe00e582",
+    "/redondo-crm/questrial-v7-latin-regular.64cb3c378466d371cb2e.eot": "360d17724f93edca87a75f1adeadd93eaa7daf60",
+    "/redondo-crm/questrial-v7-latin-regular.95534789e87999d22022.svg": "bf76fa59763bfd8831a22a9831a55c531fb41beb",
+    "/redondo-crm/questrial-v7-latin-regular.dfb49c8c7f059bb7d162.woff": "a8100b3c4639f9d71848be415f7d3628d20cba76",
+    "/redondo-crm/runtime.841f82b72e6c87d6b5af.js": "01cd47d68bc8c06872825509101254dea25b7e1a",
+    "/redondo-crm/safari-pinned-tab.svg": "36ba0802c2ad6a8d07b4a2f991a4478b91307fee",
+    "/redondo-crm/scripts.1bb65570ef961697a258.js": "8c539941542c3b15122fc62ddb73992f173e9a75",
+    "/redondo-crm/styles.cd1216a5ce3966ae0919.css": "c8e8ef3ec04bc97f9c61906d86abb876a3db35e8"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
