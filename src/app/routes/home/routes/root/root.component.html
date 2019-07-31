@@ -13,7 +13,7 @@
               <td><i class="fa fa-exclamation-triangle red" aria-hidden="true"></i></td>
               <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
               <td>
-                <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a>Jason Hatfield</a></p>
+                <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a href="#">Jason Hatfield</a></p>
                 <ul class="mb-0">
                   <li class="small">Last time on the phone he needed more time to figure out his down payment</li>
                 </ul>
@@ -23,7 +23,7 @@
               <td></td>
               <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
               <td>
-                <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a>Maria George</a></p>
+                <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a href="#">Maria George</a></p>
                 <ul class="mb-0">
                   <li class="small">Two missed calls, need to follow up to get this deal closed</li>
                 </ul>
@@ -33,7 +33,7 @@
               <td></td>
               <td><i class="fa fa-info-circle orange" aria-hidden="true"></i></td>
               <td>
-                <p class="mb-1">8/25/2019 @ 10:21 AM - <strong>Notice</strong> - <a>Tommy Timbertoe</a></p>
+                <p class="mb-1">8/25/2019 @ 10:21 AM - <strong>Notice</strong> - <a href="#">Tommy Timbertoe</a></p>
                 <ul class="mb-0">
                   <li class="small">Lead reassigned to you by system admin</li>
                 </ul>
@@ -68,7 +68,7 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let element"><a>{{ element.name }}</a></td>
+        <td mat-cell *matCellDef="let element"><a href="#">{{ element.name }}</a></td>
       </ng-container>
 
       <!-- Symbol Column -->
@@ -107,7 +107,7 @@
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
     <h3>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h3>
 
-    <table mat-table [dataSource]="dataSource" matSort class="w-100">
+    <table mat-table [dataSource]="dataSourceLoans" matSort class="w-100">
       <ng-container matColumnDef="created">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</th>
         <td mat-cell *matCellDef="let element">{{ element.created }}</td>
@@ -117,7 +117,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let element">{{ element.status }}</td>
       </ng-container>
-      
+
        <ng-container matColumnDef="loanNumber">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan #</th>
           <td mat-cell *matCellDef="let element">{{ element.loanNumber }}</td>
@@ -125,7 +125,7 @@
   
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrower</th>
-        <td mat-cell *matCellDef="let element"><a>{{ element.name }}</a></td>
+        <td mat-cell *matCellDef="let element"><a href="#">{{ element.name }}</a></td>
       </ng-container>
 
       <ng-container matColumnDef="loanAmt">

@@ -38,6 +38,7 @@ export class RootComponent implements OnInit, OnDestroy {
     'linked',
   ];
   public dataSource = new MatTableDataSource(leads);
+  public dataSourceLoans = new MatTableDataSource(leads);
   public dataPoints: CanvasJS.ChartDataSeriesOptions[] = [
     {
       dataPoints: [
@@ -119,6 +120,7 @@ export class RootComponent implements OnInit, OnDestroy {
   ];
 
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort2!: MatSort;
   constructor() {}
   // private domainState: DomainService, // Global domain state
   // public uiState: UiStateService, // Global UI state
@@ -128,6 +130,7 @@ export class RootComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
+    this.dataSourceLoans.sort = this.sort2;
   }
 
   /** Must be present even if not used for autounsub */
