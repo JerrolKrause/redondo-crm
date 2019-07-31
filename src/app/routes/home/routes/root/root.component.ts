@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild } from
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { leads } from './leads';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { setHours, setMinutes } from 'date-fns';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -13,6 +12,7 @@ import { setHours, setMinutes } from 'date-fns';
 // Route State
 // import { RouteUiStateService } from '../../shared/state/ui';
 // import { RouteDomainStateService } from '../../shared/state/domain';
+const today = new Date();
 
 @Component({
   selector: 'app-root',
@@ -124,11 +124,10 @@ export class RootComponent implements OnInit, OnDestroy {
 
   public view = CalendarView.Day;
   public CalendarView = CalendarView;
-
   public events: CalendarEvent[] = [
     {
       title: 'Call George back',
-      start: setHours(setMinutes(new Date(), 0), 3),
+      start: <any>today.setHours( today.getHours() + 1 ),
       color: {
         primary: '#ad2121',
         secondary: '#FAE3E3',
@@ -136,7 +135,7 @@ export class RootComponent implements OnInit, OnDestroy {
     },
     {
       title: 'Request docs from Suzi',
-      start: setHours(setMinutes(new Date(), 0), 5),
+      start: <any>today.setHours( today.getHours() - 2 ),
       color: {
         primary: '#1e90ff',
         secondary: '#D1E8FF',

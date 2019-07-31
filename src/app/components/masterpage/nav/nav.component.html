@@ -14,7 +14,7 @@
     <div class="navbar-mobile">
       <ul class="navbar-nav mr-auto justify-content-center w-100">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             Quick Quote
           </a>
         </li>
@@ -39,7 +39,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             CRM
           </a>
         </li>
@@ -59,7 +59,7 @@
         </ng-container>
 
         <a [matMenuTriggerFor]="appMenu" class="dropnav">
-          Hi <span class="mr-1">Joe User </span> <span> <i class="fa fa-caret-down mr-1"></i></span>
+          Hi <span class="mr-5 active">Joe User </span> <span> <i class="fa fa-caret-down mr-1"></i></span>
         </a>
         <mat-menu #appMenu="matMenu" xPosition="after"> <ng-container *ngTemplateOutlet="utilityNav"></ng-container> </mat-menu>
       </div>

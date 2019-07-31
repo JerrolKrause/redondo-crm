@@ -6,6 +6,10 @@
   border-top: 1px solid #ccc;
 }
 
+.active {
+  color:$interact-primary;
+}
+
 #navbar-main {
   background-color: #3d3c38;color: #fff;
   .dropnav{white-space: nowrap;}
@@ -18,6 +22,7 @@
     padding: 20px 15px!important;
     text-transform: uppercase;
     &.active {
+      color:$interact-primary;
       // border-bottom: 2px solid $interact-primary;
       .fa {
         color: $interact-primary;
