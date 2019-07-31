@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { leads } from './leads';
-import { CalendarView } from 'angular-calendar';
+import { CalendarView, CalendarEvent } from 'angular-calendar';
+import { setHours, setMinutes } from 'date-fns';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -31,9 +32,7 @@ export class RootComponent implements OnInit, OnDestroy {
     'address',
     'loanType',
     'loanAmt',
-    
-    
-    
+
     'condition',
     'milestone',
     'linked',
@@ -123,7 +122,27 @@ export class RootComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild(MatSort, { static: true }) sort2!: MatSort;
 
-  public view = CalendarView.Week;
+  public view = CalendarView.Day;
+  public CalendarView = CalendarView;
+
+  public events: CalendarEvent[] = [
+    {
+      title: 'Call George back',
+      start: setHours(setMinutes(new Date(), 0), 3),
+      color: {
+        primary: '#ad2121',
+        secondary: '#FAE3E3',
+      },
+    },
+    {
+      title: 'Request docs from Suzi',
+      start: setHours(setMinutes(new Date(), 0), 5),
+      color: {
+        primary: '#1e90ff',
+        secondary: '#D1E8FF',
+      },
+    },
+  ];
 
   constructor() {}
   // private domainState: DomainService, // Global domain state
