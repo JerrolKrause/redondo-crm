@@ -1,2 +1,9 @@
+// Calendar overrides
+app-calendar{
+    .cal-hour-rows{overflow-y: hidden;}
+}
+
+// Host component
 :host {
+    
 }
