@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col col-12 col-md-6">
-      <h2>
-        <a routerLink="/" class="small float-right">See all Alerts &amp; Tasks</a> Alerts &amp; Tasks
+      <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> See all Alerts &amp; Tasks</a>
+      <h3>
+        Alerts &amp; Tasks
         <span class="badge badge-pill badge-danger">3</span>
-      </h2>
+      </h3>
       <mat-card class="mb-4 p-0">
         <table class="table table-striped table-sm">
           <tbody>
@@ -49,8 +50,8 @@
     </div>
   </div>
   <div class="mb-4">
-    <a class="float-right">View all leads</a>
-    <h2>Leads that need attention <span class="badge badge-pill badge-danger">4</span></h2>
+    <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all leads</a>
+    <h3>Leads that need attention <span class="badge badge-pill badge-danger">4</span></h3>
     <table mat-table [dataSource]="dataSource" matSort class="w-100">
       <!-- Position Column -->
       <ng-container matColumnDef="created">
@@ -67,7 +68,7 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <td mat-cell *matCellDef="let element"><a>{{ element.name }}</a></td>
       </ng-container>
 
       <!-- Symbol Column -->
@@ -103,40 +104,35 @@
     </table>
   </div>
   <div class="mb-4">
-    <a class="float-right">View all loans</a>
-    <h2>Loans / Pipeline <span class="badge badge-pill badge-danger">4</span></h2>
+    <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
+    <h3>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h3>
+
     <table mat-table [dataSource]="dataSource" matSort class="w-100">
-      <!-- Position Column -->
       <ng-container matColumnDef="created">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</th>
         <td mat-cell *matCellDef="let element">{{ element.created }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let element">{{ element.status }}</td>
       </ng-container>
-
-      <!-- Weight Column -->
+      
+       <ng-container matColumnDef="loanNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan #</th>
+          <td mat-cell *matCellDef="let element">{{ element.loanNumber }}</td>
+        </ng-container>
+  
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrower</th>
+        <td mat-cell *matCellDef="let element"><a>{{ element.name }}</a></td>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
-        <td mat-cell *matCellDef="let element">{{ element.state }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
       <ng-container matColumnDef="loanAmt">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan Amount</th>
         <td mat-cell *matCellDef="let element">{{ element.loanAmt | currency }}</td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
         <td mat-cell *matCellDef="let element">
@@ -144,7 +140,6 @@
         </td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
         <td mat-cell *matCellDef="let element">
@@ -154,7 +149,7 @@
 
       <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
-        <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.address }}, {{ element.state }}</td>
       </ng-container>
 
       <ng-container matColumnDef="loanType">
@@ -182,8 +177,8 @@
     </table>
   </div>
   <div class="mb-4">
-    <a class="float-right">View all metrics</a>
-    <h2>Metrics</h2>
+    <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all metrics</a>
+    <h3>Metrics</h3>
     <div class="row">
       <div class="col col-12 col-md-6 col-xl-3">
         <mat-card>
@@ -197,54 +192,54 @@
             [height]="'300px'"
           >
           </app-chart>
-          <h3 class="text-center">Units Closed (MTD/YTD)</h3>
+          <h4 class="text-center">Units Closed (MTD/YTD)</h4>
         </mat-card>
       </div>
       <div class="col col-12 col-md-6 col-xl-3">
-          <mat-card>
-            <app-chart
-              class="mb-2"
-              [type]="'bar'"
-              [showYAxisLabels]="false"
-              [data]="dataPointsVolume"
-              [colorGradient]="['#3d3c38', '#e1b71b']"
-              [showLegend]="false"
-              [height]="'300px'"
-            >
-            </app-chart>
-            <h3 class="text-center">Volume (MTD/YTD)</h3>
-          </mat-card>
-        </div>
-        <div class="col col-12 col-md-6 col-xl-3">
-            <mat-card>
-              <app-chart
-                class="mb-2"
-                [type]="'area'"
-                [showYAxisLabels]="false"
-                [data]="dataPointsTalk"
-                [colorGradient]="['#e1b71b', '#3d3c38']"
-                [showLegend]="false"
-                [height]="'300px'"
-              >
-              </app-chart>
-              <h3 class="text-center">Volume (MTD/YTD)</h3>
-            </mat-card>
-          </div>
-          <div class="col col-12 col-md-6 col-xl-3">
-              <mat-card>
-                <app-chart
-                  class="mb-2"
-                  [type]="'area'"
-                  [showYAxisLabels]="false"
-                  [data]="dataPoints"
-                  [colorGradient]="['#e1b71b', '#3d3c38']"
-                  [showLegend]="false"
-                  [height]="'300px'"
-                >
-                </app-chart>
-                <h3 class="text-center">Volume (MTD/YTD)</h3>
-              </mat-card>
-            </div>
+        <mat-card>
+          <app-chart
+            class="mb-2"
+            [type]="'bar'"
+            [showYAxisLabels]="false"
+            [data]="dataPointsVolume"
+            [colorGradient]="['#3d3c38', '#e1b71b']"
+            [showLegend]="false"
+            [height]="'300px'"
+          >
+          </app-chart>
+          <h4 class="text-center">Volume (MTD/YTD)</h4>
+        </mat-card>
+      </div>
+      <div class="col col-12 col-md-6 col-xl-3">
+        <mat-card>
+          <app-chart
+            class="mb-2"
+            [type]="'area'"
+            [showYAxisLabels]="false"
+            [data]="dataPointsTalk"
+            [colorGradient]="['#e1b71b', '#3d3c38']"
+            [showLegend]="false"
+            [height]="'300px'"
+          >
+          </app-chart>
+          <h4 class="text-center">Volume (MTD/YTD)</h4>
+        </mat-card>
+      </div>
+      <div class="col col-12 col-md-6 col-xl-3">
+        <mat-card>
+          <app-chart
+            class="mb-2"
+            [type]="'area'"
+            [showYAxisLabels]="false"
+            [data]="dataPoints"
+            [colorGradient]="['#e1b71b', '#3d3c38']"
+            [showLegend]="false"
+            [height]="'300px'"
+          >
+          </app-chart>
+          <h4 class="text-center">Volume (MTD/YTD)</h4>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

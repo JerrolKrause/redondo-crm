@@ -31,7 +31,14 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 1rem;
+  font-size: 24px;
+  font-family: 'Proxima Nova Semibold';
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+  vertical-align: middle;
+  color: #858789;
+  .badge{position: relative;top: -5px;font-size: 59%;}
 }
 h4,
 .h4 {
@@ -161,16 +168,7 @@ small,
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Proxima Nova Semibold';
-  src: url(assets/fonts/proxima-nova-semibold-webfont.eot);
-  src: url(assets/fonts/proxima-nova-semibold-webfont.eot?#iefix) format('embedded-opentype'),
-    url(assets/fonts/proxima-nova-semibold-webfont.woff2) format('woff2'), url(assets/fonts/proxima-nova-semibold-webfont.woff) format('woff'),
-    url(assets/fonts/proxima-nova-semibold-webfont.ttf) format('truetype'),
-    url(assets/fonts/proxima-nova-semibold-webfont.svg#proxima_nova_ltsemibold) format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 @font-face {
   font-family: 'Proxima Nova Thin';
@@ -202,4 +200,15 @@ small,
   src: local('Questrial'), local('Questrial-Regular'), url(assets/fonts/questrial-v7-latin-regular.eot?#iefix) format('embedded-opentype'),
     url(assets/fonts/questrial-v7-latin-regular.woff2) format('woff2'), url(assets/fonts/questrial-v7-latin-regular.woff) format('woff'),
     url(assets/fonts/questrial-v7-latin-regular.ttf) format('truetype'), url(assets/fonts/questrial-v7-latin-regular.svg#Questrial) format('svg');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Semibold';
+  src: url(assets/fonts/proxima-nova-semibold-webfont.eot);
+  src: url(assets/fonts/proxima-nova-semibold-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-semibold-webfont.woff2) format('woff2'), // url(assets/fonts/proxima-nova-semibold-webfont.woff) format('woff'), // can't download woff
+    url(assets/fonts/proxima-nova-semibold-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-semibold-webfont.svg#proxima_nova_ltsemibold) format('svg');
+  font-weight: normal;
+  font-style: normal;
 }

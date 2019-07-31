@@ -11,7 +11,8 @@ export const leads = [
       loanType: '1 year',
       condition: '4',
       milestone: 'XXX',
-      linked: 'N/A'
+      linked: 'N/A',
+      loanNumber: '153838'
     },
     {
       created: '3/14/2019',
@@ -25,7 +26,8 @@ export const leads = [
       loanType: '3 year',
       condition: '4',
       milestone: 'XXX',
-      linked: 'N/A'
+      linked: 'N/A',
+      loanNumber: '643322'
     },
     {
       created: '3/13/2019',
@@ -39,7 +41,8 @@ export const leads = [
       loanType: '5 year',
       condition: '4',
       milestone: 'XXX',
-      linked: 'N/A'
+      linked: 'N/A',
+      loanNumber: '628534'
     },
     {
       created: '3/12/2019',
@@ -53,7 +56,8 @@ export const leads = [
       loanType: '6 year',
       condition: '4',
       milestone: 'XXX',
-      linked: 'N/A'
+      linked: 'N/A',
+      loanNumber: '983553'
     },
   ];
   

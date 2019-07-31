@@ -23,13 +23,16 @@ export class RootComponent implements OnInit, OnDestroy {
   public columnsLoans: string[] = [
     'created',
     'status',
+    'loanNumber',
     'name',
-    'state',
-    'loanAmt',
     'phone',
     'email',
     'address',
     'loanType',
+    'loanAmt',
+    
+    
+    
     'condition',
     'milestone',
     'linked',
