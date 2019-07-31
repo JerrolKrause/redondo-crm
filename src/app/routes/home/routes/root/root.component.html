@@ -44,8 +44,10 @@
       </mat-card>
     </div>
     <div class="col col-12 col-md-6">
+        <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> Create new appointment</a>
+        <h3>Calendar</h3>
       <mat-card class="mb-4">
-        <app-scheduler></app-scheduler>
+        <app-calendar [view]="view"></app-calendar>
       </mat-card>
     </div>
   </div>

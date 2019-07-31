@@ -11,13 +11,12 @@ import { RootComponent } from './routes/root/root.component';
 // Route State Management
 import { RouteUiStateQuery, RouteUiStateService, RouteUiStateStore } from './shared/state/ui';
 import { RouteDomainStateService } from './shared/state/domain';
-import { SchedulerModule } from 'src/app/features/scheduler/scheduler.module';
-import { ChartModule } from '$features';
+import { ChartModule, CalendarModule } from '$features';
 
 export const storeName = 'home-UIState'; // Change this property to be unique & route specific, IE 'route-UIState' => 'dashboard-UIState'
 
 @NgModule({
-  imports: [CommonModule, SiteModule, routing, SchedulerModule, ChartModule],
+  imports: [CommonModule, SiteModule, routing, CalendarModule, ChartModule],
   declarations: [RootComponent],
   providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
   exports: [],

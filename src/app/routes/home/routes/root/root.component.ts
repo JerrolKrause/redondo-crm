@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { leads } from './leads';
+import { CalendarView } from 'angular-calendar';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -121,6 +122,9 @@ export class RootComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   @ViewChild(MatSort, { static: true }) sort2!: MatSort;
+
+  public view = CalendarView.Week;
+
   constructor() {}
   // private domainState: DomainService, // Global domain state
   // public uiState: UiStateService, // Global UI state

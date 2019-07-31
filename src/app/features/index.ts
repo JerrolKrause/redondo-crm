@@ -6,3 +6,5 @@ export * from './grid/grid.module';
 
 // Map
 export * from './map/map.module';
+
+export * from './calendar/calendar.module'
