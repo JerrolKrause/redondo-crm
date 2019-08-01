@@ -71,7 +71,6 @@ export class TableComponent implements OnInit, OnChanges {
     if (this.canSort) {
       this.dataSource.sort = this.sort;
     }
-
     if (this.mobileEnabled) {
       // Create the pivot rows for the mobile view
       this.rowsPivot = this.pivotTable(this.rows, this.columnsMobile, this.mobileTitleProp);
@@ -100,7 +99,7 @@ export class TableComponent implements OnInit, OnChanges {
             $$label: column.label,
             value: row[column.prop] || null,
             type: column.type || null,
-            typeArgs: column.typeArgs || null
+            typeArgs: column.typeArgs || null,
           });
         }
       });
