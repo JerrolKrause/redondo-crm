@@ -52,9 +52,10 @@ button {
 
   &.active,
   &.enabled {
-    background-image: linear-gradient(to top, #ad0000 0%, #ff4343 100%);
+    @include gradient($brand-secondary, $brand-secondary-dk);
+    background-color: $brand-secondary;
     color: #fff;
-    border: 1px solid red!important;
+    border: 1px solid $brand-secondary!important;
   }
 
   &.btn-waiting {

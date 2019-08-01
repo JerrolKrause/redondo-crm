@@ -1,14 +1,17 @@
 // Global branded styling. App specific styling should NOT go in this file
 
 /***** Brand Colors *****/
-$brand-primary: #5e9aca;
+$brand-primary: #464541;
 $brand-primary-lt: #5e9aca;
 $brand-primary-dk: #2f6491;
 
+$brand-secondary: #e1b71b;
+$brand-secondary-dk: #d9ae11;
+
 /***** Brand Colors *****/
-$interact-primary: #e1b71b;;
-$interact-primary-lt: #d3aa0f;
-$interact-primary-dk: #d3aa0f;
+$interact-primary: #337ab7;
+$interact-primary-lt: #65ace9;
+$interact-primary-dk: #185a93;
 
 /***** Borders *****/
 $border: $brand-primary;
@@ -19,6 +22,7 @@ $bg-primary-lt: $brand-primary-lt;
 $bg-primary-dk: $brand-primary-dk;
 
 $grey: #eff3f6;
+$yellow: $brand-secondary;
 
 // Easing Animations
 // https://matthewlein.com/tools/ceaser

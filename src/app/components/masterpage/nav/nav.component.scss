@@ -7,7 +7,7 @@
 }
 
 .active {
-  color:$interact-primary;
+  color:$brand-secondary;
 }
 
 #navbar-main {
@@ -22,7 +22,7 @@
     padding: 20px 15px!important;
     text-transform: uppercase;
     &.active {
-      color:$interact-primary;
+      color:$brand-secondary;
       // border-bottom: 2px solid $interact-primary;
       .fa {
         color: $interact-primary;

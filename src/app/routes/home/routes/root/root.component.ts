@@ -21,7 +21,8 @@ const today = new Date();
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RootComponent implements OnInit, OnDestroy {
-  public columnsLeads: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email'];
+  public leads = leads;
+  
   public columnsLoans: string[] = [
     'created',
     'status',
@@ -37,7 +38,7 @@ export class RootComponent implements OnInit, OnDestroy {
     'milestone',
     'linked',
   ];
-  public dataSource = new MatTableDataSource(leads);
+  
   public dataSourceLoans = new MatTableDataSource(leads);
   public dataPoints: CanvasJS.ChartDataSeriesOptions[] = [
     {
@@ -119,7 +120,7 @@ export class RootComponent implements OnInit, OnDestroy {
     },
   ];
 
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  
   @ViewChild(MatSort, { static: true }) sort2!: MatSort;
 
   public view = CalendarView.Day;
@@ -151,7 +152,7 @@ export class RootComponent implements OnInit, OnDestroy {
   // private settings: SettingsService, // App settings/global properties
 
   ngOnInit() {
-    this.dataSource.sort = this.sort;
+    
     this.dataSourceLoans.sort = this.sort2;
   }
 
