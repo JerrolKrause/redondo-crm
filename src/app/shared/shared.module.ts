@@ -19,6 +19,7 @@ import {
 } from './pipes';
 // Directives
 import { FullScreenDirective, FocusDirective, ModalLaunchDirective, DomObserverDirective } from './directives';
+import { TypePipe } from './pipes/type.pipe';
 
 // Pipes + Directives
 export const APP_PIPES_DIRECTIVES = [
@@ -34,6 +35,7 @@ export const APP_PIPES_DIRECTIVES = [
   SortPipe,
   StringPipe,
   TextCasePipe,
+  TypePipe,
 
   // Directives
   FullScreenDirective,

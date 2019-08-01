@@ -7,10 +7,11 @@ export interface TableColumnDefinition {
   label: string;
   prop: string;
   type?: 'currency' | 'phoneNumber' | 'email' | 'date';
+  typeArgs?: any;
 }
 
 interface RowsPivot {
-  dataSource: MatTableDataSource<any[]>;
+  dataSource: MatTableDataSource<TableColumnDefinition[]>;
   rowTitle?: string | null;
 }
 
@@ -98,9 +99,12 @@ export class TableComponent implements OnInit, OnChanges {
           rowsNew.push({
             $$label: column.label,
             value: row[column.prop] || null,
+            type: column.type || null,
+            typeArgs: column.typeArgs || null
           });
         }
       });
+      console.log(rowsNew);
       rowsPivot.push({
         dataSource: new MatTableDataSource(rowsNew),
         rowTitle: titlePropNew,

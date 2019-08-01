@@ -54,16 +54,31 @@
         </th>
         <!-- Cell Content-->
         <td mat-cell *matCellDef="let element">
-          <ng-container [ngSwitch]="column.type">
-            <a
-              href="tel:{{ element[column.prop] | phoneNumber: true }} "
-              [innerHTML]="element[column.prop] | phoneNumber"
-              *ngSwitchCase="'phoneNumber'"
-            ></a>
-            <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
-            <span [innerHTML]="element[column.prop] | currency" *ngSwitchCase="'currency'"></span>
-            <span [innerHTML]="element[column.prop]" *ngSwitchDefault></span>
+          <!-- Make sure that the current cell is not a custom label from the pivot row -->
+          <ng-container *ngIf="column.prop !== '$$label'; else cellDefault">
+            <ng-container [ngSwitch]="column.type || element.type">
+              <!-- Phone Number -->
+              <a
+                href="tel:{{ element[column.prop] | phoneNumber: true }} "
+                [innerHTML]="element[column.prop] | phoneNumber"
+                *ngSwitchCase="'phoneNumber'"
+              ></a>
+              <!-- Email -->
+              <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
+              <!-- Currency -->
+              <span [innerHTML]="element[column.prop] | type: 'number' | currency : column.typeArgs || element.typeArgs" *ngSwitchCase="'currency'"></span>
+              <!-- Date -->
+              <span [innerHTML]="element[column.prop] | date : column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
+              <!-- Default -->
+              <ng-container *ngSwitchDefault>
+                <span *ngTemplateOutlet="cellDefault"></span>
+              </ng-container>
+            </ng-container>
           </ng-container>
+          <!-- Default cell output, no formatting -->
+          <ng-template #cellDefault>
+            <span [innerHTML]="element[column.prop]"></span>
+          </ng-template>
         </td>
       </ng-container>
     </ng-container>

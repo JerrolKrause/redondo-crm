@@ -23,7 +23,7 @@ const today = new Date();
 export class RootComponent implements OnInit, OnDestroy {
   public leads = leads;
   public columnsLeads: TableColumnDefinition[] = [
-    { label: 'Created', prop: 'created' },
+    { label: 'Created', prop: 'created', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'Name', prop: 'name' },
     { label: 'State', prop: 'state' },
@@ -34,7 +34,7 @@ export class RootComponent implements OnInit, OnDestroy {
   ];
 
   public columnsLeadsMobile: TableColumnDefinition[] = [
-    { label: 'Created', prop: 'created' },
+    { label: 'Created', prop: 'created', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'State', prop: 'state' },
     { label: 'Loan Amount', prop: 'loanAmt', type: 'currency' },
