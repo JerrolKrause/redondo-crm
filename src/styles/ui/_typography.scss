@@ -140,15 +140,7 @@ small,
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Proxima Nova';
-  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot);
-  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot?#iefix) format('embedded-opentype'),
-    url(assets/fonts/proxima-nova-alt-regular-webfont.woff) format('woff'), url(assets/fonts/proxima-nova-alt-regular-webfont.ttf) format('truetype'),
-    url(assets/fonts/proxima-nova-alt-regular-webfont.svg#proxima_nova_altregular) format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 @font-face {
   font-family: 'Proxima Nova Scosf Thin';
@@ -200,6 +192,16 @@ small,
   src: local('Questrial'), local('Questrial-Regular'), url(assets/fonts/questrial-v7-latin-regular.eot?#iefix) format('embedded-opentype'),
     url(assets/fonts/questrial-v7-latin-regular.woff2) format('woff2'), url(assets/fonts/questrial-v7-latin-regular.woff) format('woff'),
     url(assets/fonts/questrial-v7-latin-regular.ttf) format('truetype'), url(assets/fonts/questrial-v7-latin-regular.svg#Questrial) format('svg');
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot);
+  src: url(assets/fonts/proxima-nova-alt-regular-webfont.eot?#iefix) format('embedded-opentype'),
+    url(assets/fonts/proxima-nova-alt-regular-webfont.woff) format('woff'), url(assets/fonts/proxima-nova-alt-regular-webfont.ttf) format('truetype'),
+    url(assets/fonts/proxima-nova-alt-regular-webfont.svg#proxima_nova_altregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {

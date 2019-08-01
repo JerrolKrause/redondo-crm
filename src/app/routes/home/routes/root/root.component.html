@@ -89,11 +89,15 @@
     <h3>
       Leads that need attention <span class="badge badge-pill badge-danger">{{ leads | count }}</span>
     </h3>
+    <!--
     <app-leads-table [rows]="leads"></app-leads-table>
+    -->
+    <app-table [rows]="leads" [columns]="columnsLeads"></app-table>
   </div>
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
     <h3>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h3>
+
     <app-loans-table [rows]="leads"></app-loans-table>
   </div>
   <div class="mb-4">

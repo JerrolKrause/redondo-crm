@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { leads } from './leads';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
@@ -22,8 +21,17 @@ const today = new Date();
 })
 export class RootComponent implements OnInit, OnDestroy {
   public leads = leads;
+  public columnsLeads = [
+    { label: 'Created', prop: 'created' },
+    { label: 'Status', prop: 'status' },
+    { label: 'Name', prop: 'name' },
+    { label: 'State', prop: 'state' },
+    { label: 'Loan Amount', prop: 'loanAmt' },
+    { label: 'Phone', prop: 'phone' },
+    { label: 'Email', prop: 'email' },
+    { label: 'Action', prop: 'action' },
+  ];
 
-  public dataSourceLoans = new MatTableDataSource(leads);
   public dataPoints: CanvasJS.ChartDataSeriesOptions[] = [
     {
       dataPoints: [
@@ -104,15 +112,12 @@ export class RootComponent implements OnInit, OnDestroy {
     },
   ];
 
-  
-  @ViewChild(MatSort, { static: true }) sort2!: MatSort;
-
   public view = CalendarView.Day;
   public CalendarView = CalendarView;
   public events: CalendarEvent[] = [
     {
       title: 'Call George back',
-      start: <any>today.setHours( today.getHours() + 1 ),
+      start: <any>today.setHours(today.getHours() + 1),
       color: {
         primary: '#ad2121',
         secondary: '#FAE3E3',
@@ -120,7 +125,7 @@ export class RootComponent implements OnInit, OnDestroy {
     },
     {
       title: 'Request docs from Suzi',
-      start: <any>today.setHours( today.getHours() - 2 ),
+      start: <any>today.setHours(today.getHours() - 2),
       color: {
         primary: '#1e90ff',
         secondary: '#D1E8FF',
@@ -135,10 +140,7 @@ export class RootComponent implements OnInit, OnDestroy {
   // private routeUIState: RouteUiStateService, // Route only UI state
   // private settings: SettingsService, // App settings/global properties
 
-  ngOnInit() {
-    
-    this.dataSourceLoans.sort = this.sort2;
-  }
+  ngOnInit() {}
 
   /** Must be present even if not used for autounsub */
   ngOnDestroy() {}

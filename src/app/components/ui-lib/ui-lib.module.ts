@@ -10,8 +10,17 @@ import { StepperComponent } from './stepper/stepper.component';
 import { StepDirective } from './stepper/directives/step.directive';
 import { StepBodyCellDirective } from './stepper/directives/step-body.directive';
 import { StepLabelDirective } from './stepper/directives/step-label.directive';
+import { TableComponent } from './table/table.component';
 
-const Components = [AutocompleteComponent, FormFieldComponent, StepperComponent, StepDirective, StepBodyCellDirective, StepLabelDirective];
+const Components = [
+  AutocompleteComponent,
+  FormFieldComponent,
+  StepperComponent,
+  StepDirective,
+  StepBodyCellDirective,
+  StepLabelDirective,
+  TableComponent,
+];
 
 /**
  * UI library abstractions, in this case for materials design
