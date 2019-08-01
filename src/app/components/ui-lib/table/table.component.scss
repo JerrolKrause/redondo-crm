@@ -1,0 +1,6 @@
+.mat-table {
+  &.mat-table-mobile {
+    th { vertical-align: middle;}
+  }
+  tbody tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
+}
