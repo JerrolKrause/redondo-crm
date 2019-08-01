@@ -3,6 +3,11 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
+interface RowsPivot {
+  dataSource: MatTableDataSource<any[]>;
+  rowTitle?: string | null;
+}
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -17,12 +22,12 @@ export class TableComponent implements OnInit, OnChanges {
 
   @Input() canSort = true;
   @Input() mobileBreakpoint = 768;
+  @Input() mobileTitleProp: string | undefined;
 
   public dataSource!: MatTableDataSource<any[]>;
-
   public columnDefinitions: string[] = [];
 
-  public rowsPivot: MatTableDataSource<any[]>[] = [];
+  public rowsPivot: RowsPivot[] = [];
   public columnsPivot = [{ label: 'Label', prop: '$$label' }, { label: 'value', prop: 'value' }];
   public columnDefinitionsPivot: string[] = ['$$label', 'value'];
 
@@ -43,7 +48,7 @@ export class TableComponent implements OnInit, OnChanges {
     this.isMobile$.subscribe(res => console.log(res));
     console.log('Rows ', this.rows);
 
-    this.rowsPivot = this.pivotTable(this.rows, this.columns);
+    this.rowsPivot = this.pivotTable(this.rows, this.columns, this.mobileTitleProp);
     console.log('columnsPivot ', this.columnsPivot);
     console.log('rowsPivot', this.rowsPivot);
   }
@@ -65,18 +70,31 @@ export class TableComponent implements OnInit, OnChanges {
     }
   }
 
-  public pivotTable(rows: any[], columns: { label: string; prop: string }[]) {
-    const rowsPivot: MatTableDataSource<any[]>[] = [];
+  /**
+   * 
+   * @param rows 
+   * @param columns 
+   * @param propTitle 
+   */
+  public pivotTable(rows: any[], columns: { label: string; prop: string }[], propTitle?: string) {
+    const rowsPivot: RowsPivot[] = [];
 
     rows.forEach(row => {
       const rowsNew: any = [];
+      let titlePropNew: string | null = null;
       columns.forEach(column => {
         rowsNew.push({
           $$label: column.label,
           value: row[column.prop] || null,
         });
+        if (propTitle && propTitle === column.prop) {
+          titlePropNew = row[column.prop];
+        }
       });
-      rowsPivot.push(new MatTableDataSource(rowsNew));
+      rowsPivot.push({
+        dataSource: new MatTableDataSource(rowsNew),
+        rowTitle: titlePropNew
+      });
     });
     return rowsPivot;
   }

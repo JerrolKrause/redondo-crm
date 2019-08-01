@@ -5,7 +5,13 @@
       <ng-container
         *ngTemplateOutlet="
           tableDefault;
-          context: { isMobile: table.isMobile, dataSourceSrc: rowSrc, columnsSrc: columnsPivot, colDefsSrc: columnDefinitionsPivot }
+          context: {
+            isMobile: table.isMobile,
+            dataSourceSrc: rowSrc.dataSource,
+            columnsSrc: columnsPivot,
+            colDefsSrc: columnDefinitionsPivot,
+            rowTitle: rowSrc.rowTitle
+          }
         "
       ></ng-container>
     </ng-container>
@@ -31,8 +37,16 @@
   let-dataSourceSrc="dataSourceSrc"
   let-columnsSrc="columnsSrc"
   let-colDefsSrc="colDefsSrc"
+  let-rowTitle="rowTitle"
 >
-  <table mat-table [dataSource]="dataSourceSrc" matSort class="w-100 mb-3" [ngClass]="{ 'mat-table-mobile': isMobile }">
+  <table
+    mat-table
+    [dataSource]="dataSourceSrc"
+    matSort
+    class="w-100 mb-3"
+    [ngClass]="{ 'mat-table-mobile': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
+  >
+    <!-- Desktop headers -->
     <ng-container *ngFor="let column of columnsSrc">
       <ng-container [matColumnDef]="column.prop">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -47,11 +61,11 @@
     <!-- Mobile header -->
     <ng-container matColumnDef="mobile-header">
       <th mat-header-cell *matHeaderCellDef colspan="2">
-        <span>Hello World</span>
+        <span [innerHTML]="rowTitle"></span>
       </th>
     </ng-container>
 
-    <!-- Table Header -->
+    <!-- Table Header, determine if mobile or desktop -->
     <tr mat-header-row *matHeaderRowDef="!isMobile ? colDefsSrc : ['mobile-header']"></tr>
 
     <!-- Table Rows -->

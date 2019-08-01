@@ -2,5 +2,6 @@
   &.mat-table-mobile {
     th { vertical-align: middle;}
   }
+  &.mat-table-mobile-hide-title thead{display:none;}
   tbody tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
 }
