@@ -19,6 +19,7 @@ interface RowsPivot {
 export class TableComponent implements OnInit, OnChanges {
   @Input() rows: any[] = [];
   @Input() columns: { label: string; prop: string }[] = [];
+  @Input() columnsMobile: { label: string; prop: string }[] = this.columns;
 
   @Input() canSort = true;
   @Input() mobileBreakpoint = 768;
@@ -48,7 +49,7 @@ export class TableComponent implements OnInit, OnChanges {
     this.isMobile$.subscribe(res => console.log(res));
     console.log('Rows ', this.rows);
 
-    this.rowsPivot = this.pivotTable(this.rows, this.columns, this.mobileTitleProp);
+    this.rowsPivot = this.pivotTable(this.rows, this.columnsMobile, this.mobileTitleProp);
     console.log('columnsPivot ', this.columnsPivot);
     console.log('rowsPivot', this.rowsPivot);
   }
@@ -71,29 +72,32 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   /**
-   * 
-   * @param rows 
-   * @param columns 
-   * @param propTitle 
+   *
+   * @param rows
+   * @param columns
+   * @param propTitle
    */
   public pivotTable(rows: any[], columns: { label: string; prop: string }[], propTitle?: string) {
     const rowsPivot: RowsPivot[] = [];
-
+    // Loop through all rows
     rows.forEach(row => {
       const rowsNew: any = [];
       let titlePropNew: string | null = null;
       columns.forEach(column => {
-        rowsNew.push({
-          $$label: column.label,
-          value: row[column.prop] || null,
-        });
+        // Add the title of the card if prop data supplied
+        // Note that this also strips the row out of the collection that has the title
         if (propTitle && propTitle === column.prop) {
           titlePropNew = row[column.prop];
+        } else {
+          rowsNew.push({
+            $$label: column.label,
+            value: row[column.prop] || null,
+          });
         }
       });
       rowsPivot.push({
         dataSource: new MatTableDataSource(rowsNew),
-        rowTitle: titlePropNew
+        rowTitle: titlePropNew,
       });
     });
     return rowsPivot;

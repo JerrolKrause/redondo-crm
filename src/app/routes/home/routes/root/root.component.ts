@@ -32,6 +32,17 @@ export class RootComponent implements OnInit, OnDestroy {
     { label: 'Action', prop: 'action' },
   ];
 
+  public columnsLeadsMobile = [
+    { label: 'Created', prop: 'created' },
+    { label: 'Status', prop: 'status' },
+    { label: 'State', prop: 'state' },
+    { label: 'Loan Amount', prop: 'loanAmt' },
+    { label: 'Name', prop: 'name' },
+    { label: 'Phone', prop: 'phone' },
+    { label: 'Email', prop: 'email' },
+    { label: 'Action', prop: 'action' },
+  ];
+
   public dataPoints: CanvasJS.ChartDataSeriesOptions[] = [
     {
       dataPoints: [
