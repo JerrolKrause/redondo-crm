@@ -76,7 +76,10 @@
             </button>
           </div>
         </div>
-        <a routerLink="/" class="small ml-auto mt-2"><i class="fa fa-eye" aria-hidden="true"></i> Create new appointment</a>
+        <div class="small ml-auto mt-2">
+          <a routerLink="/"><i class="fa fa-plus" aria-hidden="true"></i> Create new contact</a> |
+          <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> Create new appointment</a>
+        </div>
       </div>
       <app-calendar class="mb-4" [view]="view" [events]="events"></app-calendar>
     </div>

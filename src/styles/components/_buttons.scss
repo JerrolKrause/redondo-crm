@@ -6,7 +6,7 @@ button {
 }
 
 .btn {
-  cursor: pointer;
+  cursor: pointer;border-radius:0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   @include transition(0.1s);
 
@@ -101,6 +101,8 @@ button {
 
 // Button Groups
 .btn-group {
+  border-radius:0;
+  /*
   & > *:not(:last-child):not(.dropdown-toggle) > .btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -110,6 +112,7 @@ button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+  */
 }
 .input-group .btn,
 .input-group .btn:hover {

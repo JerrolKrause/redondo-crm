@@ -9,7 +9,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 })
 export class LeadsTableComponent implements OnInit {
   @Input() rows: any[] = [];
-  @Input() columns: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email'];
+  @Input() columns: string[] = ['created', 'status', 'name', 'state', 'loanAmt', 'phone', 'email', 'action'];
 
   public dataSource!: MatTableDataSource<any[]>;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
