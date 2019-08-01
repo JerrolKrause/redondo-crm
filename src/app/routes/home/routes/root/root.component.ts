@@ -22,23 +22,7 @@ const today = new Date();
 })
 export class RootComponent implements OnInit, OnDestroy {
   public leads = leads;
-  
-  public columnsLoans: string[] = [
-    'created',
-    'status',
-    'loanNumber',
-    'name',
-    'phone',
-    'email',
-    'address',
-    'loanType',
-    'loanAmt',
 
-    'condition',
-    'milestone',
-    'linked',
-  ];
-  
   public dataSourceLoans = new MatTableDataSource(leads);
   public dataPoints: CanvasJS.ChartDataSeriesOptions[] = [
     {

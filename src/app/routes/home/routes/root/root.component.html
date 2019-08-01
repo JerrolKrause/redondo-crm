@@ -83,83 +83,15 @@
   </div>
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all leads</a>
-    <h3>Leads that need attention <span class="badge badge-pill badge-danger">4</span></h3>
+    <h3>
+      Leads that need attention <span class="badge badge-pill badge-danger">{{ leads | count }}</span>
+    </h3>
     <app-leads-table [rows]="leads"></app-leads-table>
   </div>
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
     <h3>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h3>
-
-    <table mat-table [dataSource]="dataSourceLoans" matSort class="w-100">
-      <ng-container matColumnDef="created">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</th>
-        <td mat-cell *matCellDef="let element">{{ element.created }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="loanNumber">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan #</th>
-        <td mat-cell *matCellDef="let element">{{ element.loanNumber }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrower</th>
-        <td mat-cell *matCellDef="let element">
-          <a href="#">{{ element.name }}</a>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="loanAmt">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan Amount</th>
-        <td mat-cell *matCellDef="let element">{{ element.loanAmt | currency }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
-        <td mat-cell *matCellDef="let element">
-          <a href="tel:{{ element.phone | phoneNumber: true }}">{{ element.phone | phoneNumber }}</a>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
-        <td mat-cell *matCellDef="let element">
-          <a href="mailto:{{ element.email }}">{{ element.email }}</a>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
-        <td mat-cell *matCellDef="let element">{{ element.address }}, {{ element.state }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="loanType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Loan Type</th>
-        <td mat-cell *matCellDef="let element">{{ element.loanType }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="condition">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Condition</th>
-        <td mat-cell *matCellDef="let element">{{ element.condition }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="milestone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Milestone</th>
-        <td mat-cell *matCellDef="let element">{{ element.milestone }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="linked">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Linked</th>
-        <td mat-cell *matCellDef="let element">{{ element.linked }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="columnsLoans"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnsLoans"></tr>
-    </table>
+    <app-loans-table [rows]="leads"></app-loans-table>
   </div>
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all metrics</a>
