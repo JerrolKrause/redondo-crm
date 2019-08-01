@@ -1,6 +1,6 @@
 <ng-container *ngIf="{ isMobile: isMobile$ | async } as table">
   <!-- Mobile View -->
-  <ng-container *ngIf="table.isMobile">
+  <ng-container *ngIf="mobileEnabled && table.isMobile">
     <ng-container *ngFor="let rowSrc of rowsPivot">
       <ng-container
         *ngTemplateOutlet="
@@ -18,7 +18,7 @@
   </ng-container>
 
   <!-- Desktop View -->
-  <ng-container *ngIf="!table.isMobile">
+  <ng-container *ngIf="!mobileEnabled || !table.isMobile">
     <ng-container
       *ngTemplateOutlet="
         tableDefault;
@@ -46,14 +46,24 @@
     class="w-100 mb-3"
     [ngClass]="{ 'mat-table-mobile': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
   >
-    <!-- Desktop headers -->
     <ng-container *ngFor="let column of columnsSrc">
       <ng-container [matColumnDef]="column.prop">
+        <!-- Desktop headers -->
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           <span [innerHTML]="column.label"></span>
         </th>
+        <!-- Cell Content-->
         <td mat-cell *matCellDef="let element">
-          <span [innerHTML]="element[column.prop]"></span>
+          <ng-container [ngSwitch]="column.type">
+            <a
+              href="tel:{{ element[column.prop] | phoneNumber: true }} "
+              [innerHTML]="element[column.prop] | phoneNumber"
+              *ngSwitchCase="'phoneNumber'"
+            ></a>
+            <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
+            <span [innerHTML]="element[column.prop] | currency" *ngSwitchCase="'currency'"></span>
+            <span [innerHTML]="element[column.prop]" *ngSwitchDefault></span>
+          </ng-container>
         </td>
       </ng-container>
     </ng-container>

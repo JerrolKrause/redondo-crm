@@ -3,6 +3,12 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
+export interface TableColumnDefinition {
+  label: string;
+  prop: string;
+  type?: 'currency' | 'phoneNumber' | 'email' | 'date';
+}
+
 interface RowsPivot {
   dataSource: MatTableDataSource<any[]>;
   rowTitle?: string | null;
@@ -18,10 +24,11 @@ interface RowsPivot {
 })
 export class TableComponent implements OnInit, OnChanges {
   @Input() rows: any[] = [];
-  @Input() columns: { label: string; prop: string }[] = [];
-  @Input() columnsMobile: { label: string; prop: string }[] = this.columns;
+  @Input() columns: TableColumnDefinition[] = [];
+  @Input() columnsMobile: TableColumnDefinition[] = this.columns;
 
   @Input() canSort = true;
+  @Input() mobileEnabled = true;
   @Input() mobileBreakpoint = 768;
   @Input() mobileTitleProp: string | undefined;
 
@@ -46,12 +53,6 @@ export class TableComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.tableInit();
-    this.isMobile$.subscribe(res => console.log(res));
-    console.log('Rows ', this.rows);
-
-    this.rowsPivot = this.pivotTable(this.rows, this.columnsMobile, this.mobileTitleProp);
-    console.log('columnsPivot ', this.columnsPivot);
-    console.log('rowsPivot', this.rowsPivot);
   }
 
   ngOnChanges() {}
@@ -69,6 +70,11 @@ export class TableComponent implements OnInit, OnChanges {
     if (this.canSort) {
       this.dataSource.sort = this.sort;
     }
+
+    if (this.mobileEnabled) {
+      // Create the pivot rows for the mobile view
+      this.rowsPivot = this.pivotTable(this.rows, this.columnsMobile, this.mobileTitleProp);
+    }
   }
 
   /**
@@ -77,7 +83,7 @@ export class TableComponent implements OnInit, OnChanges {
    * @param columns
    * @param propTitle
    */
-  public pivotTable(rows: any[], columns: { label: string; prop: string }[], propTitle?: string) {
+  public pivotTable(rows: any[], columns: TableColumnDefinition[], propTitle?: string) {
     const rowsPivot: RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {
