@@ -1,38 +1,40 @@
-<ng-container *ngIf="{ isMobile: isMobile$ | async } as table">
-  <!-- Mobile View -->
-  <ng-container *ngIf="mobileEnabled && table.isMobile">
-    <ng-container *ngFor="let rowSrc of rowsPivot">
+<ng-container *ngIf="{ isMobile: isMobile$ | async, loaded: loaded$ | async } as table">
+  <ng-container *ngIf="table.loaded">
+    <!-- table.loaded-->
+    <!-- Mobile View -->
+    <ng-container *ngIf="mobileEnabled && table.isMobile">
+      <ng-container *ngFor="let rowSrc of rowsPivot">
+        <ng-container
+          *ngTemplateOutlet="
+            tableTemplate;
+            context: {
+              isMobile: table.isMobile,
+              dataSourceSrc: rowSrc.dataSource,
+              columnsSrc: columnsPivot,
+              colDefsSrc: columnDefinitionsPivot,
+              rowTitle: rowSrc.rowTitle
+            }
+          "
+        ></ng-container>
+      </ng-container>
+    </ng-container>
+
+    <!-- Desktop View -->
+    <ng-container *ngIf="!mobileEnabled || !table.isMobile">
       <ng-container
         *ngTemplateOutlet="
-          tableDefault;
-          context: {
-            isMobile: table.isMobile,
-            dataSourceSrc: rowSrc.dataSource,
-            columnsSrc: columnsPivot,
-            colDefsSrc: columnDefinitionsPivot,
-            rowTitle: rowSrc.rowTitle
-          }
+          tableTemplate;
+          context: { isMobile: table.isMobile, dataSourceSrc: dataSource, columnsSrc: columnsMapped, colDefsSrc: columnDefinitions }
         "
       ></ng-container>
     </ng-container>
   </ng-container>
-
-  <!-- Desktop View -->
-  <ng-container *ngIf="!mobileEnabled || !table.isMobile">
-    <ng-container
-      *ngTemplateOutlet="
-        tableDefault;
-        context: { isMobile: table.isMobile, dataSourceSrc: dataSource, columnsSrc: columns, colDefsSrc: columnDefinitions }
-      "
-    ></ng-container>
-  </ng-container>
 </ng-container>
-
 <!--
   Table Template
 -->
 <ng-template
-  #tableDefault
+  #tableTemplate
   let-isMobile="isMobile"
   let-dataSourceSrc="dataSourceSrc"
   let-columnsSrc="columnsSrc"
@@ -54,8 +56,13 @@
         </th>
         <!-- Cell Content-->
         <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="column.template">
+            <ng-container
+              *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: row }"
+            ></ng-container>
+          </ng-container>
           <!-- Make sure that the current cell is not a custom label from the pivot row -->
-          <ng-container *ngIf="column.prop !== '$$label'; else cellDefault">
+          <ng-container *ngIf="!column.template && column.prop !== '$$label'; else cellDefault">
             <ng-container [ngSwitch]="column.type || element.type">
               <!-- Phone Number -->
               <a
@@ -66,16 +73,19 @@
               <!-- Email -->
               <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
               <!-- Currency -->
-              <span [innerHTML]="element[column.prop] | type: 'number' | currency : column.typeArgs || element.typeArgs" *ngSwitchCase="'currency'"></span>
+              <span
+                [innerHTML]="element[column.prop] | type: 'number' | currency: column.typeArgs || element.typeArgs"
+                *ngSwitchCase="'currency'"
+              ></span>
               <!-- Date -->
-              <span [innerHTML]="element[column.prop] | date : column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
+              <span [innerHTML]="element[column.prop] | date: column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
               <!-- Default -->
               <ng-container *ngSwitchDefault>
                 <span *ngTemplateOutlet="cellDefault"></span>
               </ng-container>
             </ng-container>
           </ng-container>
-          <!-- Default cell output, no formatting -->
+          <!-- Default cell output, no formatting  -->
           <ng-template #cellDefault>
             <span [innerHTML]="element[column.prop]"></span>
           </ng-template>

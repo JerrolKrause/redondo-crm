@@ -10,7 +10,7 @@ import { StepperComponent } from './stepper/stepper.component';
 import { StepDirective } from './stepper/directives/step.directive';
 import { StepBodyCellDirective } from './stepper/directives/step-body.directive';
 import { StepLabelDirective } from './stepper/directives/step-label.directive';
-import { TableComponent } from './table/table.component';
+import { TableModule } from './table/table.module';
 
 const Components = [
   AutocompleteComponent,
@@ -19,15 +19,14 @@ const Components = [
   StepDirective,
   StepBodyCellDirective,
   StepLabelDirective,
-  TableComponent,
 ];
 
 /**
  * UI library abstractions, in this case for materials design
  */
 @NgModule({
-  imports: [CommonModule, VendorModule, SharedModule],
+  imports: [CommonModule, VendorModule, SharedModule, TableModule],
   declarations: [...Components],
-  exports: [...Components],
+  exports: [...Components, TableModule],
 })
 export class UILibModule {}
