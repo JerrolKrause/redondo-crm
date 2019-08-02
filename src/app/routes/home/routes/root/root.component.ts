@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { leads } from './leads';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { TableColumnDefinition } from 'src/app/components/ui-lib/table/table.component';
+import { TableColumnDefinition } from 'src/app/components/ui-lib/table/table';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state

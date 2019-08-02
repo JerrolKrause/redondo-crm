@@ -56,13 +56,18 @@
         </th>
         <!-- Cell Content-->
         <td mat-cell *matCellDef="let element">
+          <!-- 
+            Custom cell template
+           -->
           <ng-container *ngIf="column.template">
             <ng-container
               *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: row }"
             ></ng-container>
           </ng-container>
-          <!-- Make sure that the current cell is not a custom label from the pivot row -->
-          <ng-container *ngIf="!column.template && column.prop !== '$$label'; else cellDefault">
+          <!-- 
+            No cell template, custom formatting
+           -->
+          <ng-container *ngIf="!column.template && column.prop !== '$$label'">
             <ng-container [ngSwitch]="column.type || element.type">
               <!-- Phone Number -->
               <a
@@ -79,16 +84,20 @@
               ></span>
               <!-- Date -->
               <span [innerHTML]="element[column.prop] | date: column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
-              <!-- Default -->
+              <!-- Default
               <ng-container *ngSwitchDefault>
                 <span *ngTemplateOutlet="cellDefault"></span>
               </ng-container>
+               -->
             </ng-container>
           </ng-container>
-          <!-- Default cell output, no formatting  -->
-          <ng-template #cellDefault>
+
+          <!--
+            No custom template, no custom formatting
+          -->
+          <ng-container *ngIf="!column.template && !column.type">
             <span [innerHTML]="element[column.prop]"></span>
-          </ng-template>
+          </ng-container>
         </td>
       </ng-container>
     </ng-container>

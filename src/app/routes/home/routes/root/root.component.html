@@ -89,14 +89,20 @@
     <h3>
       Leads that need attention <span class="badge badge-pill badge-danger">{{ leads | count }}</span>
     </h3>
-    
+
     <app-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
-      <!-- Tag LABELS cell template-->
-      <table-column field="name">
+      <!-- Name -->
+      <table-column-template field="name">
         <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-          <a>{{value}}</a>
+          <a><i class="fa fa-eye"></i> {{ value }}</a>
         </ng-template>
-      </table-column>
+      </table-column-template>
+      <!-- Name -->
+      <table-column-template field="action">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <a><i class="fa fa-eye"></i> View Lead</a>
+        </ng-template>
+      </table-column-template>
     </app-table>
   </div>
   <div class="mb-4">

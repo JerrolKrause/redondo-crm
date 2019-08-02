@@ -3,5 +3,8 @@
     th { vertical-align: middle;}
   }
   &.mat-table-mobile-hide-title thead{display:none;}
-  tbody tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
+  tbody {
+    tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
+    td.mat-cell{padding:8px;}
+  }
 }

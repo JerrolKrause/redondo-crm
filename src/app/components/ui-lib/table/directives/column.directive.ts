@@ -2,7 +2,7 @@ import { Directive, TemplateRef, ContentChild, Input } from '@angular/core';
 import { TableColumnHeaderDirective } from './cell-header.directive';
 import { TableColumnCellDirective } from './cell-body.directive';
 
-@Directive({ selector: 'table-column' })
+@Directive({ selector: 'table-column-template' })
 export class TableColumnDirective {
   @Input() name!: string;
   @Input() field!: string;
