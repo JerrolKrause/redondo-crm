@@ -10,6 +10,7 @@ import {
   QueryList,
   AfterViewInit,
   ChangeDetectorRef,
+  ViewChildren,
 } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent, BehaviorSubject } from 'rxjs';
@@ -32,7 +33,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   // @Input() columnsMobile: TableColumnDefinition[] = this.columns;
 
   @Input() canSort = true;
-  @Input() mobileBehavior: 'cards' | 'scroll' = 'cards';
+  @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
   @Input() mobileBreakpoint = 768;
   @Input() mobileTitleProp: string | undefined;
 
@@ -47,19 +48,20 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   public isMobile$ = fromEvent(window, 'resize').pipe(
     debounceTime(100),
     map(e => (e && e.target ? (<any>e).target.innerWidth : null)), // Extract window width
-    startWith(window.innerWidth),
+    startWith(window.innerWidth), // Start with window width
     map(width => (width <= this.mobileBreakpoint ? true : false)), // If window width is less than mobileBreakpoint return true
     distinctUntilChanged(), // Only update on changes
   );
 
+  /**
   public columns$ = this.isMobile$.pipe(
     switchMap(isMobile => {
       return isMobile ? this.columnsPivot : this.columnsMapped;
     }),
   );
+   */
 
-  @ViewChild('tableTemplate', { static: true }) tableTemplate!: NgTemplateOutlet;
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChildren(MatSort) sort!: QueryList<MatSort>;
 
   /** Holds custom DOM templates passed from parent */
   private _columnTemplates: any;
@@ -79,7 +81,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
-    console.log(this);
+    
   }
 
   ngOnChanges() {}
@@ -106,7 +108,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     this.columnDefinitions = this.columns.map(column => column.prop);
     // Enable sorting
     if (this.canSort) {
-      this.dataSource.sort = this.sort;
+      this.dataSource.sort = this.sort.toArray()[0];
     }
     if (this.mobileBehavior === 'cards') {
       // Create the pivot rows for the mobile view
@@ -114,8 +116,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     }
     
   }
-
-  public columnsUpdate() {}
 
   /**
    *
