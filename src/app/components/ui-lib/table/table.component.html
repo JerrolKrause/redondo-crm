@@ -1,5 +1,5 @@
-<ng-container *ngIf="{ isMobile: isMobile$ | async, loaded: loaded$ | async } as table">
-  <ng-container *ngIf="table.loaded">
+<ng-container *ngIf="{ isMobile: isMobile$ | async } as table">
+  <ng-container>
     <!-- table.loaded-->
     <!-- Mobile View -->
     <ng-container *ngIf="mobileEnabled && table.isMobile">

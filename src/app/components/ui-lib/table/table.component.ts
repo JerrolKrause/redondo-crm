@@ -9,6 +9,7 @@ import {
   ContentChildren,
   QueryList,
   AfterViewInit,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent, BehaviorSubject } from 'rxjs';
@@ -75,7 +76,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   public columnsMapped: TableColumnMapped[] = [];
 
-  constructor() {}
+  constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     console.log(this);
@@ -86,8 +87,12 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit() {
     this.tableInit();
     this.loaded$.next(true);
+    setTimeout(() => this.ref.markForCheck());
   }
 
+  /**
+   * 
+   */
   public tableInit() {
     // Null check
     if (!this.rows.length || !this.columns.length) {
@@ -107,6 +112,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
       // Create the pivot rows for the mobile view
       this.rowsPivot = this.pivotTable(this.rows, this.columnsMapped, this.mobileTitleProp);
     }
+    
   }
 
   public columnsUpdate() {}
@@ -152,7 +158,6 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param templates
    */
   public columnsTemplateAttach(columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>): TableColumnMapped[] {
-    console.log(templates);
     if (!templates) {
       return <TableColumnMapped[]>[...columns];
     }

@@ -108,8 +108,7 @@
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
     <h3>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h3>
-
-    <app-loans-table [rows]="leads"></app-loans-table>
+    <app-table [rows]="leads" [columns]="columnsLeads"></app-table>
   </div>
   <div class="mb-4">
     <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all metrics</a>
