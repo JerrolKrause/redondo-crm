@@ -1,5 +1,5 @@
 .mat-table {
-  border: 1px solid #3d3c38;// $brand-primary;
+  // border: 1px solid #3d3c38;// $brand-primary;
   &.mat-table-mobile {
     th { vertical-align: middle;}
   }
@@ -7,5 +7,7 @@
   tbody {
     tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
     td.mat-cell{padding:8px;}
+    tr:last-child td{border:0;}
   }
 }
+

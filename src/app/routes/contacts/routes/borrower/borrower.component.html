@@ -6,7 +6,7 @@
     <div class="col col-12 col-md-4">
       <mat-card class="mb-3">
         <h2>ASSOCIATIONS</h2>
-        <hr/>
+        <hr />
         <app-associations></app-associations>
       </mat-card>
     </div>
@@ -14,9 +14,8 @@
       <mat-card class="mb-3">
         <a class="float-right">Show All >>></a>
         <h2>CONVERSATION LOG</h2>
-        <hr/>
-        <app-convo-log></app-convo-log>
         <hr />
+        <app-convo-log></app-convo-log>
       </mat-card>
     </div>
   </div>
@@ -25,16 +24,20 @@
       <mat-card class="mb-3">
         <a class="float-right">Show All >>></a>
         <h2>DOCUMENT REPOSITORY</h2>
-        <hr/>
+        <hr />
         <app-doc-repo></app-doc-repo>
       </mat-card>
     </div>
     <div class="col col-12 col-md-8">
-      <mat-card class="p-0 mb-3">
-        <div class="p-3">
-          <a class="float-right">Show All >>></a>
-          <h2 class="m-0">Pipeline</h2>
-        </div>
+      <mat-card class="mb-3">
+        <a class="float-right">Show All >>></a>
+        <h2 class="m-0">
+          Pipeline
+          <em>
+            <small>(Open/Pending/Post Loans) <span class="badge badge-pill badge-danger small">4</span></small>
+          </em>
+        </h2>
+        <hr />
         <app-table [rows]="leads" [columns]="columnsLeads">
           <!-- Name -->
           <table-column-template field="name">
