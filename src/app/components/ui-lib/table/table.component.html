@@ -1,6 +1,6 @@
 <ng-container *ngIf="{ isMobile: isMobile$ | async } as table">
   <!-- Desktop View OR Scrollable Mobile View-->
-  <ng-container *ngIf="!table.isMobile || (table.isMobile && mobileBehavior !== 'cards'); else cardView">
+  <div *ngIf="!table.isMobile || (table.isMobile && mobileBehavior !== 'cards'); else cardView" [ngClass]="{'table-responsive': table.isMobile }">
     <table
       mat-table
       [dataSource]="dataSource"
@@ -76,96 +76,19 @@
       <!-- Table Rows -->
       <tr mat-row *matRowDef="let row; columns: columnDefinitions"></tr>
     </table>
-  </ng-container>
+  </div>
 
   <!-- Mobile card view -->
   <ng-template #cardView>
-    Card View
+      <mat-accordion>
+          <mat-expansion-panel *ngFor="let row of rowsPivot">
+            <mat-expansion-panel-header *ngIf="row.rowTitle">
+              <mat-panel-title>
+                {{ row.rowTitle }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            Hello World
+          </mat-expansion-panel>
+        </mat-accordion>
   </ng-template>
 </ng-container>
-<!--
-  Table Template
--->
-<ng-template
-  #tableTemplate
-  let-isMobile="isMobile"
-  let-dataSourceSrc="dataSourceSrc"
-  let-columnsSrc="columnsSrc"
-  let-colDefsSrc="colDefsSrc"
-  let-rowTitle="rowTitle"
->
-  <table
-    mat-table
-    [dataSource]="dataSourceSrc"
-    matSort
-    class="w-100 mb-0"
-    [ngClass]="{ 'mat-table-mobile mb-3': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
-  >
-    <ng-container *ngFor="let column of columnsSrc">
-      <ng-container [matColumnDef]="column.prop">
-        <!-- Desktop headers -->
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <span [innerHTML]="column.label"></span>
-        </th>
-        <!-- Cell Content-->
-        <td mat-cell *matCellDef="let element">
-          <!-- 
-            Custom cell template
-           -->
-          <ng-container *ngIf="column.template">
-            <ng-container
-              *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: element }"
-            ></ng-container>
-          </ng-container>
-          <!-- 
-            No cell template, custom formatting
-           -->
-          <ng-container *ngIf="!column.template && column.prop !== '$$label'">
-            <ng-container [ngSwitch]="column.type || element.type">
-              <!-- Phone Number -->
-              <a
-                href="tel:{{ element[column.prop] | phoneNumber: true }} "
-                [innerHTML]="element[column.prop] | phoneNumber"
-                *ngSwitchCase="'phoneNumber'"
-              ></a>
-              <!-- Email -->
-              <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
-              <!-- Currency -->
-              <span
-                [innerHTML]="element[column.prop] | type: 'number' | currency: column.typeArgs || element.typeArgs"
-                *ngSwitchCase="'currency'"
-              ></span>
-              <!-- Date -->
-              <span [innerHTML]="element[column.prop] | date: column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
-              <!-- Default
-              <ng-container *ngSwitchDefault>
-                <span *ngTemplateOutlet="cellDefault"></span>
-              </ng-container>
-               -->
-            </ng-container>
-          </ng-container>
-
-          <!--
-            No custom template, no custom formatting
-          -->
-          <ng-container *ngIf="!column.template && !column.type">
-            <span [innerHTML]="element[column.prop]"></span>
-          </ng-container>
-        </td>
-      </ng-container>
-    </ng-container>
-
-    <!-- Mobile header -->
-    <ng-container matColumnDef="mobile-header">
-      <th mat-header-cell *matHeaderCellDef colspan="2">
-        <span [innerHTML]="rowTitle"></span>
-      </th>
-    </ng-container>
-
-    <!-- Table Header, determine if mobile or desktop -->
-    <tr mat-header-row *matHeaderRowDef="!isMobile ? colDefsSrc : ['mobile-header']"></tr>
-
-    <!-- Table Rows -->
-    <tr mat-row *matRowDef="let row; columns: colDefsSrc"></tr>
-  </table>
-</ng-template>

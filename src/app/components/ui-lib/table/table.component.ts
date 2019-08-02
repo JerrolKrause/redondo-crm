@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   Input,
   OnChanges,
-  ViewChild,
   ViewEncapsulation,
   ContentChildren,
   QueryList,
@@ -14,8 +13,7 @@ import {
 } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent, BehaviorSubject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
-import { NgTemplateOutlet } from '@angular/common';
+import { debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
 import { TableColumnDefinition, RowsPivot, TableColumnMapped } from './table';
 
@@ -33,8 +31,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   // @Input() columnsMobile: TableColumnDefinition[] = this.columns;
 
   @Input() canSort = true;
-  @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
-  @Input() mobileBreakpoint = 768;
+  @Input() mobileBehavior: 'cards' | 'scroll' = 'cards';
+  @Input() mobileBreakpoint = 998;
   @Input() mobileTitleProp: string | undefined;
 
   public dataSource!: MatTableDataSource<any[]>;
@@ -113,6 +111,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.mobileBehavior === 'cards') {
       // Create the pivot rows for the mobile view
       this.rowsPivot = this.pivotTable(this.rows, this.columnsMapped, this.mobileTitleProp);
+      console.log( this.rowsPivot)
     }
     
   }
