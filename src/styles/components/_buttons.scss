@@ -134,11 +134,11 @@ body {
   .mat-flat-button,
   .mat-stroked-button,
   .mat-icon-button {
+    border-radius: 0;
     transition: 0.3s ease-out;
     font-weight: normal;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(to top, #fff 0%, #fff 100%);
     color: $interact-primary;
     min-width: initial;
     line-height: 1.85rem;
@@ -209,12 +209,12 @@ body {
     &.active,
     &.enabled {
       transition: 0.3s ease-out;
-      background-image: linear-gradient(to top, #ad0000 0%, #ff4343 100%) !important;
+      @include gradient($brand-secondary, $brand-secondary-dk);
+      background-color: $brand-secondary;
       color: #fff;
-      border: 1px solid red;
-      opacity: 1;
+      border: 1px solid $brand-secondary!important;
     }
-    &[disabled] {
+    &[disabled], &.disabled {
       border: 1px solid #a7a7a7 !important;
       background: #ededed !important;
       .mat-button-wrapper {

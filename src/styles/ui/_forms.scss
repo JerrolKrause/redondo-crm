@@ -112,6 +112,7 @@ label {
 }
 
 .form-control {
+  border-radius:0!important;
   &[type='checkbox'] {
     cursor: pointer;
   }
@@ -136,6 +137,10 @@ label {
       height: 1.69rem !important;
     }
   }
+}
+
+.input-group{
+  button{border-radius:0!important;}
 }
 
 .input-icon {

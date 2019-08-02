@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit {
   public isOpen = false;
   public appName = environment.properties.appName;
 
+  public leads = true;
+  public calls = false;
+
   constructor(private router: Router) {}
 
   public ngOnInit() {
