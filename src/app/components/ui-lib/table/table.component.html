@@ -2,7 +2,7 @@
   <ng-container>
     <!-- table.loaded-->
     <!-- Mobile View -->
-    <ng-container *ngIf="mobileEnabled && table.isMobile">
+    <ng-container *ngIf="table.isMobile">
       <ng-container *ngFor="let rowSrc of rowsPivot">
         <ng-container
           *ngTemplateOutlet="
@@ -20,7 +20,7 @@
     </ng-container>
 
     <!-- Desktop View -->
-    <ng-container *ngIf="!mobileEnabled || !table.isMobile">
+    <ng-container *ngIf="!table.isMobile">
       <ng-container
         *ngTemplateOutlet="
           tableTemplate;
@@ -46,7 +46,7 @@
     [dataSource]="dataSourceSrc"
     matSort
     class="w-100 mb-0"
-    [ngClass]="{ 'mat-table-mobile': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
+    [ngClass]="{ 'mat-table-mobile mb-3': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
   >
     <ng-container *ngFor="let column of columnsSrc">
       <ng-container [matColumnDef]="column.prop">

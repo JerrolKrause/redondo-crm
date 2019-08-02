@@ -4,10 +4,11 @@
       <mat-card class="mb-4">
         <div class="row">
           <div class="col col-12 col-md-6">
-            <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> See all Alerts &amp; Tasks</a>
+            <div class="small float-right mt-1">
+              <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> View All Alerts</a> (6 / 11)
+            </div>
             <h2>
               Alerts &amp; Tasks
-              <span class="badge badge-pill badge-danger">3</span>
             </h2>
             <table class="table table-striped table-sm">
               <tbody>
@@ -15,7 +16,7 @@
                   <td><i class="fa fa-exclamation-triangle red" aria-hidden="true"></i></td>
                   <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
                   <td>
-                    <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a routerLink="/contacts"><i class="fa fa-eye"></i> Jason Hatfield</a></p>
+                    <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a routerLink="/contacts">Jason Hatfield</a></p>
                     <ul class="mb-0">
                       <li class="small">Last time on the phone he needed more time to figure out his down payment</li>
                     </ul>
@@ -25,7 +26,7 @@
                   <td></td>
                   <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
                   <td>
-                    <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a  routerLink="/contacts"><i class="fa fa-eye"></i> Maria George</a></p>
+                    <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a routerLink="/contacts"> Maria George</a></p>
                     <ul class="mb-0">
                       <li class="small">Two missed calls, need to follow up to get this deal closed</li>
                     </ul>
@@ -35,7 +36,7 @@
                   <td></td>
                   <td><i class="fa fa-info-circle orange" aria-hidden="true"></i></td>
                   <td>
-                    <p class="mb-1">8/25/2019 @ 10:21 AM - <strong>Notice</strong> - <a routerLink="/contacts"><i class="fa fa-eye"></i> Tommy Timbertoe</a></p>
+                    <p class="mb-1">8/25/2019 @ 10:21 AM - <strong>Notice</strong> - <a routerLink="/contacts"> Tommy Timbertoe</a></p>
                     <ul class="mb-0">
                       <li class="small">Lead reassigned to you by system admin</li>
                     </ul>
@@ -45,7 +46,7 @@
                   <td></td>
                   <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
                   <td>
-                    <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a routerLink="/contacts"><i class="fa fa-eye"></i> Jason Hatfield</a></p>
+                    <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a routerLink="/contacts"> Jason Hatfield</a></p>
                     <ul class="mb-0">
                       <li class="small">Last time on the phone he needed more time to figure out his down payment</li>
                     </ul>
@@ -55,9 +56,19 @@
                   <td></td>
                   <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
                   <td>
-                    <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a routerLink="/contacts"><i class="fa fa-eye"></i> Maria George</a></p>
+                    <p class="mb-1">8/27/2019 @ 2:21 PM - <strong>Follow Up</strong> - <a routerLink="/contacts"> Maria George</a></p>
                     <ul class="mb-0">
                       <li class="small">Two missed calls, need to follow up to get this deal closed</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><i class="fa fa-phone-square blue" aria-hidden="true"></i></td>
+                  <td>
+                    <p class="mb-1">8/22/2019 @ 9:31 PM - <strong>Call Back</strong> - <a routerLink="/contacts"> Jason Hatfield</a></p>
+                    <ul class="mb-0">
+                      <li class="small">Last time on the phone he needed more time to figure out his down payment</li>
                     </ul>
                   </td>
                 </tr>
@@ -86,8 +97,8 @@
                 </div>
               </div>
               <div class="small ml-auto mt-2">
-                <a routerLink="/"><i class="fa fa-plus" aria-hidden="true"></i> Create new contact</a> |
-                <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> Create new appointment</a>
+                <a routerLink="/"><i class="fa fa-plus" aria-hidden="true"></i> New contact</a> |
+                <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> New appointment</a>
               </div>
             </div>
             <app-calendar class="mb-4" [view]="view" [events]="events"></app-calendar>
@@ -96,7 +107,9 @@
       </mat-card>
 
       <mat-card class="mb-4">
-        <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all leads</a>
+        <div class="small float-right mt-1">
+          <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> View All Leads</a> (4 / 18)
+        </div>
         <h2>
           Leads that need attention <span class="badge badge-pill badge-danger">{{ leads | count }}</span>
         </h2>
@@ -104,7 +117,7 @@
           <!-- Name -->
           <table-column-template field="name">
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-              <a routerLink="/contacts"><i class="fa fa-eye"></i> {{ value }}</a>
+              <a routerLink="/contacts"> {{ value }}</a>
             </ng-template>
           </table-column-template>
           <!-- Name -->
@@ -116,13 +129,15 @@
         </app-table>
       </mat-card>
       <mat-card class="mb-4">
-        <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all loans</a>
+        <div class="small float-right mt-1">
+          <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans</a> (4 / 7)
+        </div>
         <h2>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h2>
-        <app-table [rows]="leads" [columns]="columnsLeads">
+        <app-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
           <!-- Name -->
           <table-column-template field="name">
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-              <a routerLink="/contacts"><i class="fa fa-eye"></i> {{ value }}</a>
+              <a routerLink="/contacts"> {{ value }}</a>
             </ng-template>
           </table-column-template>
           <!-- Name -->
@@ -136,7 +151,9 @@
     </div>
     <div class="col col-12 col-md-4 col-xl-3">
       <mat-card class="mb-4">
-        <a routerLink="/" class="small float-right mt-2"><i class="fa fa-eye" aria-hidden="true"></i> View all metrics</a>
+        <div class="small float-right mt-1">
+          <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> View All Metrics</a> (4 / 8)
+        </div>
         <h2>Metrics</h2>
         <app-chart
           class="mb-2"

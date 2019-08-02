@@ -32,7 +32,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   // @Input() columnsMobile: TableColumnDefinition[] = this.columns;
 
   @Input() canSort = true;
-  @Input() mobileEnabled = true;
+  @Input() mobileBehavior: 'cards' | 'scroll' = 'cards';
   @Input() mobileBreakpoint = 768;
   @Input() mobileTitleProp: string | undefined;
 
@@ -108,7 +108,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.canSort) {
       this.dataSource.sort = this.sort;
     }
-    if (this.mobileEnabled) {
+    if (this.mobileBehavior === 'cards') {
       // Create the pivot rows for the mobile view
       this.rowsPivot = this.pivotTable(this.rows, this.columnsMapped, this.mobileTitleProp);
     }
