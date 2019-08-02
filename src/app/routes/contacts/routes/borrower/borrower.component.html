@@ -5,28 +5,50 @@
   <div class="row">
     <div class="col col-12 col-md-4">
       <mat-card class="mb-3">
+        <h2>ASSOCIATIONS</h2>
+        <hr/>
         <app-associations></app-associations>
       </mat-card>
     </div>
     <div class="col col-12 col-md-8">
       <mat-card class="mb-3">
+        <a class="float-right">Show All >>></a>
+        <h2>CONVERSATION LOG</h2>
+        <hr/>
         <app-convo-log></app-convo-log>
         <hr />
-        <div class="text-right">
-          <a>Show All >>></a>
-        </div>
       </mat-card>
     </div>
   </div>
   <div class="row">
     <div class="col col-12 col-md-4">
       <mat-card class="mb-3">
+        <a class="float-right">Show All >>></a>
+        <h2>DOCUMENT REPOSITORY</h2>
+        <hr/>
         <app-doc-repo></app-doc-repo>
       </mat-card>
     </div>
     <div class="col col-12 col-md-8">
-      <mat-card class="mb-3">
-        <app-pipeline></app-pipeline>
+      <mat-card class="p-0 mb-3">
+        <div class="p-3">
+          <a class="float-right">Show All >>></a>
+          <h2 class="m-0">Pipeline</h2>
+        </div>
+        <app-table [rows]="leads" [columns]="columnsLeads">
+          <!-- Name -->
+          <table-column-template field="name">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a><i class="fa fa-eye"></i> {{ value }}</a>
+            </ng-template>
+          </table-column-template>
+          <!-- Name -->
+          <table-column-template field="action">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a><i class="fa fa-eye"></i> View Lead</a>
+            </ng-template>
+          </table-column-template>
+        </app-table>
       </mat-card>
     </div>
   </div>

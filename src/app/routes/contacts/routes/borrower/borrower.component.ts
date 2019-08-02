@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { leads } from 'src/app/routes/home/routes/root/leads';
+import { TableColumnDefinition } from 'src/app/components/ui-lib/table/table';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -17,7 +19,17 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BorrowerComponent implements OnInit, OnDestroy {
- 
+  public leads = leads;
+  public columnsLeads: TableColumnDefinition[] = [
+    { label: 'Created', prop: 'created', type: 'date' },
+    { label: 'Status', prop: 'status' },
+    { label: 'Name', prop: 'name' },
+    { label: 'State', prop: 'state' },
+    { label: 'Loan Amount', prop: 'loanAmt', type: 'currency' },
+    { label: 'Phone', prop: 'phone', type: 'phoneNumber' },
+    { label: 'Email', prop: 'email', type: 'email'  },
+    { label: 'Action', prop: 'action' },
+  ];
   // private uiState: UiStateService,
   constructor(
     // private domainState: DomainService, // Global domain state
