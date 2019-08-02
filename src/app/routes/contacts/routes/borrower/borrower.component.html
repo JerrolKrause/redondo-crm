@@ -14,7 +14,6 @@
       <mat-card class="mb-3">
         <a class="float-right">Show All >>></a>
         <h2>CONVERSATION LOG</h2>
-        <hr />
         <app-convo-log></app-convo-log>
       </mat-card>
     </div>
@@ -31,13 +30,12 @@
     <div class="col col-12 col-md-8">
       <mat-card class="mb-3">
         <a class="float-right">Show All >>></a>
-        <h2 class="m-0">
+        <h2>
           Pipeline
           <em>
             <small>(Open/Pending/Post Loans) <span class="badge badge-pill badge-danger small">4</span></small>
           </em>
         </h2>
-        <hr />
         <app-table [rows]="leads" [columns]="columnsLeads">
           <!-- Name -->
           <table-column-template field="name">
