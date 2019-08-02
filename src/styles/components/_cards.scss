@@ -35,6 +35,6 @@
 }
 
 mat-card.mat-card{
-  background-color:#fff;border-radius:0;font-family: inherit;
+  background-color:#fff;border-radius:0;font-family: inherit;border: 1px solid $brand-primary;
   .mat-card-title{font-size:20px;}
 }
