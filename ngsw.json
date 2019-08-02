@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1564780246334,
+  "timestamp": 1564780427120,
   "index": "/redondo-crm/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/redondo-crm/13.11db609da1ee83859ea6.js",
         "/redondo-crm/2.38c8e3ca3dde258fbc41.js",
         "/redondo-crm/7.8d95921eca6546866b18.js",
-        "/redondo-crm/8.080b6eae8bb14b018a85.js",
+        "/redondo-crm/8.6283db219ef5e7d3207b.js",
         "/redondo-crm/9.abde635f5d9978b6da48.js",
         "/redondo-crm/apple-touch-icon.png",
         "/redondo-crm/common.8ebcd7e423dcba3137c2.js",
@@ -23,7 +23,7 @@
         "/redondo-crm/main.76a9d8912743f1c021b8.js",
         "/redondo-crm/polyfills-es5.b51b72a6bccc504722a9.js",
         "/redondo-crm/polyfills.327ae11943d9b0384d67.js",
-        "/redondo-crm/runtime.107cd757cfc7ab2c8f09.js",
+        "/redondo-crm/runtime.a6d6c0a58351ed44ea67.js",
         "/redondo-crm/safari-pinned-tab.svg",
         "/redondo-crm/scripts.1bb65570ef961697a258.js",
         "/redondo-crm/styles.98073a254a5280984c2a.css"
@@ -116,7 +116,7 @@
     "/redondo-crm/13.11db609da1ee83859ea6.js": "36aab7bd2f06e1ec67102ad32f55a2470070a6b6",
     "/redondo-crm/2.38c8e3ca3dde258fbc41.js": "9c6dbd5c26ff6fc37cf7773ac478420810eb68f8",
     "/redondo-crm/7.8d95921eca6546866b18.js": "4d1ba2715361b590f19d960fa7b943eb9539261f",
-    "/redondo-crm/8.080b6eae8bb14b018a85.js": "059b92101f546e12972e220a1da79697d87f9148",
+    "/redondo-crm/8.6283db219ef5e7d3207b.js": "65a5a78dbe3ac7a9c367f791e2e3b06ea38e6275",
     "/redondo-crm/9.abde635f5d9978b6da48.js": "cded9acc2b99200d43bcd9a15c2dc998d459c335",
     "/redondo-crm/apple-touch-icon.png": "15abe2d99cd932cf81f00244cb9db469458911f8",
     "/redondo-crm/assets/fonts/kendoui.woff": "d9411199ec4cc5af4461f94b51ea6906edfa332e",
@@ -157,7 +157,7 @@
     "/redondo-crm/fontawesome-webfont.af7ae505a9eed503f8b8.woff2": "d6f48cba7d076fb6f2fd6ba993a75b9dc1ecbf0c",
     "/redondo-crm/fontawesome-webfont.b06871f281fee6b241d6.ttf": "13b1eab65a983c7a73bc7997c479d66943f7c6cb",
     "/redondo-crm/fontawesome-webfont.fee66e712a8a08eef580.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "/redondo-crm/index.html": "485e2e69b137dec208bc8dc6154b144cd3908e3a",
+    "/redondo-crm/index.html": "43425c2c269f82a83bd5cfbfdc7d6d87a21a4c5d",
     "/redondo-crm/main.76a9d8912743f1c021b8.js": "b86f1490dbf0e7702420e886579b893543d46f0b",
     "/redondo-crm/polyfills-es5.b51b72a6bccc504722a9.js": "38bc80efbed4d2bb29ca5cbc2e30fb5977a416f7",
     "/redondo-crm/polyfills.327ae11943d9b0384d67.js": "2a5bdae45cef6500b88e0150b60a904616728a7c",
@@ -174,7 +174,7 @@
     "/redondo-crm/questrial-v7-latin-regular.64cb3c378466d371cb2e.eot": "360d17724f93edca87a75f1adeadd93eaa7daf60",
     "/redondo-crm/questrial-v7-latin-regular.95534789e87999d22022.svg": "bf76fa59763bfd8831a22a9831a55c531fb41beb",
     "/redondo-crm/questrial-v7-latin-regular.dfb49c8c7f059bb7d162.woff": "a8100b3c4639f9d71848be415f7d3628d20cba76",
-    "/redondo-crm/runtime.107cd757cfc7ab2c8f09.js": "bf9c40014fd7dfc472b1669c559c08e6a94ed2d5",
+    "/redondo-crm/runtime.a6d6c0a58351ed44ea67.js": "b82ad555afa20033a0d4d2d989570baa07a9937d",
     "/redondo-crm/safari-pinned-tab.svg": "36ba0802c2ad6a8d07b4a2f991a4478b91307fee",
     "/redondo-crm/scripts.1bb65570ef961697a258.js": "8c539941542c3b15122fc62ddb73992f173e9a75",
     "/redondo-crm/styles.98073a254a5280984c2a.css": "6ced2108fc497628eee38b4edfbd4f0b853eb57d"
