@@ -53,6 +53,13 @@ export const ROUTES: Routes = [
         canActivate: [AuthGuard],
       },
 
+      {
+        path: 'contacts',
+        // pathMatch: 'full',
+        loadChildren: () => import('./routes/contacts/contacts.module').then(m => m.ContactsModule),
+        canActivate: [AuthGuard],
+      },
+
       // Empty path string for homepage ('') needs to be LAST otherwise it catches all other routes
       {
         path: '',
