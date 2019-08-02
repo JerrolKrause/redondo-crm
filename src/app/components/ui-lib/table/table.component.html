@@ -61,7 +61,7 @@
            -->
           <ng-container *ngIf="column.template">
             <ng-container
-              *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: row }"
+              *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: element }"
             ></ng-container>
           </ng-container>
           <!-- 

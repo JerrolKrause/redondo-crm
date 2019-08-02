@@ -73,7 +73,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     return this._columnTemplates;
   }
 
-  private columnsMapped: TableColumnMapped[] = [];
+  public columnsMapped: TableColumnMapped[] = [];
 
   constructor() {}
 
@@ -152,6 +152,10 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param templates
    */
   public columnsTemplateAttach(columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>): TableColumnMapped[] {
+    console.log(templates);
+    if (!templates) {
+      return <TableColumnMapped[]>[...columns];
+    }
     // Create a dictionary of the templates by field ID
     const templatesDictionary: { [key: string]: TableColumnDirective } = {};
     templates.forEach(template => (templatesDictionary[template.field] = template));
