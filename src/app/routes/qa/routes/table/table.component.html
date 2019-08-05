@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <h1>Angular Materials Table Implementation</h1>
+  <p>Standard View</p>
+  <app-table [rows]="leads" [columns]="columnsLeads">
+    <!-- Name -->
+    <table-column-template field="name">
+      <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
+        Borrower Name
+      </ng-template>
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"> {{ value }}</a>
+      </ng-template>
+    </table-column-template>
+    <!-- Name -->
+    <table-column-template field="action">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
+      </ng-template>
+    </table-column-template>
+  </app-table>
+
+  <hr/>
+  <p>Mobile Card View</p>
+  <app-table [rows]="leads" [columns]="columnsLeads" mobileBehavior="cards" mobileTitleProp="name">
+    <!-- Name -->
+    <table-column-template field="name">
+      <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
+        Borrower Name
+      </ng-template>
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"> {{ value }}</a>
+      </ng-template>
+    </table-column-template>
+    <!-- Name -->
+    <table-column-template field="action">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
+      </ng-template>
+    </table-column-template>
+  </app-table>
+</div>

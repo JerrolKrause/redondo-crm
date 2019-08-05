@@ -6,10 +6,11 @@ import { routing } from './qa.routes';
 import { ChartsComponent } from './routes/charts/charts.component';
 import { ChartModule, MapModule } from '$features';
 import { MapComponent } from './routes/map/map.component';
+import { TableComponent } from './routes/table/table.component';
 
 @NgModule({
   imports: [CommonModule, SiteModule, routing, ChartModule, MapModule],
-  declarations: [QaComponent, ChartsComponent, MapComponent],
+  declarations: [QaComponent, ChartsComponent, MapComponent, TableComponent],
   entryComponents: [],
 })
 export class QaModule {}

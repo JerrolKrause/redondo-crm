@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { QaComponent } from './qa.component';
 import { ChartsComponent } from './routes/charts/charts.component';
 import { MapComponent } from './routes/map/map.component';
+import { TableComponent } from './routes/table/table.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
   {
     path: 'charts',
     component: ChartsComponent,
+    data: { title: 'Charts' },
+  },
+  {
+    path: 'table',
+    component: TableComponent,
     data: { title: 'Charts' },
   },
   {
