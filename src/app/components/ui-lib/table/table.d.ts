@@ -6,7 +6,8 @@ export interface TableColumnDefinition {
 }
 
 export interface TableColumnMapped extends TableColumnDefinition {
-  template?: TemplateRef<any>;
+  templateCell?: TemplateRef<any>;
+  templateHeader?: TemplateRef<any>;
 }
 
 interface RowsPivot {

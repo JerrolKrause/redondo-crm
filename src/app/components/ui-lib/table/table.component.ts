@@ -143,7 +143,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
             value: row[column.prop] || null,
             type: column.type || null,
             typeArgs: column.typeArgs || null,
-            template: column.template || null,
+            templateCell: column.templateCell || null,
           });
         }
       });
@@ -174,9 +174,13 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     // Loop through the columns, if a template match is found add it to the column
     return (<TableColumnMapped[]>columns).map(column => {
       const col = { ...column };
-      // If match found, add template
-      if (templatesDictionary[<string>column.prop]) {
-        col.template = templatesDictionary[<string>column.prop].templateCell;
+      // Add cell template
+      if (templatesDictionary[<string>column.prop] && templatesDictionary[<string>column.prop].templateCell) {
+        col.templateCell = templatesDictionary[<string>column.prop].templateCell;
+      }
+      // Add header template
+      if (templatesDictionary[<string>column.prop] && templatesDictionary[<string>column.prop].templateHeader) {
+        col.templateHeader = templatesDictionary[<string>column.prop].templateHeader;
       }
       return col;
     });

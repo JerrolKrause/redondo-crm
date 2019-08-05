@@ -116,6 +116,9 @@
         <app-table [rows]="leads" [columns]="columnsLeads" mobileBehavior="cards" mobileTitleProp="name">
           <!-- Name -->
           <table-column-template field="name">
+              <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
+                  <i class="fa fa-user mr-2"></i> {{ value }}
+                </ng-template>
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
               <a routerLink="/contacts"> {{ value }}</a>
             </ng-template>
