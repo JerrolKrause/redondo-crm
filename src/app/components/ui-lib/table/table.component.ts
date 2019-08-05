@@ -34,8 +34,20 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   /** Enable/disable sorting */
   @Input() canSort = true;
 
+  // Hold global filter term, mostly for instantiation
+  private _filterTerm: string | null = null;
   /** Global search filter term */
-  @Input() filterTerm: string | null | undefined;
+  @Input() set filterTerm(term: string | number | null) {
+    this._filterTerm = String(term);
+    if (this.tableData && this.tableData.dataSource) {
+      this.tableData.dataSource.filter = String(term)
+        .trim()
+        .toLowerCase();
+    }
+  }
+  get filterTerm() {
+    return this._filterTerm;
+  }
 
   /** Determine what type of table shows when in mobile view */
   @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
@@ -113,32 +125,18 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
         columns: columns,
         columnDefinitions: columns.map(column => column.prop),
       };
+
+      // If filterTerm supplied on load, immediately filter
+      if (this.filterTerm) {
+        this.tableData.dataSource.filter = this.filterTerm;
+      }
+
       // If mobile behavior is set to cards, create pivot view
       if (this.mobileBehavior === 'cards') {
         this.tableDataPivot = this.dataCreatePivot(this.rows, columns, this.mobileTitleProp);
       }
     }
   }
-
-  /**
-   * Create the structured data needed by the table
-   * @param rows
-   * @param columns
-   * @param templates
-  
-  private dataCreate(rows: any[], columns: TableColumnDefinition[]) {
-    const tableData: TableSource = {
-      dataSource: rows.length ? new MatTableDataSource(rows) : null,
-      columns: columns,
-      columnDefinitions: columns.map(column => column.prop),
-    };
-    if (this.canSort && rows.length) {
-      // tableData.dataSource.sort = this.sort2;
-    }
-    this.dataSource = new MatTableDataSource(rows);
-    return tableData;
-  }
-   */
 
   /**
    *  Create the table data needed for the card view by pivoting the columns to rows

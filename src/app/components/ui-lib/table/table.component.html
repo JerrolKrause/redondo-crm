@@ -55,7 +55,7 @@
     Mobile card view 
   -->
 <ng-template #cardView>
-  <mat-accordion *ngIf="tableDataPivot?.rows?.length">
+  <mat-accordion *ngIf="tableDataPivot && tableDataPivot?.rows?.length">
     <mat-expansion-panel *ngFor="let row of tableDataPivot.rows">
       <mat-expansion-panel-header *ngIf="row.rowTitle">
         <mat-panel-title>
