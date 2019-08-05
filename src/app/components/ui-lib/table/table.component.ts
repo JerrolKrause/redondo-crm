@@ -72,16 +72,28 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges() {
     if (this.loaded) {
-      this.tableData$.next(this.createTableData(this.rows, this.columns, this.columnTemplates));
-      this.tableDataPivot$.next(this.createTableDataPivot(this.rows, this.columns, this.mobileTitleProp));
+      this.init();
     }
   }
 
   ngAfterViewInit() {
-    this.tableData$.next(this.createTableData(this.rows, this.columns, this.columnTemplates));
-    this.tableDataPivot$.next(this.createTableDataPivot(this.rows, this.columns, this.mobileTitleProp));
+    this.init();
     this.loaded = true;
     setTimeout(() => this.ref.markForCheck());
+  }
+
+  /**
+   * Initialize the table
+   */
+  public init() {
+    // Attach column templates
+    const columns = this.columnsTemplateAttach(this.columns, this.columnTemplates);
+    // Create normal table view data
+    this.tableData$.next(this.dataCreate(this.rows, columns));
+    // If mobile type is cards, create pivot table data
+    if (this.mobileBehavior === 'cards') {
+      this.tableDataPivot$.next(this.dataCreatePivot(this.rows, columns, this.mobileTitleProp));
+    }
   }
 
   /**
@@ -90,10 +102,10 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param templates
    */
-  public createTableData(rows: any[], columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>) {
+  private dataCreate(rows: any[], columns: TableColumnDefinition[]) {
     const tableData: TableSource = {
       dataSource: new MatTableDataSource(rows),
-      columns: this.columnsTemplateAttach(columns, templates),
+      columns: columns,
       columnDefinitions: this.columns.map(column => column.prop),
     };
     if (this.canSort) {
@@ -103,12 +115,12 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   /**
-   *
+   *  Create the table data needed for the card view by pivoting the columns to rows
    * @param rows
    * @param columns
    * @param propTitle
    */
-  public createTableDataPivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
+  private dataCreatePivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
     const rowsPivot: RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {
@@ -148,7 +160,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param templates
    */
-  public columnsTemplateAttach(columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>): TableColumnMapped[] {
+  private columnsTemplateAttach(columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>): TableColumnMapped[] {
     if (!templates) {
       return <TableColumnMapped[]>[...columns];
     }

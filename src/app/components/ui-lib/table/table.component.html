@@ -1,10 +1,10 @@
 <div *ngIf="{ data: tableData$ | async, isMobile: isMobile$ | async } as table" class="ui-table">
   <!-- Loading -->
-  <ng-container *ngIf="!table.data"><i class="fa fa-spinner fa-spin"></i> Loading...</ng-container>
+  <ng-container *ngIf="!table?.data"><i class="fa fa-spinner fa-spin"></i> Loading...</ng-container>
 
   <!-- Table data available -->
   <div
-    *ngIf="table.data && (!table.isMobile || (table.isMobile && mobileBehavior !== 'cards')); else cardView"
+    *ngIf="table?.data && (!table.isMobile || (table.isMobile && mobileBehavior !== 'cards')); else cardView"
     [ngClass]="{ 'table-responsive': table.isMobile }"
   >
     <table
