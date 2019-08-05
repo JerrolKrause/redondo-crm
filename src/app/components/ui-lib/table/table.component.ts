@@ -9,13 +9,13 @@ import {
   QueryList,
   AfterViewInit,
   ChangeDetectorRef,
-  ViewChildren,
+  ViewChild,
 } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import { fromEvent, BehaviorSubject } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
-import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSource, TableSourcePivot } from './table';
+import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSourcePivot, TableSource } from './table';
 
 @Component({
   selector: 'app-table',
@@ -26,12 +26,22 @@ import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSource, Table
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit, OnChanges, AfterViewInit {
+  /** Table Rows */
   @Input() rows: any[] | undefined;
+  /** Table Columns */
   @Input() columns: TableColumnDefinition[] | undefined;
 
+  /** Enable/disable sorting */
   @Input() canSort = true;
+
+  /** Global search filter term */
+  @Input() filterTerm: string | null | undefined;
+
+  /** Determine what type of table shows when in mobile view */
   @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
+  /** What screensize to toggle mobile view */
   @Input() mobileBreakpoint = 998;
+  /** The property of the field to use for the label in mobile card view */
   @Input() mobileTitleProp: string | undefined;
 
   /** Contains a boolean is the current screensize is above or below the mobile breakpoint */
@@ -44,11 +54,17 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   );
 
   /** Data source for main table */
-  public tableData$ = new BehaviorSubject<TableSource | null>(null);
+  public tableData: TableSource | undefined;
   /** Data source for mobile card view */
-  public tableDataPivot$ = new BehaviorSubject<TableSourcePivot | null>(null);
+  public tableDataPivot: TableSourcePivot | undefined;
 
-  @ViewChildren(MatSort) sort!: QueryList<MatSort>;
+  // The MatSort template isn't available on AfterViewInit due to the if statements
+  // Attach it dynamically after the appropriate template loads
+  @ViewChild(MatSort, { static: false }) set content(sort: MatSort) {
+    if (sort && this.tableData) {
+      this.tableData.dataSource.sort = sort;
+    }
+  }
 
   /** Holds custom DOM templates passed from parent */
   private _columnTemplates: any;
@@ -89,13 +105,17 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    */
   public init() {
     if (this.columns && this.rows) {
-      // Attach column templates
+      // Attach any custom templates to the columns
       const columns = this.columnsTemplateAttach(this.columns, this.columnTemplates);
-      // Create normal table view data
-      this.tableData$.next(this.dataCreate(this.rows, columns));
-      // If mobile type is cards, create pivot table data
+      // Create standard view data
+      this.tableData = {
+        dataSource: new MatTableDataSource(this.rows),
+        columns: columns,
+        columnDefinitions: columns.map(column => column.prop),
+      };
+      // If mobile behavior is set to cards, create pivot view
       if (this.mobileBehavior === 'cards') {
-        this.tableDataPivot$.next(this.dataCreatePivot(this.rows, columns, this.mobileTitleProp));
+        this.tableDataPivot = this.dataCreatePivot(this.rows, columns, this.mobileTitleProp);
       }
     }
   }
@@ -105,7 +125,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param rows
    * @param columns
    * @param templates
-   */
+  
   private dataCreate(rows: any[], columns: TableColumnDefinition[]) {
     const tableData: TableSource = {
       dataSource: rows.length ? new MatTableDataSource(rows) : null,
@@ -113,10 +133,12 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
       columnDefinitions: columns.map(column => column.prop),
     };
     if (this.canSort && rows.length) {
-      tableData.dataSource.sort = this.sort.toArray()[0];
+      // tableData.dataSource.sort = this.sort2;
     }
+    this.dataSource = new MatTableDataSource(rows);
     return tableData;
   }
+   */
 
   /**
    *  Create the table data needed for the card view by pivoting the columns to rows
@@ -124,7 +146,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param propTitle
    */
-  private dataCreatePivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
+  public dataCreatePivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
     const rowsPivot: RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {

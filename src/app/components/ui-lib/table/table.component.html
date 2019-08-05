@@ -1,30 +1,24 @@
-<div *ngIf="{ data: tableData$ | async, isMobile: isMobile$ | async } as table" class="ui-table">
+<div *ngIf="{ isMobile: isMobile$ | async } as table" class="ui-table">
   <!-- Loading -->
-  <ng-container *ngIf="!table?.data"><i class="fa fa-spinner fa-spin"></i> Loading...</ng-container>
+  <ng-container *ngIf="!tableData?.dataSource"><i class="fa fa-spinner fa-spin"></i> Loading...</ng-container>
 
   <!-- No row data -->
-  <ng-container *ngIf="table?.data && !table?.data?.dataSource">No rows available</ng-container>
+  <ng-container *ngIf="tableData && !tableData?.dataSource?.data?.length">No rows available</ng-container>
 
   <!-- Table data available -->
   <div
-    *ngIf="table?.data?.dataSource && (!table.isMobile || (table.isMobile && mobileBehavior !== 'cards')); else cardView"
+    *ngIf="tableData && (!table.isMobile || (table.isMobile && mobileBehavior !== 'cards')); else cardView"
     [ngClass]="{ 'table-responsive': table.isMobile }"
   >
-    <table
-      mat-table
-      [dataSource]="table.data.dataSource"
-      matSort
-      class="w-100 mb-0"
-      [ngClass]="{ 'mat-table-mobile mb-3': table.isMobile }"
-    >
+    <table mat-table [dataSource]="tableData.dataSource" matSort class="w-100 mb-0" [ngClass]="{ 'mat-table-mobile mb-3': table.isMobile }">
       <!-- Loop through columns-->
-      <ng-container *ngFor="let column of table.data.columns">
+      <ng-container *ngFor="let column of tableData.columns">
         <ng-container [matColumnDef]="column.prop">
           <!-- Desktop headers -->
           <th mat-header-cell *matHeaderCellDef="let element" mat-sort-header>
             <ng-container *ngIf="column.templateHeader">
               <ng-container
-                *ngTemplateOutlet="column.templateHeader; context: { value: column.label, column: column, row: element}"
+                *ngTemplateOutlet="column.templateHeader; context: { value: column.label, column: column, row: element }"
               ></ng-container>
             </ng-container>
             <span *ngIf="!column.templateHeader" [innerHTML]="column.label"></span>
@@ -48,27 +42,28 @@
       </ng-container>
 
       <!-- Table Header, determine if mobile or desktop -->
-      <tr mat-header-row *matHeaderRowDef="table.data.columnDefinitions"></tr>
+      <tr mat-header-row *matHeaderRowDef="tableData.columnDefinitions"></tr>
 
       <!-- Table Rows -->
-      <tr mat-row *matRowDef="let row; columns: table.data.columnDefinitions"></tr>
+      <tr mat-row *matRowDef="let row; columns: tableData.columnDefinitions"></tr>
     </table>
   </div>
 </div>
+
 
 <!-- 
     Mobile card view 
   -->
 <ng-template #cardView>
-  <mat-accordion *ngIf="(tableDataPivot$ | async) as tableData">
-    <mat-expansion-panel *ngFor="let row of tableData.rows">
+  <mat-accordion *ngIf="tableDataPivot?.rows?.length">
+    <mat-expansion-panel *ngFor="let row of tableDataPivot.rows">
       <mat-expansion-panel-header *ngIf="row.rowTitle">
         <mat-panel-title>
           {{ row.rowTitle }}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <table mat-table [dataSource]="row.dataSource" class="w-100 mb-0 table-striped">
-        <ng-container *ngFor="let column of tableData.columns">
+        <ng-container *ngFor="let column of tableDataPivot.columns">
           <ng-container [matColumnDef]="column.prop">
             <!-- Cell Content-->
             <ng-container *matCellDef="let element">
@@ -95,7 +90,7 @@
           </ng-container>
         </ng-container>
         <!-- Table Rows -->
-        <tr mat-row *matRowDef="let row; columns: tableData.columnDefinitions"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableDataPivot.columnDefinitions"></tr>
       </table>
     </mat-expansion-panel>
   </mat-accordion>
