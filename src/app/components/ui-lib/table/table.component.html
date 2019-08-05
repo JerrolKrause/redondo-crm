@@ -2,7 +2,6 @@
   <!-- Desktop View OR Scrollable Mobile View-->
   <div
     *ngIf="!table.isMobile || (table.isMobile && mobileBehavior !== 'cards'); else cardView"
-    
     [ngClass]="{ 'table-responsive': table.isMobile }"
   >
     <table
@@ -22,16 +21,16 @@
           <!-- Cell Content-->
           <td mat-cell *matCellDef="let element">
             <!-- 
-              Custom cell template
-             -->
+                Custom cell template
+               -->
             <ng-container *ngIf="column.template">
               <ng-container
                 *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: element }"
               ></ng-container>
             </ng-container>
             <!-- 
-              No cell template, custom formatting
-             -->
+                No cell template, custom formatting
+               -->
             <ng-container *ngIf="!column.template && column.type">
               <ng-container [ngSwitch]="column.type || element.type">
                 <!-- Phone Number -->
@@ -50,16 +49,16 @@
                 <!-- Date -->
                 <span [innerHTML]="element[column.prop] | date: column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
                 <!-- Default
-                <ng-container *ngSwitchDefault>
-                  <span *ngTemplateOutlet="cellDefault"></span>
-                </ng-container>
-                 -->
+                  <ng-container *ngSwitchDefault>
+                    <span *ngTemplateOutlet="cellDefault"></span>
+                  </ng-container>
+                   -->
               </ng-container>
             </ng-container>
 
             <!--
-              No custom template, no custom formatting
-            -->
+                No custom template, no custom formatting
+              -->
             <ng-container *ngIf="!column.template && !column.type">
               <span [innerHTML]="element[column.prop]"></span>
             </ng-container>
@@ -68,12 +67,12 @@
       </ng-container>
 
       <!-- Mobile header 
-      <ng-container matColumnDef="mobile-header">
-        <th mat-header-cell *matHeaderCellDef colspan="2">
-          <span [innerHTML]="rowTitle"></span>
-        </th>
-      </ng-container>
-      -->
+        <ng-container matColumnDef="mobile-header">
+          <th mat-header-cell *matHeaderCellDef colspan="2">
+            <span [innerHTML]="rowTitle"></span>
+          </th>
+        </ng-container>
+        -->
 
       <!-- Table Header, determine if mobile or desktop -->
       <tr mat-header-row *matHeaderRowDef="columnDefinitions"></tr>
@@ -82,41 +81,94 @@
       <tr mat-row *matRowDef="let row; columns: columnDefinitions"></tr>
     </table>
   </div>
+</div>
 
-  <!-- Mobile card view -->
-  <ng-template #cardView>
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let row of rowsPivot">
-        <mat-expansion-panel-header *ngIf="row.rowTitle">
-          <mat-panel-title>
-            {{ row.rowTitle }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <table mat-table [dataSource]="row.dataSource" class="w-100 mb-0 table-striped">
-          <ng-container *ngFor="let column of columnsPivot">
-            <ng-container [matColumnDef]="column.prop">
-              <!-- Desktop headers
-              <th mat-header-cell *matHeaderCellDef class="d-none">
-                <span [innerHTML]="column.label"></span>
+<!-- 
+    Mobile card view 
+  -->
+<ng-template #cardView>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let row of rowsPivot">
+      <mat-expansion-panel-header *ngIf="row.rowTitle">
+        <mat-panel-title>
+          {{ row.rowTitle }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table mat-table [dataSource]="row.dataSource" class="w-100 mb-0 table-striped">
+        <ng-container *ngFor="let column of columnsPivot">
+          <ng-container [matColumnDef]="column.prop">
+            <!-- Desktop headers
+                <th mat-header-cell *matHeaderCellDef class="d-none">
+                  <span [innerHTML]="column.label"></span>
+  
+                </th> -->
 
-              </th> -->
-
-              <!-- Cell Content-->
-              <ng-container *matCellDef="let element">
-                <td mat-cell>
+            <!-- Cell Content-->
+            <ng-container *matCellDef="let element">
+              <td mat-cell>
+                <ng-container *ngIf="column.prop === 'label'">
                   <span [innerHTML]="element[column.prop]"></span>
-                </td>
-              </ng-container>
+                </ng-container>
+                <ng-container *ngIf="column.prop !== 'label'">
+                  <ng-container
+                    *ngTemplateOutlet="
+                      cellTemplate;
+                      context: {
+                        column: column,
+                        row: element,
+                        template: element.template,
+                        type: element.type
+                      }
+                    "
+                  ></ng-container>
+                </ng-container>
+              </td>
             </ng-container>
           </ng-container>
+        </ng-container>
 
-          <!-- Table Header, determine if mobile or desktop 
-          <tr mat-header-row *matHeaderRowDef="columnDefinitionsPivot"></tr>
-          -->
-          <!-- Table Rows -->
-          <tr mat-row *matRowDef="let row; columns: columnDefinitionsPivot"></tr>
-        </table>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </ng-template>
-</div>
+        <!-- Table Header, determine if mobile or desktop 
+            <tr mat-header-row *matHeaderRowDef="columnDefinitionsPivot"></tr>
+            -->
+        <!-- Table Rows -->
+        <tr mat-row *matRowDef="let row; columns: columnDefinitionsPivot"></tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-template>
+
+<!--
+  Manage cell templates
+-->
+<ng-template let-row="row" let-column="column" let-template="template" let-type="type" #cellTemplate>
+  <!-- Custom cell template-->
+  <ng-container *ngIf="template">
+    <ng-container *ngTemplateOutlet="template; context: { value: row[column.prop], column: column, row: row }"></ng-container>
+  </ng-container>
+  <!--  No cell template, custom formatting  -->
+  <ng-container *ngIf="!template && type">
+    <ng-container [ngSwitch]="type">
+      <!-- Phone Number -->
+      <a
+        href="tel:{{ row[column.prop] | phoneNumber: true }} "
+        [innerHTML]="row[column.prop] | phoneNumber"
+        *ngSwitchCase="'phoneNumber'"
+      ></a>
+      <!-- Email -->
+      <a href="mailto:{{ row[column.prop] }} " [innerHTML]="row[column.prop]" *ngSwitchCase="'email'"></a>
+      <!-- Currency -->
+      <span [innerHTML]="row[column.prop] | type: 'number' | currency: column.typeArgs || row.typeArgs" *ngSwitchCase="'currency'"></span>
+      <!-- Date -->
+      <span [innerHTML]="row[column.prop] | date: column.typeArgs || row.typeArgs" *ngSwitchCase="'date'"></span>
+      <!-- Default   -->
+      <ng-container *ngSwitchDefault>
+        <span class="red">Invalid column type specified for {{ column.prop }}</span>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <!-- No custom template, no custom formatting -->
+  <ng-container *ngIf="!template && !type">
+    <span [innerHTML]="row[column.prop]"></span>
+  </ng-container>
+</ng-template>

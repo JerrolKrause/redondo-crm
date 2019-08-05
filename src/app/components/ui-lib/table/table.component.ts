@@ -78,7 +78,11 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(private ref: ChangeDetectorRef) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.mobileBehavior === 'cards' && !this.mobileTitleProp) {
+      console.warn('mobileTitleProp is required for card view');
+    }
+  }
 
   ngOnChanges() {}
 
