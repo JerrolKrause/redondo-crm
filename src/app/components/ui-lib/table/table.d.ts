@@ -15,7 +15,7 @@ interface RowsPivot {
 }
 
 interface TableSource {
-  dataSource: MatTableDataSource<TableColumnMapped[]>;
+  dataSource: MatTableDataSource<TableColumnMapped[]> | null;
   columns: TableColumnDefinition[];
   columnDefinitions: string[];
 }
