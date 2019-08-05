@@ -20,48 +20,18 @@
           </th>
           <!-- Cell Content-->
           <td mat-cell *matCellDef="let element">
-            <!-- 
-                Custom cell template
-               -->
-            <ng-container *ngIf="column.template">
-              <ng-container
-                *ngTemplateOutlet="column.template; context: { value: element[column.prop], column: column, row: element }"
-              ></ng-container>
-            </ng-container>
-            <!-- 
-                No cell template, custom formatting
-               -->
-            <ng-container *ngIf="!column.template && column.type">
-              <ng-container [ngSwitch]="column.type || element.type">
-                <!-- Phone Number -->
-                <a
-                  href="tel:{{ element[column.prop] | phoneNumber: true }} "
-                  [innerHTML]="element[column.prop] | phoneNumber"
-                  *ngSwitchCase="'phoneNumber'"
-                ></a>
-                <!-- Email -->
-                <a href="mailto:{{ element[column.prop] }} " [innerHTML]="element[column.prop]" *ngSwitchCase="'email'"></a>
-                <!-- Currency -->
-                <span
-                  [innerHTML]="element[column.prop] | type: 'number' | currency: column.typeArgs || element.typeArgs"
-                  *ngSwitchCase="'currency'"
-                ></span>
-                <!-- Date -->
-                <span [innerHTML]="element[column.prop] | date: column.typeArgs || element.typeArgs" *ngSwitchCase="'date'"></span>
-                <!-- Default
-                  <ng-container *ngSwitchDefault>
-                    <span *ngTemplateOutlet="cellDefault"></span>
-                  </ng-container>
-                   -->
-              </ng-container>
-            </ng-container>
-
-            <!--
-                No custom template, no custom formatting
-              -->
-            <ng-container *ngIf="!column.template && !column.type">
-              <span [innerHTML]="element[column.prop]"></span>
-            </ng-container>
+            <ng-container
+              *ngTemplateOutlet="
+                cellTemplate;
+                context: {
+                  column: column,
+                  row: element,
+                  template: column.template,
+                  type: column.type,
+                  typeArgs: column.typeArgs
+                }
+              "
+            ></ng-container>
           </td>
         </ng-container>
       </ng-container>
@@ -117,7 +87,8 @@
                         column: column,
                         row: element,
                         template: element.template,
-                        type: element.type
+                        type: element.type,
+                        typeArgs: element.typeArgs
                       }
                     "
                   ></ng-container>
@@ -140,7 +111,7 @@
 <!--
   Manage cell templates
 -->
-<ng-template let-row="row" let-column="column" let-template="template" let-type="type" #cellTemplate>
+<ng-template let-row="row" let-column="column" let-template="template" let-type="type" let-typeArgs="typeArgs" #cellTemplate>
   <!-- Custom cell template-->
   <ng-container *ngIf="template">
     <ng-container *ngTemplateOutlet="template; context: { value: row[column.prop], column: column, row: row }"></ng-container>
@@ -150,16 +121,16 @@
     <ng-container [ngSwitch]="type">
       <!-- Phone Number -->
       <a
-        href="tel:{{ row[column.prop] | phoneNumber: true }} "
-        [innerHTML]="row[column.prop] | phoneNumber"
         *ngSwitchCase="'phoneNumber'"
+        href="tel:{{ row[column.prop] | phoneNumber: true }}"
+        [innerHTML]="row[column.prop] | phoneNumber"
       ></a>
       <!-- Email -->
-      <a href="mailto:{{ row[column.prop] }} " [innerHTML]="row[column.prop]" *ngSwitchCase="'email'"></a>
+      <a *ngSwitchCase="'email'" href="mailto:{{ row[column.prop] }} " [innerHTML]="row[column.prop]"></a>
       <!-- Currency -->
-      <span [innerHTML]="row[column.prop] | type: 'number' | currency: column.typeArgs || row.typeArgs" *ngSwitchCase="'currency'"></span>
+      <span *ngSwitchCase="'currency'" [innerHTML]="row[column.prop] | type: 'number' | currency: typeArgs"></span>
       <!-- Date -->
-      <span [innerHTML]="row[column.prop] | date: column.typeArgs || row.typeArgs" *ngSwitchCase="'date'"></span>
+      <span *ngSwitchCase="'date'" [innerHTML]="row[column.prop] | date: typeArgs || 'medium'"></span>
       <!-- Default   -->
       <ng-container *ngSwitchDefault>
         <span class="red">Invalid column type specified for {{ column.prop }}</span>

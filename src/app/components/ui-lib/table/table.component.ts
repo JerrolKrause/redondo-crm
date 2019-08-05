@@ -89,6 +89,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit() {
     this.tableInit();
     this.loaded$.next(true);
+    this.ref.markForCheck()
     setTimeout(() => this.ref.markForCheck());
   }
 
@@ -136,13 +137,13 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
           titlePropNew = row[column.prop];
         } else {
           rowsNew.push({
-            _column: { ...column },
-            _row: { ...row },
+            _column: { ...column }, // Column Source
+            _row: { ...row }, // Row Source
             label: column.label,
             value: row[column.prop] || null,
             type: column.type || null,
             typeArgs: column.typeArgs || null,
-            template: column.template,
+            template: column.template || null,
           });
         }
       });
