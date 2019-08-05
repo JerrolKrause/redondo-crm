@@ -1,3 +1,10 @@
+declare namespace Table {
+  export interface PaginateOptions {
+    pageSize?: number;
+    pageSizeOptions?: number[];
+  }
+}
+
 export interface TableColumnDefinition {
   label: string;
   prop: string;
@@ -26,3 +33,5 @@ interface TableSourcePivot {
   columns: TableColumnDefinition[];
   columnDefinitions: string[];
 }
+
+

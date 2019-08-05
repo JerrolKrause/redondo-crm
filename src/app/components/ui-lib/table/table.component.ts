@@ -11,11 +11,11 @@ import {
   ChangeDetectorRef,
   ViewChild,
 } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
-import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSourcePivot, TableSource } from './table';
+import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSourcePivot, TableSource, Table } from './table';
 
 @Component({
   selector: 'app-table',
@@ -30,12 +30,9 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() rows: any[] | undefined;
   /** Table Columns */
   @Input() columns: TableColumnDefinition[] | undefined;
-
   /** Enable/disable sorting */
   @Input() canSort = true;
 
-  // Hold global filter term, mostly for instantiation
-  private _filterTerm: string | null = null;
   /** Global search filter term */
   @Input() set filterTerm(term: string | number | null) {
     if (term !== undefined) {
@@ -50,6 +47,23 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   get filterTerm() {
     return this._filterTerm;
   }
+
+  @Input() paginateOptions: Table.PaginateOptions | null = null;
+
+  /** Paginate options. Set default values
+  @Input() set paginateOptions(options: Table.PaginateOptions | null) {
+    this._paginateOptions = <Table.PaginateOptions>{
+      length: 100,
+      pageSize: 10,
+      pageSizeOptions: [5, 10, 20],
+      ...options,
+    };
+  }
+  get paginateOptions() {
+    return this._paginateOptions;
+  }
+  private _paginateOptions: Table.PaginateOptions | null = null;
+ */
 
   /** Determine what type of table shows when in mobile view */
   @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
@@ -74,9 +88,17 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   // The MatSort template isn't available on AfterViewInit due to the if statements
   // Attach it dynamically after the appropriate template loads
-  @ViewChild(MatSort, { static: false }) set content(sort: MatSort) {
+  @ViewChild(MatSort, { static: false }) set sort(sort: MatSort) {
     if (sort && this.tableData) {
       this.tableData.dataSource.sort = sort;
+    }
+  }
+
+  // The MatSort template isn't available on AfterViewInit due to the if statements
+  // Attach it dynamically after the appropriate template loads
+  @ViewChild(MatPaginator, { static: false }) set paginator(paginator: MatPaginator) {
+    if (paginator && this.tableData) {
+      this.tableData.dataSource.paginator = paginator;
     }
   }
 
@@ -92,6 +114,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   get columnTemplates(): QueryList<TableColumnDirective> {
     return this._columnTemplates;
   }
+  // Hold global filter term, mostly for instantiation
+  private _filterTerm: string | null = null;
   private loaded = false;
 
   constructor(private ref: ChangeDetectorRef) {}
@@ -127,7 +151,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
         columns: columns,
         columnDefinitions: columns.map(column => column.prop),
       };
-      console.log(this.filterTerm);
+
       // If filterTerm supplied on load, immediately filter
       if (this.filterTerm) {
         this.tableData.dataSource.filter = this.filterTerm;

@@ -47,9 +47,17 @@
       <!-- Table Rows -->
       <tr mat-row *matRowDef="let row; columns: tableData.columnDefinitions"></tr>
     </table>
+
+    <!-- Paginator -->
+    <mat-paginator
+      *ngIf="paginateOptions"
+      [length]="tableData?.dataSource?.data?.length"
+      [pageSize]="paginateOptions?.pageSize"
+      [pageSizeOptions]="paginateOptions?.pageSizeOptions"
+      showFirstLastButtons
+    ></mat-paginator>
   </div>
 </div>
-
 
 <!-- 
     Mobile card view 

@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'table',
     component: TableComponent,
-    data: { title: 'Charts' },
+    data: { title: 'Table' },
   },
   {
     path: '',
