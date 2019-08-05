@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent, BehaviorSubject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, startWith} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
 import { TableColumnDefinition, RowsPivot, TableColumnMapped } from './table';
 
@@ -39,8 +39,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   public columnDefinitions: string[] = [];
 
   public rowsPivot: RowsPivot[] = [];
-  public columnsPivot = [{ label: 'Label', prop: '$$label' }, { label: 'value', prop: 'value' }];
-  public columnDefinitionsPivot: string[] = ['$$label', 'value'];
+  public columnsPivot = [{ label: 'Label', prop: 'label' }, { label: 'value', prop: 'value' }];
+  public columnDefinitionsPivot: string[] = ['label', 'value'];
   public loaded$ = new BehaviorSubject<boolean>(false);
 
   public isMobile$ = fromEvent(window, 'resize').pipe(
@@ -78,9 +78,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(private ref: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   ngOnChanges() {}
 
@@ -91,7 +89,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   /**
-   * 
+   *
    */
   public tableInit() {
     // Null check
@@ -111,9 +109,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.mobileBehavior === 'cards') {
       // Create the pivot rows for the mobile view
       this.rowsPivot = this.pivotTable(this.rows, this.columnsMapped, this.mobileTitleProp);
-      console.log( this.rowsPivot)
+      console.log(this.rowsPivot);
     }
-    
   }
 
   /**
@@ -126,7 +123,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     const rowsPivot: RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {
-      const rowsNew: any = [];
+      const rowsNew: any[] = [];
       let titlePropNew: string | null = null;
       columns.forEach(column => {
         // Add the title of the card if prop data supplied
@@ -135,7 +132,9 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
           titlePropNew = row[column.prop];
         } else {
           rowsNew.push({
-            $$label: column.label,
+            _column: { ...column },
+            _row: { ...row },
+            label: column.label,
             value: row[column.prop] || null,
             type: column.type || null,
             typeArgs: column.typeArgs || null,

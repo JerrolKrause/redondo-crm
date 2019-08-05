@@ -1,17 +1,19 @@
-.mat-table {
-  // border: 1px solid #3d3c38;// $brand-primary;
-  &.mat-table-mobile {
-    th { vertical-align: middle;}
+.ui-table {
+  /* Angular Materials Table */
+  .mat-table {
+    // border: 1px solid #3d3c38;// $brand-primary;
+    &.mat-table-mobile {
+      th { vertical-align: middle;}
+    }
+    &.mat-table-mobile-hide-title thead{display:none;}
+    tbody {
+      tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
+      td.mat-cell{padding:8px;}
+      tr:last-child td{border:0;}
+    }
   }
-  &.mat-table-mobile-hide-title thead{display:none;}
-  tbody {
-    tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
-    td.mat-cell{padding:8px;}
-    tr:last-child td{border:0;}
-  }
-}
-
-:host {
+  
+  /* Responsive Table*/
   .table-responsive {
     overflow-x: initial;
       overflow-x: auto;
@@ -27,4 +29,11 @@
         white-space: nowrap;
       }
   }
+
+  /* Card View */
+  .mat-accordion{
+    .mat-expansion-panel-body {padding: 0;}
+    tr td:first-child{padding-left:24px;}
+  }
+  
 }
