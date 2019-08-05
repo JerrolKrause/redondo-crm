@@ -15,10 +15,9 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
-import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSourcePivot, TableSource, Table } from './table';
 
 @Component({
-  selector: 'app-table',
+  selector: 'nts-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   // tslint:disable-next-line:use-component-view-encapsulation
@@ -29,7 +28,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   /** Table Rows */
   @Input() rows: any[] | undefined;
   /** Table Columns */
-  @Input() columns: TableColumnDefinition[] | undefined;
+  @Input() columns: NtsTable.Column[] | undefined;
   /** Enable/disable sorting */
   @Input() canSort = true;
 
@@ -48,22 +47,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     return this._filterTerm;
   }
 
-  @Input() paginateOptions: Table.PaginateOptions | null = null;
-
-  /** Paginate options. Set default values
-  @Input() set paginateOptions(options: Table.PaginateOptions | null) {
-    this._paginateOptions = <Table.PaginateOptions>{
-      length: 100,
-      pageSize: 10,
-      pageSizeOptions: [5, 10, 20],
-      ...options,
-    };
-  }
-  get paginateOptions() {
-    return this._paginateOptions;
-  }
-  private _paginateOptions: Table.PaginateOptions | null = null;
- */
+  @Input() paginateOptions: NtsTable.PaginateOptions | null = null;
 
   /** Determine what type of table shows when in mobile view */
   @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
@@ -82,9 +66,9 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   );
 
   /** Data source for main table */
-  public tableData: TableSource | undefined;
+  public tableData: NtsTable.Data | undefined;
   /** Data source for mobile card view */
-  public tableDataPivot: TableSourcePivot | undefined;
+  public tableDataPivot: NtsTable.DataPivot | undefined;
 
   // The MatSort template isn't available on AfterViewInit due to the if statements
   // Attach it dynamically after the appropriate template loads
@@ -170,8 +154,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param propTitle
    */
-  public dataCreatePivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
-    const rowsPivot: RowsPivot[] = [];
+  public dataCreatePivot(rows: any[], columns: NtsTable.ColumnWithTemplates[], propTitle?: string): NtsTable.DataPivot {
+    const rowsPivot: NtsTable.RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {
       const rowsNew: any[] = [];
@@ -210,15 +194,15 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param templates
    */
-  private columnsTemplateAttach(columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>): TableColumnMapped[] {
+  private columnsTemplateAttach(columns: NtsTable.Column[], templates: QueryList<TableColumnDirective>): NtsTable.ColumnWithTemplates[] {
     if (!templates) {
-      return <TableColumnMapped[]>[...columns];
+      return <NtsTable.ColumnWithTemplates[]>[...columns];
     }
     // Create a dictionary of the templates by field ID
     const templatesDictionary: { [key: string]: TableColumnDirective } = {};
     templates.forEach(template => (templatesDictionary[template.field] = template));
     // Loop through the columns, if a template match is found add it to the column
-    return (<TableColumnMapped[]>columns).map(column => {
+    return (<NtsTable.ColumnWithTemplates[]>columns).map(column => {
       const col = { ...column };
       // Add cell template
       if (templatesDictionary[<string>column.prop] && templatesDictionary[<string>column.prop].templateCell) {

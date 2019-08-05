@@ -5,7 +5,7 @@
   <p>
     <input class="form-control" placeholder="Enter global filter term" [(ngModel)]="filterTerm" />
   </p>
-  <app-table [rows]="rows" [columns]="columns" [filterTerm]="filterTerm" [paginateOptions]="{ pageSize: 8, pageSizeOptions: [4, 8, 16] }">
+  <nts-table [rows]="rows" [columns]="columns" [filterTerm]="filterTerm" [paginateOptions]="{ pageSize: 8, pageSizeOptions: [4, 8, 16] }">
     <!-- Column Template -->
     <table-column-template field="name">
       <!-- Header -->
@@ -23,11 +23,11 @@
         <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
       </ng-template>
     </table-column-template>
-  </app-table>
+  </nts-table>
 
   <hr />
   <p>Mobile Card View</p>
-  <app-table [rows]="rows" [columns]="columns" mobileBehavior="cards" mobileTitleProp="name">
+  <nts-table [rows]="rows" [columns]="columns" mobileBehavior="cards" mobileTitleProp="name">
     <table-column-template field="name">
       <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
         Borrower Name
@@ -41,6 +41,6 @@
         <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
       </ng-template>
     </table-column-template>
-  </app-table>
+  </nts-table>
   <hr />
 </div>

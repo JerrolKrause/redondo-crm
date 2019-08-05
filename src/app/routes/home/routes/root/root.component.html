@@ -113,7 +113,7 @@
         <h2>
           Leads that need attention <span class="badge badge-pill badge-danger">{{ leads | count }}</span>
         </h2>
-        <app-table [rows]="leads" [columns]="columnsLeads" mobileBehavior="cards" mobileTitleProp="name">
+        <nts-table [rows]="leads" [columns]="columnsLeads" mobileBehavior="cards" mobileTitleProp="name">
           <!-- Name -->
           <table-column-template field="name">
             <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
@@ -129,14 +129,14 @@
               <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
             </ng-template>
           </table-column-template>
-        </app-table>
+        </nts-table>
       </mat-card>
       <mat-card class="mb-4">
         <div class="small float-right mt-1">
           <a routerLink="/"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans</a> (4 / 7)
         </div>
         <h2>Loans / Pipeline <span class="badge badge-pill badge-danger">1</span></h2>
-        <app-table [rows]="leads" [columns]="columnsLeads">
+        <nts-table [rows]="leads" [columns]="columnsLeads">
           <!-- Name -->
           <table-column-template field="name">
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
@@ -149,7 +149,7 @@
               <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
             </ng-template>
           </table-column-template>
-        </app-table>
+        </nts-table>
       </mat-card>
     </div>
     <div class="col col-12 col-md-4 col-xl-3">

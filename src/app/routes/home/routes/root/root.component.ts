@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { leads } from './leads';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { TableColumnDefinition } from 'src/app/components/ui-lib/table/table';
 // import { untilDestroyed } from 'ngx-take-until-destroy';
 
 // Global state
@@ -22,7 +21,7 @@ const today = new Date();
 })
 export class RootComponent implements OnInit, OnDestroy {
   public leads = leads;
-  public columnsLeads: TableColumnDefinition[] = [
+  public columnsLeads: NtsTable.Column[] = [
     { label: 'Created', prop: 'created', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'Name', prop: 'name' },
@@ -33,7 +32,7 @@ export class RootComponent implements OnInit, OnDestroy {
     { label: 'Action', prop: 'action' },
   ];
 
-  public columnsLeadsMobile: TableColumnDefinition[] = [
+  public columnsLeadsMobile: NtsTable.Column[] = [
     { label: 'Created', prop: 'created', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'State', prop: 'state' },

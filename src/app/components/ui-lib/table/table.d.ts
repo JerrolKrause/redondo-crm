@@ -1,37 +1,37 @@
-declare namespace Table {
+declare namespace NtsTable {
   export interface PaginateOptions {
     pageSize?: number;
     pageSizeOptions?: number[];
   }
-}
 
-export interface TableColumnDefinition {
-  label: string;
-  prop: string;
-  type?: 'currency' | 'phoneNumber' | 'email' | 'date';
-  typeArgs?: any;
-}
+  export interface Column {
+    label: string;
+    prop: string;
+    type?: 'currency' | 'phoneNumber' | 'email' | 'date';
+    typeArgs?: any;
+  }
 
-export interface TableColumnMapped extends TableColumnDefinition {
-  templateCell?: TemplateRef<any>;
-  templateHeader?: TemplateRef<any>;
+  export interface ColumnWithTemplates extends Column {
+    templateCell?: TemplateRef<any>;
+    templateHeader?: TemplateRef<any>;
+  }
+  
+  export interface RowsPivot {
+    dataSource: MatTableDataSource<ColumnWithTemplates[]>;
+    rowTitle?: string | null;
+  }
+  
+  export interface Data {
+    dataSource: MatTableDataSource<ColumnWithTemplates[]> | null;
+    columns: Table.Column[];
+    columnDefinitions: string[];
+  }
+  
+  export interface DataPivot {
+    rows: RowsPivot[];
+    columns: Table.Column[];
+    columnDefinitions: string[];
+  }
+  
 }
-
-interface RowsPivot {
-  dataSource: MatTableDataSource<TableColumnMapped[]>;
-  rowTitle?: string | null;
-}
-
-interface TableSource {
-  dataSource: MatTableDataSource<TableColumnMapped[]> | null;
-  columns: TableColumnDefinition[];
-  columnDefinitions: string[];
-}
-
-interface TableSourcePivot {
-  rows: RowsPivot[];
-  columns: TableColumnDefinition[];
-  columnDefinitions: string[];
-}
-
 

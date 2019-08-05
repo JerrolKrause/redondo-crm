@@ -1,16 +1,15 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { TableColumnDefinition } from 'src/app/components/ui-lib/table/table';
 import { leads } from './leads';
 
 @Component({
-  selector: 'app-table-qa',
+  selector: 'nts-table-qa',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
   public rows = leads;
-  public columns: TableColumnDefinition[] = [
+  public columns: NtsTable.Column[] = [
     { label: 'Created', prop: 'created', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'Name', prop: 'name' },
