@@ -38,11 +38,13 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   private _filterTerm: string | null = null;
   /** Global search filter term */
   @Input() set filterTerm(term: string | number | null) {
-    this._filterTerm = String(term);
-    if (this.tableData && this.tableData.dataSource) {
-      this.tableData.dataSource.filter = String(term)
-        .trim()
-        .toLowerCase();
+    if (term !== undefined) {
+      this._filterTerm = String(term);
+      if (this.tableData && this.tableData.dataSource) {
+        this.tableData.dataSource.filter = String(term)
+          .trim()
+          .toLowerCase();
+      }
     }
   }
   get filterTerm() {
@@ -125,7 +127,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
         columns: columns,
         columnDefinitions: columns.map(column => column.prop),
       };
-
+      console.log(this.filterTerm);
       // If filterTerm supplied on load, immediately filter
       if (this.filterTerm) {
         this.tableData.dataSource.filter = this.filterTerm;

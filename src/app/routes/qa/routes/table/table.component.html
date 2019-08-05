@@ -1,7 +1,11 @@
 <div class="container-fluid">
   <h1>Angular Materials Table Implementation</h1>
+  <hr />
   <p>Standard View</p>
-  <app-table [rows]="leads" [columns]="columnsLeads">
+  <p>
+    <input class="form-control" placeholder="Enter global filter term" [(ngModel)]="filterTerm" />
+  </p>
+  <app-table [rows]="leads" [columns]="columnsLeads" [filterTerm]="filterTerm">
     <!-- Name -->
     <table-column-template field="name">
       <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
@@ -19,7 +23,7 @@
     </table-column-template>
   </app-table>
 
-  <hr/>
+  <hr />
   <p>Mobile Card View</p>
   <app-table [rows]="leads" [columns]="columnsLeads" mobileBehavior="cards" mobileTitleProp="name">
     <!-- Name -->

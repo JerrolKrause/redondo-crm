@@ -32,6 +32,8 @@ export class TableComponent implements OnInit {
     { label: 'Action', prop: 'action' },
   ];
 
+  public filterTerm: string | number | undefined;
+
   constructor() {}
 
   ngOnInit() {}
