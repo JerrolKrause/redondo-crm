@@ -2,7 +2,7 @@
   /* Angular Materials Table */
   .mat-table {
     // border: 1px solid #3d3c38;// $brand-primary;
-    &.mat-table-mobile {
+    thead{
       th { vertical-align: middle;}
     }
     &.mat-table-mobile-hide-title thead{display:none;}
