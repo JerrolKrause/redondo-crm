@@ -15,7 +15,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { fromEvent, BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { TableColumnDirective } from './directives/column.directive';
-import { TableColumnDefinition, RowsPivot, TableColumnMapped } from './table';
+import { TableColumnDefinition, RowsPivot, TableColumnMapped, TableSource, TableSourcePivot } from './table';
 
 @Component({
   selector: 'app-table',
@@ -31,17 +31,9 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   // @Input() columnsMobile: TableColumnDefinition[] = this.columns;
 
   @Input() canSort = true;
-  @Input() mobileBehavior: 'cards' | 'scroll' = 'cards';
+  @Input() mobileBehavior: 'cards' | 'scroll' = 'scroll';
   @Input() mobileBreakpoint = 998;
   @Input() mobileTitleProp: string | undefined;
-
-  public dataSource!: MatTableDataSource<any[]>;
-  public columnDefinitions: string[] = [];
-
-  public rowsPivot: RowsPivot[] = [];
-  public columnsPivot = [{ label: 'Label', prop: 'label' }, { label: 'value', prop: 'value' }];
-  public columnDefinitionsPivot: string[] = ['label', 'value'];
-  public loaded$ = new BehaviorSubject<boolean>(false);
 
   public isMobile$ = fromEvent(window, 'resize').pipe(
     debounceTime(100),
@@ -51,13 +43,8 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     distinctUntilChanged(), // Only update on changes
   );
 
-  /**
-  public columns$ = this.isMobile$.pipe(
-    switchMap(isMobile => {
-      return isMobile ? this.columnsPivot : this.columnsMapped;
-    }),
-  );
-   */
+  public tableData$ = new BehaviorSubject<TableSource | null>(null);
+  public tableDataPivot$ = new BehaviorSubject<TableSourcePivot | null>(null);
 
   @ViewChildren(MatSort) sort!: QueryList<MatSort>;
 
@@ -73,49 +60,46 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   get columnTemplates(): QueryList<TableColumnDirective> {
     return this._columnTemplates;
   }
-
-  public columnsMapped: TableColumnMapped[] = [];
+  private loaded = false;
 
   constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     if (this.mobileBehavior === 'cards' && !this.mobileTitleProp) {
-      console.warn('mobileTitleProp is required for card view');
+      console.error('mobileTitleProp is required for card view');
     }
   }
 
-  ngOnChanges() {}
+  ngOnChanges() {
+    if (this.loaded) {
+      this.tableData$.next(this.createTableData(this.rows, this.columns, this.columnTemplates));
+      this.tableDataPivot$.next(this.createTableDataPivot(this.rows, this.columns, this.mobileTitleProp));
+    }
+  }
 
   ngAfterViewInit() {
-    this.tableInit();
-    this.loaded$.next(true);
-    this.ref.markForCheck()
+    this.tableData$.next(this.createTableData(this.rows, this.columns, this.columnTemplates));
+    this.tableDataPivot$.next(this.createTableDataPivot(this.rows, this.columns, this.mobileTitleProp));
+    this.loaded = true;
     setTimeout(() => this.ref.markForCheck());
   }
 
   /**
-   *
+   * Create the structured data needed by the table
+   * @param rows
+   * @param columns
+   * @param templates
    */
-  public tableInit() {
-    // Null check
-    if (!this.rows.length || !this.columns.length) {
-      return;
-    }
-    // Attach custom column templates
-    this.columnsMapped = this.columnsTemplateAttach(this.columns, this.columnTemplates);
-    // Add datasource from the rows to the datatable
-    this.dataSource = new MatTableDataSource(this.rows);
-    // Extract a string array from the columns prop for the table to use for column definitions
-    this.columnDefinitions = this.columns.map(column => column.prop);
-    // Enable sorting
+  public createTableData(rows: any[], columns: TableColumnDefinition[], templates: QueryList<TableColumnDirective>) {
+    const tableData: TableSource = {
+      dataSource: new MatTableDataSource(rows),
+      columns: this.columnsTemplateAttach(columns, templates),
+      columnDefinitions: this.columns.map(column => column.prop),
+    };
     if (this.canSort) {
-      this.dataSource.sort = this.sort.toArray()[0];
+      tableData.dataSource.sort = this.sort.toArray()[0];
     }
-    if (this.mobileBehavior === 'cards') {
-      // Create the pivot rows for the mobile view
-      this.rowsPivot = this.pivotTable(this.rows, this.columnsMapped, this.mobileTitleProp);
-      console.log(this.rowsPivot);
-    }
+    return tableData;
   }
 
   /**
@@ -124,7 +108,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
    * @param columns
    * @param propTitle
    */
-  public pivotTable(rows: any[], columns: TableColumnMapped[], propTitle?: string) {
+  public createTableDataPivot(rows: any[], columns: TableColumnMapped[], propTitle?: string): TableSourcePivot {
     const rowsPivot: RowsPivot[] = [];
     // Loop through all rows
     rows.forEach(row => {
@@ -152,7 +136,11 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
         rowTitle: titlePropNew,
       });
     });
-    return rowsPivot;
+    return {
+      rows: rowsPivot,
+      columns: [{ label: 'Label', prop: 'label' }, { label: 'value', prop: 'value' }],
+      columnDefinitions: ['label', 'value'],
+    };
   }
 
   /**

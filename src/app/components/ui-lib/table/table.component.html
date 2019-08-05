@@ -1,18 +1,21 @@
-<div *ngIf="{ isMobile: isMobile$ | async } as table" class="ui-table">
-  <!-- Desktop View OR Scrollable Mobile View-->
+<div *ngIf="{ data: tableData$ | async, isMobile: isMobile$ | async } as table" class="ui-table">
+  <!-- Loading -->
+  <ng-container *ngIf="!table.data"><i class="fa fa-spinner fa-spin"></i> Loading...</ng-container>
+
+  <!-- Table data available -->
   <div
-    *ngIf="!table.isMobile || (table.isMobile && mobileBehavior !== 'cards'); else cardView"
+    *ngIf="table.data && (!table.isMobile || (table.isMobile && mobileBehavior !== 'cards')); else cardView"
     [ngClass]="{ 'table-responsive': table.isMobile }"
   >
     <table
       mat-table
-      [dataSource]="dataSource"
+      [dataSource]="table.data.dataSource"
       matSort
       class="w-100 mb-0"
-      [ngClass]="{ 'mat-table-mobile mb-3': isMobile, 'mat-table-mobile-hide-title': isMobile && !rowTitle }"
+      [ngClass]="{ 'mat-table-mobile mb-3': table.isMobile }"
     >
       <!-- Loop through columns-->
-      <ng-container *ngFor="let column of columnsMapped">
+      <ng-container *ngFor="let column of table.data.columns">
         <ng-container [matColumnDef]="column.prop">
           <!-- Desktop headers -->
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -36,19 +39,11 @@
         </ng-container>
       </ng-container>
 
-      <!-- Mobile header 
-        <ng-container matColumnDef="mobile-header">
-          <th mat-header-cell *matHeaderCellDef colspan="2">
-            <span [innerHTML]="rowTitle"></span>
-          </th>
-        </ng-container>
-        -->
-
       <!-- Table Header, determine if mobile or desktop -->
-      <tr mat-header-row *matHeaderRowDef="columnDefinitions"></tr>
+      <tr mat-header-row *matHeaderRowDef="table.data.columnDefinitions"></tr>
 
       <!-- Table Rows -->
-      <tr mat-row *matRowDef="let row; columns: columnDefinitions"></tr>
+      <tr mat-row *matRowDef="let row; columns: table.data.columnDefinitions"></tr>
     </table>
   </div>
 </div>
@@ -57,22 +52,16 @@
     Mobile card view 
   -->
 <ng-template #cardView>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let row of rowsPivot">
+  <mat-accordion *ngIf="(tableDataPivot$ | async) as tableData">
+    <mat-expansion-panel *ngFor="let row of tableData.rows">
       <mat-expansion-panel-header *ngIf="row.rowTitle">
         <mat-panel-title>
           {{ row.rowTitle }}
         </mat-panel-title>
       </mat-expansion-panel-header>
       <table mat-table [dataSource]="row.dataSource" class="w-100 mb-0 table-striped">
-        <ng-container *ngFor="let column of columnsPivot">
+        <ng-container *ngFor="let column of tableData.columns">
           <ng-container [matColumnDef]="column.prop">
-            <!-- Desktop headers
-                <th mat-header-cell *matHeaderCellDef class="d-none">
-                  <span [innerHTML]="column.label"></span>
-  
-                </th> -->
-
             <!-- Cell Content-->
             <ng-container *matCellDef="let element">
               <td mat-cell>
@@ -97,12 +86,8 @@
             </ng-container>
           </ng-container>
         </ng-container>
-
-        <!-- Table Header, determine if mobile or desktop 
-            <tr mat-header-row *matHeaderRowDef="columnDefinitionsPivot"></tr>
-            -->
         <!-- Table Rows -->
-        <tr mat-row *matRowDef="let row; columns: columnDefinitionsPivot"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableData.columnDefinitions"></tr>
       </table>
     </mat-expansion-panel>
   </mat-accordion>

@@ -13,3 +13,15 @@ interface RowsPivot {
   dataSource: MatTableDataSource<TableColumnMapped[]>;
   rowTitle?: string | null;
 }
+
+interface TableSource {
+  dataSource: MatTableDataSource<TableColumnMapped[]>;
+  columns: TableColumnDefinition[];
+  columnDefinitions: string[];
+}
+
+interface TableSourcePivot {
+  rows: RowsPivot[];
+  columns: TableColumnDefinition[];
+  columnDefinitions: string[];
+}
