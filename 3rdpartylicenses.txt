@@ -99,6 +99,8 @@ THE SOFTWARE.
 
 @angular/material/menu
 
+@angular/material/paginator
+
 @angular/material/select
 
 @angular/material/sort
@@ -1032,8 +1034,6 @@ licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
 
-undefined
-
 lodash.throttle
 MIT
 Copyright jQuery Foundation and other contributors <https://jquery.org/>
@@ -1084,6 +1084,8 @@ maintained libraries used by this software which have their own
 licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
+
+undefined
 
 positioning
 MIT
