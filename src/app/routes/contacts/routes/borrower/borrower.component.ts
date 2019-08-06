@@ -21,13 +21,14 @@ export class BorrowerComponent implements OnInit, OnDestroy {
   public leads = leads;
   public columnsLeads: NtsTable.Column[] = [
     { label: 'Created', prop: 'created', type: 'date' },
-    { label: 'Created 2', prop: 'created2', type: 'date' },
+    { label: 'Date???', prop: 'created2', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'Name', prop: 'name' },
     { label: 'State', prop: 'state' },
     { label: 'Loan Amount', prop: 'loanAmt', type: 'currency' },
     { label: 'Phone', prop: 'phone', type: 'phoneNumber' },
     { label: 'Email', prop: 'email', type: 'email'  },
+    { label: 'Servicing Status', prop: 'servicing' },
     { label: 'Action', prop: 'action' },
   ];
   // private uiState: UiStateService,

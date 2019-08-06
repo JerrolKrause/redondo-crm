@@ -12,7 +12,8 @@ export const leads = [
       condition: '4',
       milestone: 'XXX',
       linked: 'N/A',
-      loanNumber: '153838'
+      loanNumber: '153838',
+      servicing: 'TBD'
     },
     {
       created: '3/14/2019',
@@ -27,7 +28,8 @@ export const leads = [
       condition: '4',
       milestone: 'XXX',
       linked: 'N/A',
-      loanNumber: '643322'
+      loanNumber: '643322',
+      servicing: 'TBD'
     },
     {
       created: '3/13/2019',
@@ -42,7 +44,8 @@ export const leads = [
       condition: '4',
       milestone: 'XXX',
       linked: 'N/A',
-      loanNumber: '628534'
+      loanNumber: '628534',
+      servicing: 'TBD'
     },
     {
       created: '3/12/2019',
@@ -57,7 +60,8 @@ export const leads = [
       condition: '4',
       milestone: 'XXX',
       linked: 'N/A',
-      loanNumber: '983553'
+      loanNumber: '983553',
+      servicing: 'TBD'
     },
   ];
   

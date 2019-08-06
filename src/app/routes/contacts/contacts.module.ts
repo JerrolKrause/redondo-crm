@@ -16,11 +16,12 @@ import { AssociationsComponent } from './components/associations/associations.co
 import { ConvoLogComponent } from './components/convo-log/convo-log.component';
 import { DocRepoComponent } from './components/doc-repo/doc-repo.component';
 import { PipelineComponent } from './components/pipeline/pipeline.component';
+import { TableModule } from '$features';
 
-export const storeName = 'route-UIState'; // Change this property to be unique & route specific, IE 'route-UIState' => 'dashboard-UIState'
+export const storeName = 'contacts-UIState'; 
 
 @NgModule({
-  imports: [CommonModule, SiteModule, routing],
+  imports: [CommonModule, SiteModule, routing, TableModule],
   declarations: [BorrowerComponent, ContactInfoComponent, AssociationsComponent, ConvoLogComponent, DocRepoComponent, PipelineComponent],
   providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
   exports: [],

@@ -27,7 +27,8 @@ button {
 
   &.btn-primary {
     color: #fff;
-    @include gradient($interact-primary-lt, $interact-primary);
+    background-color: $interact-primary;
+    // @include gradient($interact-primary-lt, $interact-primary);
     border: 1px solid $interact-primary;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
     &:hover:not([disabled]) {
