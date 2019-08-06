@@ -3,32 +3,6 @@
     <a class="navbar-brand" [routerLink]="['/']">
       <img class="logo" src="//www.origin8now.com/images/auth-logo-lg.png" alt="Originate Home" />
     </a>
-    <div class="ml-auto pt-3 text-right">
-      <div class="mb-3">
-        <button mat-button class="mr-2 active" [ngClass]="leads ? 'active' : 'disabled'" (click)="leads = !leads">
-          <span *ngIf="leads"><i class="fa fa-check" aria-hidden="true"></i> Leads On</span>
-          <span *ngIf="!leads"><i class="fa fa-remove" aria-hidden="true"></i> Leads Off</span>
-        </button>
-        <button mat-button [ngClass]="calls ? 'active' : 'disabled'" (click)="calls = !calls">
-          <span *ngIf="calls"><i class="fa fa-check" aria-hidden="true"></i> Calls On</span>
-          <span *ngIf="!calls"><i class="fa fa-remove" aria-hidden="true"></i> Calls Off</span>
-        </button>
-      </div>
-      <div>
-        <div class="input-group input-group-sm mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Start typing here..."
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-          />
-          <div class="input-group-append">
-            <button class="active input-group-text" style="background-color: #8DB92E;color:#fff;" id="basic-addon2"><i class="fa fa-search mr-1" aria-hidden="true"></i> Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <nav class="navbar navbar-expand-lg navbar-inverse navbar-ngbootstrap">
     <ng-content></ng-content>

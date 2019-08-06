@@ -21,6 +21,7 @@ export class BorrowerComponent implements OnInit, OnDestroy {
   public leads = leads;
   public columnsLeads: NtsTable.Column[] = [
     { label: 'Created', prop: 'created', type: 'date' },
+    { label: 'Created 2', prop: 'created2', type: 'date' },
     { label: 'Status', prop: 'status' },
     { label: 'Name', prop: 'name' },
     { label: 'State', prop: 'state' },

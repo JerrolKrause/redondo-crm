@@ -5,5 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './layout-main.component.html',
 })
 export class LayoutMainComponent {
+  public leads = true;
+  public calls = false;
   constructor() {}
 }

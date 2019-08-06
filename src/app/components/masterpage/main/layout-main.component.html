@@ -1,3 +1,33 @@
 <app-header> <app-nav class="nav-component"></app-nav> </app-header>
+<div class="container-fluid">
+  <mat-card class="d-flex mb-3">
+    <div>
+      <button mat-button class="mr-2 active" [ngClass]="leads ? 'active' : 'disabled'" (click)="leads = !leads">
+        <span *ngIf="leads"><i class="fa fa-check" aria-hidden="true"></i> Leads On</span>
+        <span *ngIf="!leads"><i class="fa fa-remove" aria-hidden="true"></i> Leads Off</span>
+      </button>
+      <button mat-button [ngClass]="calls ? 'active' : 'disabled'" (click)="calls = !calls">
+        <span *ngIf="calls"><i class="fa fa-check" aria-hidden="true"></i> Calls On</span>
+        <span *ngIf="!calls"><i class="fa fa-remove" aria-hidden="true"></i> Calls Off</span>
+      </button>
+    </div>
+
+    <div class="input-group input-group-sm ml-auto" style="max-width:300px;">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Start typing here..."
+        aria-label="Recipient's username"
+        aria-describedby="basic-addon2"
+      />
+      <div class="input-group-append">
+        <button class="active input-group-text" style="background-color: #8DB92E;color:#fff;" id="basic-addon2">
+          <i class="fa fa-search mr-1" aria-hidden="true"></i> Search
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
 <main><router-outlet></router-outlet></main>
 <app-footer></app-footer>
