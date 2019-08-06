@@ -8,14 +8,13 @@ import { TableColumnHeaderDirective } from './directives/cell-header.directive';
 import { TableColumnDirective } from './directives/column.directive';
 
 import { TableComponent } from './table.component';
+import { MatTableModule, MatSortModule, MatPaginatorModule } from '@angular/material';
 
-const Components = [
-  TableComponent, TableColumnCellDirective, TableColumnHeaderDirective, TableColumnDirective
-];
+const Components = [TableComponent, TableColumnCellDirective, TableColumnHeaderDirective, TableColumnDirective];
 
 @NgModule({
   declarations: [Components],
-  imports: [CommonModule, VendorModule, SharedModule],
-  exports: [Components]
+  imports: [CommonModule, VendorModule, SharedModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  exports: [Components, MatTableModule, MatSortModule, MatPaginatorModule],
 })
-export class TableModule { }
+export class NtsTableModule {}

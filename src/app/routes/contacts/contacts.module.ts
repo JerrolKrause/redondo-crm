@@ -16,12 +16,12 @@ import { AssociationsComponent } from './components/associations/associations.co
 import { ConvoLogComponent } from './components/convo-log/convo-log.component';
 import { DocRepoComponent } from './components/doc-repo/doc-repo.component';
 import { PipelineComponent } from './components/pipeline/pipeline.component';
-import { TableModule } from '$features';
+import { NtsTableModule } from '$features';
 
 export const storeName = 'contacts-UIState'; 
 
 @NgModule({
-  imports: [CommonModule, SiteModule, routing, TableModule],
+  imports: [CommonModule, SiteModule, routing, NtsTableModule],
   declarations: [BorrowerComponent, ContactInfoComponent, AssociationsComponent, ConvoLogComponent, DocRepoComponent, PipelineComponent],
   providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
   exports: [],

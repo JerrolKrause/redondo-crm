@@ -18,10 +18,7 @@ import {
   MatAutocompleteModule,
   MatCheckboxModule,
   MatButtonToggleModule,
-  MatPaginatorModule,
   MatTooltipModule,
-  MatTableModule,
-  MatSortModule,
 } from '@angular/material';
 
 const modules = [
@@ -40,10 +37,7 @@ const modules = [
   MatAutocompleteModule,
   MatCheckboxModule,
   MatButtonToggleModule,
-  MatPaginatorModule,
   MatTooltipModule,
-  MatTableModule,
-  MatSortModule,
 ];
 
 @NgModule({

@@ -25,10 +25,6 @@ import { CounterComponent } from './counter/counter.component';
 // Form Tools
 import { UILibModule } from './ui-lib/ui-lib.module';
 
-// Tables
-import { LeadsTableComponent } from './tables/leads/leads.component';
-import { LoansTableComponent } from './tables/loans/loans.component';
-
 // Modals include
 const APP_MODALS = [ConfirmationModalComponent, LogoutModalComponent, FeedbackComponent];
 
@@ -44,8 +40,6 @@ export const APP_COMPONENTS = [
   ErrorComponent,
   CounterComponent,
   DomainStateComponent,
-  LeadsTableComponent,
-  LoansTableComponent,
 ];
 
 @NgModule({
