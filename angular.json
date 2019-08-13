@@ -11,7 +11,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "lazyModules": ["src/app/features/chart/chart.module", "src/app/features/grid/grid.module", "src/app/features/map/map.module", "src/app/features/table/table.module"],
+            "lazyModules": [
+              "src/app/features/chart/chart.module",
+              "src/app/features/grid/grid.module",
+              "src/app/features/map/map.module",
+              "src/app/features/table/table.module",
+              "src/app/features/calendar/calendar.module"
+            ],
             "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",

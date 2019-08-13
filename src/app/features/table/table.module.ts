@@ -15,6 +15,6 @@ const Components = [TableComponent, TableColumnCellDirective, TableColumnHeaderD
 @NgModule({
   declarations: [Components],
   imports: [CommonModule, VendorModule, SharedModule, MatTableModule, MatSortModule, MatPaginatorModule],
-  exports: [Components, MatTableModule, MatSortModule, MatPaginatorModule],
+  exports: [Components],
 })
 export class NtsTableModule {}
