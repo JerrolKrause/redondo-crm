@@ -1,4 +1,8 @@
 <div class="container-fluid">
+  <div class="mb-3 text-right">
+    <button mat-button class="mat-reverse mr-2"><i class="fa fa-user-plus"></i> Import</button>
+    <button mat-button class="mat-reverse"><i class="fa fa-user-plus"></i> Add</button>
+  </div>
   <nts-table [rows]="leads" [columns]="columnsLeads">
     <!-- Name -->
     <table-column-template field="name">
