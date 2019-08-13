@@ -1,3 +1,31 @@
 <div class="container-fluid">
-  Hello World
+  <nts-table [rows]="leads" [columns]="columnsLeads">
+    <!-- Name -->
+    <table-column-template field="name">
+      <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
+        Borrower Name
+      </ng-template>
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts">{{ value }}</a>
+      </ng-template>
+    </table-column-template>
+    <!-- Name -->
+    <table-column-template field="action">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
+      </ng-template>
+    </table-column-template>
+
+    <table-column-template field="company">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts/company">{{ value }}</a>
+      </ng-template>
+    </table-column-template>
+
+    <table-column-template field="members">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a (click)="modalOpenMembers()" style="box-shadow: none;"><i class="fa fa-users"></i> (4)</a>
+      </ng-template>
+    </table-column-template>
+  </nts-table>
 </div>

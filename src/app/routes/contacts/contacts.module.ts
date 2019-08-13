@@ -18,6 +18,7 @@ import { DocRepoComponent } from './components/doc-repo/doc-repo.component';
 import { PipelineComponent } from './components/pipeline/pipeline.component';
 import { NtsTableModule } from '$features';
 import { CompanyComponent } from './routes/company/company.component';
+import { MembersComponent } from './components/modals/members/members.component';
 
 export const storeName = 'contacts-UIState';
 
@@ -31,9 +32,10 @@ export const storeName = 'contacts-UIState';
     DocRepoComponent,
     PipelineComponent,
     CompanyComponent,
+    MembersComponent,
   ],
   providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
   exports: [],
-  entryComponents: [],
+  entryComponents: [MembersComponent],
 })
 export class ContactsModule {}

@@ -1,9 +1,12 @@
 export const leads = [
     {
+      company: 'Farlong Holdings - LLC',
+      channel: 'Retail',
       created: '3/15/2019',
       status: 'New',
       name: 'George Smith',
       state: 'CA',
+      city: 'Irvine',
       loanAmt: 455980,
       phone: '555555555',
       email: 'george@smith.com',
@@ -13,13 +16,19 @@ export const leads = [
       milestone: 'XXX',
       linked: 'N/A',
       loanNumber: '153838',
-      servicing: 'TBD'
+      servicing: 'TBD',
+      type: 'Org',
+      units: 7,
+      volume: '6.4MM'
     },
     {
+      company: 'Farlong Holdings - LLC',
+      channel: 'Wholesale',
       created: '3/14/2019',
       status: 'In Progress',
       name: 'Walter White',
       state: 'OR',
+      city: 'Irvine',
       loanAmt: 324456,
       phone: '555555555',
       email: 'walter@white.com',
@@ -29,13 +38,19 @@ export const leads = [
       milestone: 'XXX',
       linked: 'N/A',
       loanNumber: '643322',
-      servicing: 'TBD'
+      servicing: 'TBD',
+      type: 'Org',
+      units: 7,
+      volume: '6.4MM'
     },
     {
+      company: 'Farlong Holdings - LLC',
+      channel: 'Retail',
       created: '3/13/2019',
       status: 'Cold',
       name: 'Ashley Windston',
       state: 'AZ',
+      city: 'Irvine',
       loanAmt: 324456,
       phone: '555555555',
       email: 'ashley@windston.com',
@@ -45,13 +60,19 @@ export const leads = [
       milestone: 'XXX',
       linked: 'N/A',
       loanNumber: '628534',
-      servicing: 'TBD'
+      servicing: 'TBD',
+      type: 'Org',
+      units: 7,
+      volume: '6.4MM'
     },
     {
+      company: 'Farlong Holdings - LLC',
+      channel: 'Wholesale',
       created: '3/12/2019',
       status: 'DNQ',
       name: 'Robert Mendez',
       state: 'AZ',
+      city: 'Irvine',
       loanAmt: 324456,
       phone: '555555555',
       email: 'robert@mendez.com',
@@ -61,7 +82,10 @@ export const leads = [
       milestone: 'XXX',
       linked: 'N/A',
       loanNumber: '983553',
-      servicing: 'TBD'
+      servicing: 'TBD',
+      type: 'Org',
+      units: 7,
+      volume: '6.4MM'
     },
   ];
   
