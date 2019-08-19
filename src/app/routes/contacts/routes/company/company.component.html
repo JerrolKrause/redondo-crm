@@ -4,7 +4,7 @@
     <button mat-button class="mat-reverse"><i class="fa fa-user-plus"></i> Add</button>
   </div>
   <nts-table [rows]="leads" [columns]="columnsLeads">
-    <!-- Name -->
+
     <table-column-template field="name">
       <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
         Name
@@ -13,7 +13,7 @@
         <a routerLink="/contacts">{{ value }}</a>
       </ng-template>
     </table-column-template>
-    <!-- Name -->
+    
     <table-column-template field="action">
       <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
         <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
@@ -39,7 +39,7 @@
 
     <table-column-template field="company">
       <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <a routerLink="/contacts/company">{{ value }}</a>
+        <a routerLink="/contacts/company/123">{{ value }}</a>
       </ng-template>
     </table-column-template>
     

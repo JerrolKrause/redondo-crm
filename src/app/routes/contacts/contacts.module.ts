@@ -19,6 +19,9 @@ import { PipelineComponent } from './components/pipeline/pipeline.component';
 import { NtsTableModule } from '$features';
 import { CompanyComponent } from './routes/company/company.component';
 import { MembersComponent } from './components/modals/members/members.component';
+import { ProfileComponent } from './routes/company/profile/profile.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { AssociationsCompanyComponent } from './components/associations-company/associations-company.component';
 
 export const storeName = 'contacts-UIState';
 
@@ -33,6 +36,9 @@ export const storeName = 'contacts-UIState';
     PipelineComponent,
     CompanyComponent,
     MembersComponent,
+    ProfileComponent,
+    CompanyInfoComponent,
+    AssociationsCompanyComponent,
   ],
   providers: [RouteUiStateService, RouteUiStateStore, RouteUiStateQuery, RouteDomainStateService],
   exports: [],

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <mat-card class="mb-4">
+    <app-company-info></app-company-info>
+  </mat-card>
+  <div class="row">
+    <div class="col col-12 col-md-4">
+      <mat-card class="mb-4">
+        <h2>ASSOCIATIONS</h2>
+        <hr />
+        <app-associations-company></app-associations-company>
+      </mat-card>
+      <mat-card class="mb-4">
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Docs (4 / 18)</button>
+        </div>
+        <h2>DOCUMENT REPOSITORY</h2>
+        <hr />
+        <app-doc-repo></app-doc-repo>
+      </mat-card>
+    </div>
+    <div class="col col-12 col-md-8">
+      <mat-card class="mb-4">
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Logs (8 / 33)</button>
+        </div>
+        <h2>CONVERSATION LOG</h2>
+        <app-convo-log></app-convo-log>
+      </mat-card>
+      <mat-card class="mb-4">
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans (4 / 7)</button>
+        </div>
+        <h2>
+          Pipeline
+          <em>
+            <small>(Open/Pending/Post Loans)</small>
+          </em>
+        </h2>
+        <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
+          <!-- Name -->
+          <table-column-template field="name">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a> {{ value }}</a>
+            </ng-template>
+          </table-column-template>
+          <!-- Name -->
+          <table-column-template field="action">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a><i class="fa fa-eye"></i> View Lead</a>
+            </ng-template>
+          </table-column-template>
+        </nts-table>
+      </mat-card>
+    </div>
+  </div>
+</div>
