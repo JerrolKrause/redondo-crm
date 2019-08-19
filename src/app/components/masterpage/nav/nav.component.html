@@ -42,6 +42,13 @@
           <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             CRM
           </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/contacts"><i class="fa fa-user"></i> Contact</a>
+            <a class="dropdown-item" routerLink="/contacts/company"><i class="fa fa-id-card-o" aria-hidden="true"></i> Company</a>
+            <!--
+            <div class="dropdown-divider"></div>
+            -->
+          </div>
         </li>
       </ul>
 

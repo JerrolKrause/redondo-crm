@@ -29,6 +29,13 @@
       }
     }
   }
+
+  .nav-link:hover + .dropdown-menu, .dropdown-menu:hover{
+    display:block;left: initial;margin: 0;
+    a{box-shadow:none;}
+  }
+  .dropdown-menu:hover{}
+
   #navbar-main .link {
     color: #8f9daf;
   }

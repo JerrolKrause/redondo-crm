@@ -1,5 +1,6 @@
 export const leads = [
     {
+      title: 'Broker Admin',
       company: 'Farlong Holdings - LLC',
       channel: 'Retail',
       created: '3/15/2019',
@@ -19,9 +20,11 @@ export const leads = [
       servicing: 'TBD',
       type: 'Org',
       units: 7,
-      volume: '6.4MM'
+      volume: '$6,425,000',
+      active: true
     },
     {
+      title: 'Broker Admin',
       company: 'Farlong Holdings - LLC',
       channel: 'Wholesale',
       created: '3/14/2019',
@@ -41,9 +44,11 @@ export const leads = [
       servicing: 'TBD',
       type: 'Org',
       units: 7,
-      volume: '6.4MM'
+      volume: '$2,325,000',
+      active: true
     },
     {
+      title: 'Loan Officer',
       company: 'Farlong Holdings - LLC',
       channel: 'Retail',
       created: '3/13/2019',
@@ -63,9 +68,11 @@ export const leads = [
       servicing: 'TBD',
       type: 'Org',
       units: 7,
-      volume: '6.4MM'
+      volume: '$625,000',
+      active: false
     },
     {
+      title: 'Loan Officer',
       company: 'Farlong Holdings - LLC',
       channel: 'Wholesale',
       created: '3/12/2019',
@@ -85,7 +92,8 @@ export const leads = [
       servicing: 'TBD',
       type: 'Org',
       units: 7,
-      volume: '6.4MM'
+      volume: '$22,625,000',
+      active: true
     },
   ];
   

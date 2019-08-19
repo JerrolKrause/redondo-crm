@@ -24,13 +24,15 @@ export class CompanyComponent implements OnInit, OnDestroy {
   public columnsLeads: NtsTable.Column[] = [
     { label: 'Channel', prop: 'channel' },
     { label: 'Company', prop: 'company' },
+    { label: 'Owner', prop: 'name' },
+    { label: 'Title', prop: 'title' },
     { label: 'Type', prop: 'type' },
     { label: 'Address', prop: 'address' },
     { label: 'City', prop: 'city' },
     { label: 'State', prop: 'state' },
-    { label: 'Owner', prop: 'name' },
     { label: 'Units', prop: 'units' },
     { label: 'Volume', prop: 'volume' },
+    { label: 'Active', prop: 'active' },
     { label: 'Members', prop: 'members' },
   ];
 
