@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="d-flex">
+    <h1>Alerts &amp; Tasks</h1>
+    <div class="ml-auto d-flex">
+      <div class="mr-3">
+        <mat-button-toggle-group class="sm" [(ngModel)]="filter1">
+          <mat-button-toggle value="today">Today</mat-button-toggle>
+          <mat-button-toggle value="week">This Week</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="small mr-3">
+        <mat-card class="py-1 px-3">
+          <small class="mr-3"><em>Tasks Due</em></small>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksDue.overdue">Overdue</mat-checkbox> </span>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksDue.today">Today</mat-checkbox> </span>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksDue.week"> This Week </mat-checkbox></span>
+        </mat-card>
+      </div>
+      <div class="small">
+        <mat-card class="py-1 px-3">
+          <small class="mr-3"><em> All Tasks</em></small>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksAll.open">Open</mat-checkbox> </span>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksAll.all">All</mat-checkbox> </span>
+          <span class="mr-2"> <mat-checkbox [(ngModel)]="tasksAll.completed"> Completed</mat-checkbox></span>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <nts-table [rows]="leads$ | async" [columns]="columns">
+    <table-column-template field="created2">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <mat-checkbox></mat-checkbox>
+      </ng-template>
+    </table-column-template>
+
+    <table-column-template field="name">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a routerLink="/contacts"> {{ value }}</a>
+      </ng-template>
+    </table-column-template>
+
+    <table-column-template field="description">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        Capitalize on low hanging fruit to identify a ballpark value added activity to beta test... <a>More</a>
+      </ng-template>
+    </table-column-template>
+
+    <table-column-template field="action">
+      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+        <a class="mr-2" style="box-shadow:none;"><i class="fa fa-phone fa-2x"></i></a>
+        <a class="mr-2" style="box-shadow:none;"><i class="fa fa-envelope fa-2x"></i></a>
+        <a class="mr-2" style="box-shadow:none;"><i class="fa fa-eye fa-2x"></i></a>
+        <a class="mr-2" style="box-shadow:none;"><i class="fa fa-edit fa-2x"></i></a>
+        <a class="mr-2" style="box-shadow:none;"><i class="fa fa-clock-o fa-2x"></i></a>
+      </ng-template>
+    </table-column-template>
+  </nts-table>
+</div>

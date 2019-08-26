@@ -27,6 +27,7 @@ export class CompanyComponent implements OnInit, OnDestroy {
     { label: 'Owner', prop: 'name' },
     { label: 'Title', prop: 'title' },
     { label: 'Type', prop: 'type' },
+    { label: 'Handling', prop: 'handling' },
     { label: 'Address', prop: 'address' },
     { label: 'City', prop: 'city' },
     { label: 'State', prop: 'state' },

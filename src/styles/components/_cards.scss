@@ -38,3 +38,7 @@ mat-card.mat-card{
   background-color:#fff;border-radius:0;font-family: inherit;border: 1px solid rgba(0, 0, 0, 0.2);
   .mat-card-title{font-size:20px;}
 }
+
+.mat-card{
+  .mat-checkbox label{margin: 0;}
+}

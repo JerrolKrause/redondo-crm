@@ -52,14 +52,25 @@ export const ROUTES: Routes = [
         loadChildren: () => import('./routes/_route/route.module').then(m => m.RouteModule),
         canActivate: [AuthGuard],
       },
-
       {
         path: 'contacts',
         // pathMatch: 'full',
         loadChildren: () => import('./routes/contacts/contacts.module').then(m => m.ContactsModule),
         canActivate: [AuthGuard],
       },
-
+      {
+        path: 'leads',
+        // pathMatch: 'full',
+        loadChildren: () => import('./routes/leads/leads.module').then(m => m.LeadsModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'alerts-tasks',
+        // pathMatch: 'full',
+        loadChildren: () => import('./routes/alerts-tasks/alerts-tasks.module').then(m => m.AlertsTasksModule),
+        canActivate: [AuthGuard],
+      },
+      
       // Empty path string for homepage ('') needs to be LAST otherwise it catches all other routes
       {
         path: '',
