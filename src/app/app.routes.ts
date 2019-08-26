@@ -65,6 +65,12 @@ export const ROUTES: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: 'search',
+        // pathMatch: 'full',
+        loadChildren: () => import('./routes/search/search.module').then(m => m.SearchModule),
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'alerts-tasks',
         // pathMatch: 'full',
         loadChildren: () => import('./routes/alerts-tasks/alerts-tasks.module').then(m => m.AlertsTasksModule),

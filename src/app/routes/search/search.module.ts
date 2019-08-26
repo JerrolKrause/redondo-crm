@@ -14,7 +14,7 @@ import { RouteUiStateQuery, RouteUiStateService, RouteUiStateStore } from './sha
 import { RouteDomainStateService } from './shared/state/domain';
 import { NtsTableModule } from '$features';
 
-export const storeName = 'leads-UIState'; // Change this property to be unique & route specific, IE 'route-UIState' => 'dashboard-UIState'
+export const storeName = 'search-UIState'; // Change this property to be unique & route specific, IE 'route-UIState' => 'dashboard-UIState'
 
 @NgModule({
   imports: [CommonModule, SiteModule, routing, NtsTableModule],
@@ -23,4 +23,4 @@ export const storeName = 'leads-UIState'; // Change this property to be unique &
   exports: [],
   entryComponents: [],
 })
-export class LeadsModule {}
+export class SearchModule {}
