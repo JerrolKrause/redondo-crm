@@ -2,10 +2,8 @@
   <div class="d-flex">
     <h1>Search Results</h1>
     <div class="ml-auto d-flex">
-      
       <div class="small">
         <mat-card class="py-1 px-3">
-
           <small class="mr-3"><em> Only show</em></small>
           <span class="mr-2"> <mat-checkbox [(ngModel)]="toggle.open">Contact</mat-checkbox> </span>
           <span class="mr-2"> <mat-checkbox [(ngModel)]="toggle.test">Company</mat-checkbox> </span>
@@ -15,7 +13,6 @@
       </div>
     </div>
   </div>
-
 
   <nts-table [rows]="leads$ | async" [columns]="columns">
     <table-column-template field="created2">

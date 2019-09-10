@@ -39,6 +39,10 @@ mat-card.mat-card{
   .mat-card-title{font-size:20px;}
 }
 
-.mat-card{
+
+body .mat-card{
+  border-radius: 1rem;
+  border: 0;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.05)!important;
   .mat-checkbox label{margin: 0;}
 }

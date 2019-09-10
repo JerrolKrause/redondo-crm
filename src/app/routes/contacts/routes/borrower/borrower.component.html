@@ -1,4 +1,21 @@
 <div class="container-fluid">
+  <div class="row">
+    <div class="col col-12 col-md-9">
+      <mat-card>
+        <app-contact-info></app-contact-info>
+      </mat-card>
+    </div>
+    <div class="col col-12 col-md-3">
+      <h2>Associations</h2>
+      <mat-card>
+        <app-associations></app-associations>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<HR />
+<div class="container-fluid">
   <mat-card class="mb-4">
     <app-contact-info></app-contact-info>
   </mat-card>
@@ -10,42 +27,47 @@
         <app-associations></app-associations>
       </mat-card>
       <mat-card class="mb-4">
-          <div class="small float-right mt-1"><button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Docs (4 / 18)</button> </div>
-          <h2>DOCUMENT REPOSITORY</h2>
-          <hr />
-          <app-doc-repo></app-doc-repo>
-        </mat-card>
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Docs (4 / 18)</button>
+        </div>
+        <h2>DOCUMENT REPOSITORY</h2>
+        <hr />
+        <app-doc-repo></app-doc-repo>
+      </mat-card>
     </div>
     <div class="col col-12 col-md-8">
       <mat-card class="mb-4">
-          <div class="small float-right mt-1"><button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Logs (8 / 33)</button> </div>
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Logs (8 / 33)</button>
+        </div>
         <h2>CONVERSATION LOG</h2>
         <app-convo-log></app-convo-log>
       </mat-card>
       <mat-card class="mb-4">
-          <div class="small float-right mt-1"><button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans (4 / 7)</button> </div>
-          <h2>
-            Pipeline
-            <em>
-              <small>(Open/Pending/Post Loans)</small>
-            </em>
-          </h2>
-          <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
-            <!-- Name -->
-            <table-column-template field="name">
-              <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-                <a> {{ value }}</a>
-              </ng-template>
-            </table-column-template>
-            <!-- Name -->
-            <table-column-template field="action">
-              <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-                <a><i class="fa fa-eye"></i> View Lead</a>
-              </ng-template>
-            </table-column-template>
-          </nts-table>
-        </mat-card>
+        <div class="small float-right mt-1">
+          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans (4 / 7)</button>
+        </div>
+        <h2>
+          Pipeline
+          <em>
+            <small>(Open/Pending/Post Loans)</small>
+          </em>
+        </h2>
+        <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
+          <!-- Name -->
+          <table-column-template field="name">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a> {{ value }}</a>
+            </ng-template>
+          </table-column-template>
+          <!-- Name -->
+          <table-column-template field="action">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a><i class="fa fa-eye"></i> View Lead</a>
+            </ng-template>
+          </table-column-template>
+        </nts-table>
+      </mat-card>
     </div>
   </div>
- 
 </div>

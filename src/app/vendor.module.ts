@@ -19,6 +19,7 @@ import {
   MatCheckboxModule,
   MatButtonToggleModule,
   MatTooltipModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 const modules = [
@@ -38,6 +39,7 @@ const modules = [
   MatCheckboxModule,
   MatButtonToggleModule,
   MatTooltipModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
