@@ -1,7 +1,7 @@
 // Global branded styling. App specific styling should NOT go in this file
 a {
   cursor: pointer;
-  color: $interact-primary;
+  color: #3f56ca;
   box-shadow: inset 0 0px 0 white, inset 0 -1px 0 #337ab7;
   &:hover {
   }
@@ -18,6 +18,6 @@ a {
     color: #a2a2a2 !important;
   }
   &:not([href]):not([tabindex]) {
-    color: $interact-primary-dk;
+    color: #3f56ca;
   }
 }

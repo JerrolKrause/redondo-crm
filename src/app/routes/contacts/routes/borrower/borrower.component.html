@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mb-4">
     <div class="col col-12 col-md-9">
       <mat-card>
         <app-contact-info></app-contact-info>
@@ -12,8 +12,48 @@
       </mat-card>
     </div>
   </div>
-</div>
 
+  <div class="row mb-4">
+    <div class="col col-12 col-md-9">
+      <button class="btn btn-secondary btn-sm float-right">View All (4/7) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>Conversation Log</h2>
+      <mat-card class="mb-4">
+        <app-convo-log></app-convo-log>
+      </mat-card>
+      <button class="btn btn-secondary btn-sm float-right">View All (4/7) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>
+        Loans / Pipeline
+        <em>
+          <small>(Open/Pending/Post Loans)</small>
+        </em>
+      </h2>
+      <mat-card class="mb-4">
+        <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
+          <!-- Name -->
+          <table-column-template field="name">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a> {{ value }}</a>
+            </ng-template>
+          </table-column-template>
+          <!-- Name -->
+          <table-column-template field="action">
+            <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+              <a><i class="fa fa-eye"></i> View Lead</a>
+            </ng-template>
+          </table-column-template>
+        </nts-table>
+      </mat-card>
+    </div>
+    <div class="col col-12 col-md-3">
+      <button class="btn btn-secondary btn-sm float-right">View All (3/9) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>Documents</h2>
+      <mat-card>
+        <app-doc-repo></app-doc-repo>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<!--
 <HR />
 <div class="container-fluid">
   <mat-card class="mb-4">
@@ -54,13 +94,11 @@
           </em>
         </h2>
         <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
-          <!-- Name -->
           <table-column-template field="name">
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
               <a> {{ value }}</a>
             </ng-template>
           </table-column-template>
-          <!-- Name -->
           <table-column-template field="action">
             <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
               <a><i class="fa fa-eye"></i> View Lead</a>
@@ -71,3 +109,4 @@
     </div>
   </div>
 </div>
+-->

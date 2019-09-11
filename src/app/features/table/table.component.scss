@@ -2,38 +2,56 @@
   /* Angular Materials Table */
   .mat-table {
     // border: 1px solid #3d3c38;// $brand-primary;
-    thead{
-      th { vertical-align: middle;}
+    thead {
+      tr {
+        background-color: #f9f9fc;
+        color: #adb0c1;
+      }
+      .mat-sort-header-button{color: #adb0c1;text-transform: uppercase;}
+      th {
+        vertical-align: middle;
+      }
     }
-    &.mat-table-mobile-hide-title thead{display:none;}
+    &.mat-table-mobile-hide-title thead {
+      display: none;
+    }
     tbody {
-      tr:nth-of-type(odd) {background-color: rgba(0, 0, 0, 0.05)}
-      td.mat-cell{padding:8px;}
-      tr:last-child td{border:0;}
+      tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      td.mat-cell {
+        padding: 8px;
+      }
+      tr:last-child td {
+        border: 0;
+      }
     }
   }
-  
+
   /* Responsive Table*/
   .table-responsive {
     overflow-x: initial;
-      overflow-x: auto;
-      &:before {
-        content: '\f0ec \00a0 \f0a6 \00a0 Swipe to scroll left to right';
-        font-family: FontAwesome, Arial;
-        font-size: 0.75rem;
-        padding-left: 5px;
-        color: #a94442;
-      }
-      td,
-      th {
-        white-space: nowrap;
-      }
+    overflow-x: auto;
+    &:before {
+      content: '\f0ec \00a0 \f0a6 \00a0 Swipe to scroll left to right';
+      font-family: FontAwesome, Arial;
+      font-size: 0.75rem;
+      padding-left: 5px;
+      color: #a94442;
+    }
+    td,
+    th {
+      white-space: nowrap;
+    }
   }
 
   /* Card View */
-  .mat-accordion{
-    .mat-expansion-panel-body {padding: 0;}
-    tr td:first-child{padding-left:24px;}
+  .mat-accordion {
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+    tr td:first-child {
+      padding-left: 24px;
+    }
   }
-  
 }
