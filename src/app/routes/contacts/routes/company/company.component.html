@@ -1,61 +1,63 @@
 <div class="container-fluid">
-  <div class="mb-3 text-right">
-    <button mat-button class="mat-reverse mr-2"><i class="fa fa-user-plus"></i> Import</button>
-    <button mat-button class="mat-reverse"><i class="fa fa-user-plus"></i> Add</button>
+  <div class="d-flex w-100">
+    <h1>Company Dashboard</h1>
+    <div class="mb-3 text-right ml-auto">
+      <button mat-button class="mat-reverse mr-2"><i class="fa fa-user-plus"></i> Import</button>
+      <button mat-button class="mat-reverse"><i class="fa fa-user-plus"></i> Add</button>
+    </div>
   </div>
-  <nts-table [rows]="leads" [columns]="columnsLeads">
+  <mat-card>
+    <nts-table [rows]="leads" [columns]="columnsLeads">
+      <table-column-template field="name">
+        <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
+          Name
+        </ng-template>
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <a routerLink="/contacts">{{ value }}</a>
+        </ng-template>
+      </table-column-template>
 
-    <table-column-template field="name">
-      <ng-template let-value="value" let-column="column" let-row="row" table-header-template>
-        Name
-      </ng-template>
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <a routerLink="/contacts">{{ value }}</a>
-      </ng-template>
-    </table-column-template>
-    
-    <table-column-template field="action">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
-      </ng-template>
-    </table-column-template>
+      <table-column-template field="action">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <a routerLink="/contacts"><i class="fa fa-eye"></i> View Lead</a>
+        </ng-template>
+      </table-column-template>
 
-    <table-column-template field="handling">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        Branch
-      </ng-template>
-    </table-column-template>
+      <table-column-template field="handling">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          Branch
+        </ng-template>
+      </table-column-template>
 
-    <table-column-template field="active">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <div class="text-center">
-          <i class="fa fa-check" aria-hidden="true" *ngIf="value"></i>
-        </div>
-      </ng-template>
-    </table-column-template>
+      <table-column-template field="active">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <div class="text-center">
+            <i class="fa fa-check" aria-hidden="true" *ngIf="value"></i>
+          </div>
+        </ng-template>
+      </table-column-template>
 
-    <table-column-template field="volume">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <div class="text-right">
-          {{ value }}
-        </div>
-      </ng-template>
-    </table-column-template>
+      <table-column-template field="volume">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <div class="text-right">
+            {{ value }}
+          </div>
+        </ng-template>
+      </table-column-template>
 
+      <table-column-template field="company">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <a routerLink="/contacts/company/123">{{ value }}</a>
+        </ng-template>
+      </table-column-template>
 
-    <table-column-template field="company">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <a routerLink="/contacts/company/123">{{ value }}</a>
-      </ng-template>
-    </table-column-template>
-    
-
-    <table-column-template field="members">
-      <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
-        <div class="text-center">
-          <a (click)="modalOpenMembers()" style="box-shadow: none;"><i class="fa fa-users"></i> (4)</a>
-        </div>
-      </ng-template>
-    </table-column-template>
-  </nts-table>
+      <table-column-template field="members">
+        <ng-template let-value="value" let-column="column" let-row="row" table-cell-template>
+          <div class="text-center">
+            <a (click)="modalOpenMembers()" style="box-shadow: none;"><i class="fa fa-users"></i> (4)</a>
+          </div>
+        </ng-template>
+      </table-column-template>
+    </nts-table>
+  </mat-card>
 </div>

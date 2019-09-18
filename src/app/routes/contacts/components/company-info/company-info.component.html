@@ -1,120 +1,63 @@
 <div class="row">
-  <div class="col col-12 col-md-10">
-    <div class="row">
-      <div class="col col-12 col-md-2">
-        <img src="assets/img/logo.jpg" class="img-fluid img-thumbnail" />
-      </div>
-      <div class="col col-12 col-md-10">
-        <h1>Smart Lending, LLC</h1>
-        <div class="row">
-          <div class="col col-12 col-md-4">
-            <table class="table table-sm mb-0">
-              <tbody>
-                <tr>
-                  <td style="width:50px;"><strong>Correspondent</strong></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td><strong>Org</strong></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td><strong>Admin</strong></td>
-                  <td><a routerLink="/contacts">Jason Jenkins</a></td>
-                </tr>
-                <tr>
-                  <td><strong>AE</strong></td>
-                  <td><a routerLink="/contacts">Sandy Marsh</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col col-12 col-md-4">
-            <table class="table table-sm mb-0">
-              <tbody>
-                <tr>
-                  <td style="width:50px;"><strong>MID</strong></td>
-                  <td><a>B-000459433</a></td>
-                </tr>
-                <tr>
-                  <td style="width:50px;"><strong>Phone</strong></td>
-                  <td>Office: <a>555-555-5555</a></td>
-                </tr>
-                <tr>
-                  <td><strong>Email</strong></td>
-                  <td><a>SMIN@domain.com</a></td>
-                </tr>
-                <tr>
-                  <td><strong>Address</strong></td>
-                  <td>123 Main St, San Diego CA 94523</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col col-12 col-md-4">
-            <table class="table table-sm mb-0">
-              <tbody>
-                <tr>
-                  <td style="width:100px;"><strong>Volume</strong></td>
-                  <td>$15,432,334.00</td>
-                </tr>
-                <tr>
-                  <td style="width:50px;"><strong>Units</strong></td>
-                  <td>19</td>
-                </tr>
-                <tr>
-                  <td><strong>Pull-through</strong></td>
-                  <td>14%</td>
-                </tr>
-                <tr>
-                  <td><strong>Status</strong></td>
-                  <td><a>Warm</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col col-12 col-md-6">
-            <div class="mb-2 d-flex">
-              <strong class="mr-2">Description</strong>
-              <div class="ml-auto">
-                <a class="mr-2" style="box-shadow: none;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                <a style="box-shadow: none;"><i class="fa fa-calendar" aria-hidden="true"></i></a>
-              </div>
-            </div>
-            <p class="mb-2">Leverage agile frameworks to provide a robust synopsis for high level overviews.</p>
-          </div>
-          <div class="col col-12 col-md-6">
-              <div class="mb-2 d-flex">
-                  <strong class="mr-2">Notes</strong>
-                  <div class="ml-auto">
-                    <a class="mr-2" style="box-shadow: none;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                  </div>
-                </div>
-            <p class="mb-2">
-              Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="col col-12 col-md-3">
+    <div class="px-4 pb-4">
+      <img src="assets/img/logo.jpg" class="img-fluid img-thumbnail" />
     </div>
-  </div>
+    <div>
+      <button class="btn btn-primary w-100 mb-1 text-left"><i class="fa fa-gear"></i> Edit Information</button>
 
-  <div class="col col-12 col-md-2">
-    <div class="h-100 p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      <h4>Actions</h4>
-
-      <button class="btn btn-primary btn-sm w-100 mb-1 text-left"><i class="fa fa-gear"></i> Edit Information</button>
-      <!--
-      <button class="btn btn-primary btn-sm w-100 mb-1 text-left"><i class="fa fa-gear"></i> Price Quote</button>
-      <button class="btn btn-primary btn-sm w-100 mb-1 text-left"><i class="fa fa-gear"></i> Start Loan</button>
-      -->
-      <button [matMenuTriggerFor]="menu" class="btn btn-primary btn-sm w-100 mb-1 text-left"><i class="fa fa-gear"></i> Actions</button>
+      <button [matMenuTriggerFor]="menu" class="btn btn-primary w-100 mb-1 text-left"><i class="fa fa-gear"></i> Actions</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Item 2</button>
       </mat-menu>
+    </div>
+  </div>
+  <div class="col col-12 col-md-9 pt-4">
+    <h1 class="mb-1">Smart Lending, LLC</h1>
+    <div class="row">
+      <div class="col col-12 col-lg-6">
+        <table class="table mb-0">
+          <tbody>
+            <tr>
+              <td><strong>mID</strong></td>
+              <td><a>B-000459433</a></td>
+            </tr>
+            <tr>
+              <td><strong>Orgs</strong></td>
+              <td><a routerLink="company">Robert Investments, LLC</a> <a>(see 3 more...)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Source</strong></td>
+              <td><a>Organic</a></td>
+            </tr>
+            <tr>
+              <td style="width:50px;"><strong>Phone</strong></td>
+              <td>Mobile: <a>555-555-5555</a> Home: <a>555-555-5555</a></td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td><a>rjackson@domain.com</a></td>
+            </tr>
+            <tr>
+              <td><strong>Address</strong></td>
+              <td>123 Main St, San Diego CA 94523</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col col-12 col-lg-6">
+        <div class="pr-2">
+          <a class="float-right" routerLink="/"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+          <p class="mb-2"><strong>Description</strong></p>
+          <p class="mb-5">Leverage agile frameworks to provide a robust synopsis for high level overviews.</p>
+          <a class="float-right" routerLink="/"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+          <p class="mb-2"><strong>Notes</strong></p>
+          <p class="mb-2">
+            Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,41 +1,33 @@
 <div class="container-fluid">
-  <mat-card class="mb-4">
-    <app-company-info></app-company-info>
-  </mat-card>
-  <div class="row">
-    <div class="col col-12 col-md-4">
-      <mat-card class="mb-4">
-        <h2>ASSOCIATIONS</h2>
-        <hr />
-        <app-associations-company></app-associations-company>
-      </mat-card>
-      <mat-card class="mb-4">
-        <div class="small float-right mt-1">
-          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Docs (4 / 18)</button>
-        </div>
-        <h2>DOCUMENT REPOSITORY</h2>
-        <hr />
-        <app-doc-repo></app-doc-repo>
+  <div class="row mb-4">
+    <div class="col col-12 col-md-9">
+      <mat-card>
+        <app-company-info></app-company-info>
       </mat-card>
     </div>
-    <div class="col col-12 col-md-8">
+    <div class="col col-12 col-md-3">
+      <h2>Associations</h2>
+      <mat-card>
+        <app-associations-company></app-associations-company>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col col-12 col-md-9">
+      <button class="btn btn-secondary btn-sm float-right">View All (4/7) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>Conversation Log</h2>
       <mat-card class="mb-4">
-        <div class="small float-right mt-1">
-          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Logs (8 / 33)</button>
-        </div>
-        <h2>CONVERSATION LOG</h2>
         <app-convo-log></app-convo-log>
       </mat-card>
+      <button class="btn btn-secondary btn-sm float-right">View All (4/7) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>
+        Loans / Pipeline
+        <em>
+          <small>(Open/Pending/Post Loans)</small>
+        </em>
+      </h2>
       <mat-card class="mb-4">
-        <div class="small float-right mt-1">
-          <button class="btn btn-primary btn-sm small"><i class="fa fa-eye" aria-hidden="true"></i> View All Loans (4 / 7)</button>
-        </div>
-        <h2>
-          Pipeline
-          <em>
-            <small>(Open/Pending/Post Loans)</small>
-          </em>
-        </h2>
         <nts-table [rows]="leads" [columns]="columnsLeads" mobileTitleProp="name">
           <!-- Name -->
           <table-column-template field="name">
@@ -50,6 +42,13 @@
             </ng-template>
           </table-column-template>
         </nts-table>
+      </mat-card>
+    </div>
+    <div class="col col-12 col-md-3">
+      <button class="btn btn-secondary btn-sm float-right">View All (3/9) <i class="fa fa-plus-circle ml-2" aria-hidden="true"></i></button>
+      <h2>Documents</h2>
+      <mat-card>
+        <app-doc-repo></app-doc-repo>
       </mat-card>
     </div>
   </div>
