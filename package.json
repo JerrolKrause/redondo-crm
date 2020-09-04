@@ -75,7 +75,7 @@
     "ngx-auto-unsubscribe": "2.4.1",
     "ngx-contextmenu": "5.0.3",
     "ngx-take-until-destroy": "5.4.0",
-    "node-sass": "4.9.4",
+    "node-sass": "4.13.1",
     "rxjs": "6.5.2",
     "ts-loader": "4.5.0",
     "typescript-fsa": "2.5.0",
