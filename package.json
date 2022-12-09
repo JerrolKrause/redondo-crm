@@ -98,7 +98,7 @@
     "angular-cli-ghpages": "0.5.3",
     "codelyzer": "5.0.1",
     "dotenv": "6.2.0",
-    "express": "4.16.3",
+    "express": "4.17.3",
     "font-awesome": "4.7.0",
     "jasmine-core": "2.6.2",
     "jasmine-marbles": "0.4.0",
